@@ -16,6 +16,17 @@
 		879B991C1C398C15001F191C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879B991A1C398C15001F191C /* LaunchScreen.storyboard */; };
 		879B99271C398C15001F191C /* iDodonpasciiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99261C398C15001F191C /* iDodonpasciiTests.swift */; };
 		879B99321C398C15001F191C /* iDodonpasciiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99311C398C15001F191C /* iDodonpasciiUITests.swift */; };
+		879B99401C398E73001F191C /* iDodonpascii.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 879B993F1C398E73001F191C /* iDodonpascii.atlas */; };
+		879B99421C398F22001F191C /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99411C398F22001F191C /* GameSprite.swift */; };
+		879B99441C398F45001F191C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99431C398F45001F191C /* Player.swift */; };
+		879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99451C3B37A7001F191C /* PlayerBullet.swift */; };
+		879B99481C3B6EEC001F191C /* playerBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 879B99471C3B6EEC001F191C /* playerBullet.wav */; };
+		879B994A1C3C83C2001F191C /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99491C3C83C2001F191C /* Levels.swift */; };
+		879B994C1C3C8B13001F191C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B994B1C3C8B13001F191C /* Enemy.swift */; };
+		879B99521C3D971B001F191C /* Helis.sks in Resources */ = {isa = PBXBuildFile; fileRef = 879B99511C3D971B001F191C /* Helis.sks */; };
+		879B99541C3D99A1001F191C /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99531C3D99A1001F191C /* EncounterManager.swift */; };
+		879B99561C3D9A8E001F191C /* Heli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99551C3D9A8E001F191C /* Heli.swift */; };
+		879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99571C3E18D1001F191C /* BackgroundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +62,17 @@
 		879B992D1C398C15001F191C /* iDodonpasciiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDodonpasciiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		879B99311C398C15001F191C /* iDodonpasciiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDodonpasciiUITests.swift; sourceTree = "<group>"; };
 		879B99331C398C15001F191C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		879B993F1C398E73001F191C /* iDodonpascii.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = iDodonpascii.atlas; sourceTree = "<group>"; };
+		879B99411C398F22001F191C /* GameSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
+		879B99431C398F45001F191C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		879B99451C3B37A7001F191C /* PlayerBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBullet.swift; sourceTree = "<group>"; };
+		879B99471C3B6EEC001F191C /* playerBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = playerBullet.wav; path = ../dodonpascii/resources/playerBullet.wav; sourceTree = "<group>"; };
+		879B99491C3C83C2001F191C /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		879B994B1C3C8B13001F191C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = ../Enemy.swift; sourceTree = "<group>"; };
+		879B99511C3D971B001F191C /* Helis.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Helis.sks; sourceTree = "<group>"; };
+		879B99531C3D99A1001F191C /* EncounterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
+		879B99551C3D9A8E001F191C /* Heli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heli.swift; sourceTree = "<group>"; };
+		879B99571C3E18D1001F191C /* BackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +103,9 @@
 		879B99011C398C15001F191C = {
 			isa = PBXGroup;
 			children = (
+				879B994E1C3D9675001F191C /* Encounters */,
+				879B99471C3B6EEC001F191C /* playerBullet.wav */,
+				879B993F1C398E73001F191C /* iDodonpascii.atlas */,
 				879B990C1C398C15001F191C /* iDodonpascii */,
 				879B99251C398C15001F191C /* iDodonpasciiTests */,
 				879B99301C398C15001F191C /* iDodonpasciiUITests */,
@@ -101,6 +126,7 @@
 		879B990C1C398C15001F191C /* iDodonpascii */ = {
 			isa = PBXGroup;
 			children = (
+				879B994B1C3C8B13001F191C /* Enemy.swift */,
 				879B990D1C398C15001F191C /* AppDelegate.swift */,
 				879B990F1C398C15001F191C /* GameScene.sks */,
 				879B99111C398C15001F191C /* GameScene.swift */,
@@ -109,6 +135,13 @@
 				879B99181C398C15001F191C /* Assets.xcassets */,
 				879B991A1C398C15001F191C /* LaunchScreen.storyboard */,
 				879B991D1C398C15001F191C /* Info.plist */,
+				879B99411C398F22001F191C /* GameSprite.swift */,
+				879B99431C398F45001F191C /* Player.swift */,
+				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
+				879B99491C3C83C2001F191C /* Levels.swift */,
+				879B99531C3D99A1001F191C /* EncounterManager.swift */,
+				879B99551C3D9A8E001F191C /* Heli.swift */,
+				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -129,6 +162,14 @@
 				879B99331C398C15001F191C /* Info.plist */,
 			);
 			path = iDodonpasciiUITests;
+			sourceTree = "<group>";
+		};
+		879B994E1C3D9675001F191C /* Encounters */ = {
+			isa = PBXGroup;
+			children = (
+				879B99511C3D971B001F191C /* Helis.sks */,
+			);
+			name = Encounters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,9 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				879B99101C398C15001F191C /* GameScene.sks in Resources */,
+				879B99401C398E73001F191C /* iDodonpascii.atlas in Resources */,
 				879B991C1C398C15001F191C /* LaunchScreen.storyboard in Resources */,
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
+				879B99481C3B6EEC001F191C /* playerBullet.wav in Resources */,
 				879B99171C398C15001F191C /* Main.storyboard in Resources */,
+				879B99521C3D971B001F191C /* Helis.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */,
+				879B99541C3D99A1001F191C /* EncounterManager.swift in Sources */,
+				879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */,
+				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
+				879B99421C398F22001F191C /* GameSprite.swift in Sources */,
 				879B99121C398C15001F191C /* GameScene.swift in Sources */,
+				879B99561C3D9A8E001F191C /* Heli.swift in Sources */,
+				879B994C1C3C8B13001F191C /* Enemy.swift in Sources */,
 				879B99141C398C15001F191C /* GameViewController.swift in Sources */,
+				879B99441C398F45001F191C /* Player.swift in Sources */,
 				879B990E1C398C15001F191C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iDodonpascii/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quephird.iDodonpascii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iDodonpascii/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quephird.iDodonpascii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -497,6 +551,7 @@
 				879B99381C398C15001F191C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		879B99391C398C15001F191C /* Build configuration list for PBXNativeTarget "iDodonpasciiTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +560,7 @@
 				879B993B1C398C15001F191C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		879B993C1C398C15001F191C /* Build configuration list for PBXNativeTarget "iDodonpasciiUITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +569,7 @@
 				879B993E1C398C15001F191C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

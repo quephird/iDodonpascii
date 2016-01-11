@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iDodonpascii/GameScene.swift"
+            timestampString = "473973686.700221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "touchesMoved(_:withEvent:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iDodonpascii/GameScene.swift"
+            timestampString = "473880891.941646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "world"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iDodonpascii.GameScene.init (iDodonpascii.GameScene.Type)(size : __C.CGSize) -&gt; iDodonpascii.GameScene"
+                  moduleName = "iDodonpascii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielle/projects/personal/iDodonpascii/iDodonpascii/GameScene.swift"
+                  timestampString = "473880977.77687"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iDodonpascii.GameScene.init (iDodonpascii.GameScene.Type)() -&gt; iDodonpascii.GameScene"
+                  moduleName = "iDodonpascii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielle/projects/personal/iDodonpascii/iDodonpascii/GameScene.swift"
+                  timestampString = "473880977.777143"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iDodonpascii.GameScene.init (iDodonpascii.GameScene.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;iDodonpascii.GameScene&gt;"
+                  moduleName = "iDodonpascii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielle/projects/personal/iDodonpascii/iDodonpascii/GameScene.swift"
+                  timestampString = "473880977.777363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
