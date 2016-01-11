@@ -23,8 +23,6 @@
 		879B99481C3B6EEC001F191C /* playerBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 879B99471C3B6EEC001F191C /* playerBullet.wav */; };
 		879B994A1C3C83C2001F191C /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99491C3C83C2001F191C /* Levels.swift */; };
 		879B994C1C3C8B13001F191C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B994B1C3C8B13001F191C /* Enemy.swift */; };
-		879B99521C3D971B001F191C /* Helis.sks in Resources */ = {isa = PBXBuildFile; fileRef = 879B99511C3D971B001F191C /* Helis.sks */; };
-		879B99541C3D99A1001F191C /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99531C3D99A1001F191C /* EncounterManager.swift */; };
 		879B99561C3D9A8E001F191C /* Heli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99551C3D9A8E001F191C /* Heli.swift */; };
 		879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99571C3E18D1001F191C /* BackgroundManager.swift */; };
 /* End PBXBuildFile section */
@@ -69,8 +67,6 @@
 		879B99471C3B6EEC001F191C /* playerBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = playerBullet.wav; path = ../dodonpascii/resources/playerBullet.wav; sourceTree = "<group>"; };
 		879B99491C3C83C2001F191C /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		879B994B1C3C8B13001F191C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = ../Enemy.swift; sourceTree = "<group>"; };
-		879B99511C3D971B001F191C /* Helis.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Helis.sks; sourceTree = "<group>"; };
-		879B99531C3D99A1001F191C /* EncounterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
 		879B99551C3D9A8E001F191C /* Heli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heli.swift; sourceTree = "<group>"; };
 		879B99571C3E18D1001F191C /* BackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +135,6 @@
 				879B99431C398F45001F191C /* Player.swift */,
 				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
 				879B99491C3C83C2001F191C /* Levels.swift */,
-				879B99531C3D99A1001F191C /* EncounterManager.swift */,
 				879B99551C3D9A8E001F191C /* Heli.swift */,
 				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
 			);
@@ -167,7 +162,6 @@
 		879B994E1C3D9675001F191C /* Encounters */ = {
 			isa = PBXGroup;
 			children = (
-				879B99511C3D971B001F191C /* Helis.sks */,
 			);
 			name = Encounters;
 			sourceTree = "<group>";
@@ -285,7 +279,6 @@
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
 				879B99481C3B6EEC001F191C /* playerBullet.wav in Resources */,
 				879B99171C398C15001F191C /* Main.storyboard in Resources */,
-				879B99521C3D971B001F191C /* Helis.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */,
-				879B99541C3D99A1001F191C /* EncounterManager.swift in Sources */,
 				879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */,
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
 				879B99421C398F22001F191C /* GameSprite.swift in Sources */,

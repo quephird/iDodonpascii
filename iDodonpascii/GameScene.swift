@@ -11,8 +11,10 @@ import SpriteKit
 class GameScene: SKScene {
     let world = SKNode(),
         player = Player(),
-        background = BackgroundManager(),
-        encounterManager = EncounterManager()
+        background = BackgroundManager()
+        // TODO: Ditch SpriteKit Encounters; procedurally generate
+        // enemies instead.
+//        encounterManager = EncounterManager()
     
     var playerBullets = Set<PlayerBullet>()
 //        startTime: CFTimeInterval? = nil
@@ -26,7 +28,7 @@ class GameScene: SKScene {
         
         background.spawn(world, position: CGPointZero)
         player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-        Heli().spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height))
+//        Heli().spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height))
 
         let waitABit = SKAction.waitForDuration(0.25),
             moveAction = SKAction.moveByX(0, y: 400, duration: 1),
@@ -40,8 +42,6 @@ class GameScene: SKScene {
             },
             sequence = SKAction.sequence([waitABit, spawnNewBullet])
         self.runAction(SKAction.repeatActionForever(sequence))
-        self.encounterManager.addEncountersToWorld(self.world)
-        self.encounterManager.encounters[0].position = CGPoint(x: 0, y: 0)
 
 //        self.startTime = CACurrentMediaTime()
 //        self.currentLevel = 1
