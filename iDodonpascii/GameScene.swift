@@ -16,7 +16,8 @@ class GameScene: SKScene {
         // enemies instead.
 //        encounterManager = EncounterManager()
     
-    var playerBullets = Set<PlayerBullet>()
+    var playerBullets = Set<PlayerBullet>(),
+        currentLevel: Int = 1
 //        startTime: CFTimeInterval? = nil
 //        currentLevel: Int,
 //        waveTimes: [Double],
@@ -26,7 +27,7 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         self.addChild(world)
         
-        background.spawn(world, position: CGPointZero)
+        background.spawnBackgrounds(self.currentLevel, parentNode: world)
         player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
 //        Heli().spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height))
 

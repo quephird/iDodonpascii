@@ -10,19 +10,22 @@ import SpriteKit
 
 var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<String, Any>>>> =
     [1:
-         ["waves":
+        ["waves":
              [2.0:
                   ["type": Enemy.Heli,
-                   "initParams": [(100, -100, 0, Direction.Right, 1),
-                                  (200, -100, 0, Direction.Right, 1)]],
+                   "initParams": [(100, 1000, 0, Direction.Right, 1),
+                                  (200, 1000, 0, Direction.Right, 1)]],
               5.0:
                   ["type": Enemy.Heli,
-                   "initParams": [(1100, -100, 0, Direction.Left, 1),
-                                  (1000, -100, 0, Direction.Left, 1),
-                                  (900, -100, 0, Direction.Left, 1)]],
+                   "initParams": [(700, 1000, 0, Direction.Left, 1),
+                                  (600, 1000, 0, Direction.Left, 1),
+                                  (500, 1000, 0, Direction.Left, 1)]],
               8.0:
                   ["type": Enemy.Heli,
-                   "initParams": [(100, -100, 0, Direction.Right, 1),
-                                  (200, -100, 0, Direction.Right, 1),
-                                  (300, -100, 0, Direction.Right, 1)]]]]]
+                   "initParams": [(100, 1000, 0, Direction.Right, 1),
+                                  (200, 1000, 0, Direction.Right, 1),
+                                  (300, 1000, 0, Direction.Right, 1)]],
+             ]
+         ]
+    ]
 

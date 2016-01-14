@@ -8,40 +8,32 @@
 
 import SpriteKit
 
-class BackgroundManager: GameSprite {
-    var textureAtlas: SKTextureAtlas = SKTextureAtlas(named:"iDodonpascii.atlas"),
-        parentNode = SKNode(),
-        currentBackgroundNode = SKSpriteNode(),
-        currentBackgroundNodeNext = SKSpriteNode()
+// This class needs to:
+//   * Know the current level
+//   * Select proper background image for that level
+//   * Spawn two sprites for that image
+//   * Place and move them such that there is a continuous vertically scrolling background.
+
+class BackgroundManager {
+    var parentNode = SKNode(),
+        currentBackgroundNode: Background? = nil,
+        currentBackgroundNodeNext: Background? = nil,
+        lastFrameTime : NSTimeInterval = 0,
+        deltaTime : NSTimeInterval = 0
     
     let backgrounds: [Int: String] = [
         1: "background1.png"
     ]
     
-    // Time of last frame
-    var lastFrameTime : NSTimeInterval = 0
-        // Time since last frame
-    var deltaTime : NSTimeInterval = 0
-    
-    func spawn(parentNode: SKNode,
-               position: CGPoint,
-               size: CGSize = CGSize(width: 800, height: 1400)) {
-        self.parentNode = parentNode
-
-            // Prepare the sky sprites
-        currentBackgroundNode = SKSpriteNode(texture: textureAtlas.textureNamed("background1.png"))
-        currentBackgroundNode.position = CGPoint(x: size.width / 4.0, y: size.height / 4.0)
-        currentBackgroundNode.setScale(0.5)
-        
-        currentBackgroundNodeNext = currentBackgroundNode.copy() as! SKSpriteNode
-        currentBackgroundNodeNext.position =
-            CGPoint(x: currentBackgroundNode.position.x,
-                    y: currentBackgroundNode.position.y + currentBackgroundNode.size.height)
-        currentBackgroundNodeNext.setScale(0.5)
-        
-        // Add the sprites to the scene
-        parentNode.addChild(currentBackgroundNode)
-        parentNode.addChild(currentBackgroundNodeNext)
+    func spawnBackgrounds(currentLevel: Int, parentNode: SKNode) {
+        self.currentBackgroundNode = Background(textureName: self.backgrounds[currentLevel]!)
+        self.currentBackgroundNode!.spawn(parentNode,
+                                          position: CGPoint(x: currentBackgroundNode!.size.width / 4.0,
+                                                            y: currentBackgroundNode!.size.height / 4.0))
+        self.currentBackgroundNodeNext = currentBackgroundNode!.copy() as? Background
+        self.currentBackgroundNodeNext!.spawn(parentNode,
+                                             position: CGPoint(x: currentBackgroundNode!.position.x,
+                                                               y: currentBackgroundNode!.position.y + currentBackgroundNode!.size.height))
     }
     
     // Move a pair of sprites downward based on a speed value;
@@ -90,8 +82,8 @@ class BackgroundManager: GameSprite {
         
         // Next, move each of the four pairs of sprites.
         // Objects that should appear move slower than foreground objects.
-        self.moveSprite(currentBackgroundNode,
-                        nextSprite:currentBackgroundNodeNext,
+        self.moveSprite(currentBackgroundNode!,
+                        nextSprite: currentBackgroundNodeNext!,
                         speed: 200.0)
     }    
 }

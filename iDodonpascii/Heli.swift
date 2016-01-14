@@ -9,7 +9,6 @@
 import SpriteKit
 
 class Heli: SKSpriteNode, GameSprite {
-    var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "iDodonpascii.atlas")
     var flyAnimation = SKAction()
 
     func spawn(parentNode:SKNode,

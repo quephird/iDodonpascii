@@ -11,7 +11,6 @@ import SpriteKit
 
 class PlayerBullet: SKSpriteNode, GameSprite {
     let π = CGFloat(M_PI)
-    var textureAtlas: SKTextureAtlas = SKTextureAtlas(named:"iDodonpascii.atlas")
 
     func spawn(parentNode: SKNode,
                position: CGPoint,

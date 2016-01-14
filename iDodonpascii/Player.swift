@@ -9,8 +9,7 @@
 import SpriteKit
 
 class Player: SKSpriteNode, GameSprite {
-    var textureAtlas: SKTextureAtlas = SKTextureAtlas(named:"iDodonpascii.atlas"),
-        lastTouchLocation: CGPoint? = nil
+    var lastTouchLocation: CGPoint? = nil
     
     func spawn(parentNode: SKNode,
                position: CGPoint,

@@ -9,6 +9,12 @@
 import SpriteKit
 
 protocol GameSprite {
-    var textureAtlas: SKTextureAtlas { get set }
+    var textureAtlas: SKTextureAtlas { get }
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize)
+}
+
+extension GameSprite {
+    var textureAtlas: SKTextureAtlas {
+        return SKTextureAtlas(named:"iDodonpascii.atlas")
+    }
 }
