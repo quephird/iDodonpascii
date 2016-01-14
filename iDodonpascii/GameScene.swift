@@ -10,26 +10,20 @@ import SpriteKit
 
 class GameScene: SKScene {
     let world = SKNode(),
+        gameState = GameState(),
         player = Player(),
-        background = BackgroundManager()
-        // TODO: Ditch SpriteKit Encounters; procedurally generate
-        // enemies instead.
-//        encounterManager = EncounterManager()
+        background = BackgroundManager(),
+        spawnManager = SpawnManager()
     
-    var playerBullets = Set<PlayerBullet>(),
-        currentLevel: Int = 1
-//        startTime: CFTimeInterval? = nil
-//        currentLevel: Int,
-//        waveTimes: [Double],
-//        nextWaveTime: Double?
+    var playerBullets = Set<PlayerBullet>()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         self.addChild(world)
-        
-        background.spawnBackgrounds(self.currentLevel, parentNode: world)
+
+        gameState.startGame()
+        background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
         player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-//        Heli().spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height))
 
         let waitABit = SKAction.waitForDuration(0.25),
             moveAction = SKAction.moveByX(0, y: 400, duration: 1),
@@ -44,10 +38,6 @@ class GameScene: SKScene {
             sequence = SKAction.sequence([waitABit, spawnNewBullet])
         self.runAction(SKAction.repeatActionForever(sequence))
 
-//        self.startTime = CACurrentMediaTime()
-//        self.currentLevel = 1
-//        self.waveTimes = [Double](levels[self.currentLevel!]!["waves"]!.keys)
-//        self.nextWaveTime = waveTimes!.minElement()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

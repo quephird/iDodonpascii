@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1295208C79CDE001C80BB501BDE31AC865D8AF80",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E772F0081729358E1D9F433FC383FC9D8FE1E15A" : 0,
+    "1295208C79CDE001C80BB501BDE31AC865D8AF80" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F9A03453-5BC9-4085-BCFF-ABAA694668DF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E772F0081729358E1D9F433FC383FC9D8FE1E15A" : "dodonpascii\/",
+    "1295208C79CDE001C80BB501BDE31AC865D8AF80" : "iDodonpascii\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iDodonpascii",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iDodonpascii.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/quephird\/iDodonpascii.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1295208C79CDE001C80BB501BDE31AC865D8AF80"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/quephird\/dodonpascii",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E772F0081729358E1D9F433FC383FC9D8FE1E15A"
+    }
+  ]
+}

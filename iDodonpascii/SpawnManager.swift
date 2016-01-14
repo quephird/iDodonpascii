@@ -14,3 +14,13 @@ import Foundation
 //   * Keep track of the next spawn time
 //   * Load the spawn configuration for that level
 //   * Be interrogated and know when to spawn new enemies
+
+class SpawnManager {
+    var waveTimes: [Double] = [],
+        nextWaveTime: Double? = nil
+
+    func beginSpawningEnemies(currentLevel: Int) {
+        self.waveTimes = [Double](levels[currentLevel]!["waves"]!.keys)
+        self.nextWaveTime = waveTimes.minElement()
+    }
+}
