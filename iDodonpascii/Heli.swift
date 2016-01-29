@@ -13,7 +13,7 @@ class Heli: SKSpriteNode, GameSprite {
 
     func spawn(parentNode:SKNode,
                position: CGPoint,
-               size: CGSize = CGSize(width: 128, height: 128)) {
+               size: CGSize = CGSize(width: 96, height: 96)) {
         parentNode.addChild(self)
         createAnimations()
         self.size = size
@@ -23,6 +23,7 @@ class Heli: SKSpriteNode, GameSprite {
         self.physicsBody?.affectedByGravity = false
     }
 
+    // TODO: implement flying pattern
     func createAnimations() {
         let flyFrames:[SKTexture] = [
             textureAtlas.textureNamed("heli1.png"),

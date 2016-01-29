@@ -13,7 +13,7 @@ class Player: SKSpriteNode, GameSprite {
     
     func spawn(parentNode: SKNode,
                position: CGPoint,
-               size: CGSize = CGSize(width: 96, height: 128)) {
+               size: CGSize = CGSize(width: 72, height: 96)) {
         parentNode.addChild(self)
         self.size = size
         self.position = position

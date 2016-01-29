@@ -22,9 +22,14 @@ class GameScene: SKScene {
         self.addChild(world)
 
         gameState.startGame()
+        
+        // TODO: Move these into SpawnManager?
         background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
         player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
 
+        spawnManager.beginSpawningEnemies(gameState, parentNode: world)
+
+        // TODO: Move player bullet generation elsewhere; it doesn't belong here
         let waitABit = SKAction.waitForDuration(0.25),
             moveAction = SKAction.moveByX(0, y: 400, duration: 1),
             newBulletSound = SKAction.playSoundFileNamed("playerBullet.wav", waitForCompletion: false),
@@ -62,20 +67,12 @@ class GameScene: SKScene {
     }
 
     override func update(currentTime: CFTimeInterval) {
+        self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
         player.update()
         background.update(currentTime)
-
-//        let newBullets = playerBullets.filter({ (b) -> Bool in return (b.position.y < 1000) })
-//        self.playerBullets = Set(newBullets)
-//        print(playerBullets.count)
-        
-//        if (abs(currentTime - self.startTime!) - nextWaveTime < 0.001) {
-//            nextWaveTime = self.waveTimes.filter({$0 > nextWaveTime}).first!
-//        }
-//        
-//        print(nextWaveTime)
     }
     
+    // TODO: Move this elsewhere; bullet generation and movement doesn't belong here
     func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
         return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
     }
