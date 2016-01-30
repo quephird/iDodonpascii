@@ -8,6 +8,11 @@
 
 import SpriteKit
 
+// This class needs to:
+//   * Initialize all components of the game
+//   * Manage the game loop
+//   * Respond to user input
+
 class GameScene: SKScene {
     let world = SKNode(),
         gameState = GameState(),

@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+// This class maintains all state information vital to the game.
+
 class GameState {
     var currentLevel: Int? = nil,
         startTime: CFTimeInterval? = nil

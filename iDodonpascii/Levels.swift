@@ -8,6 +8,9 @@
 
 import SpriteKit
 
+// For now, this file contains just a structure containing all data
+// describing the enemies to be spawned in the game.
+
 var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<String, Any>>>> =
     [1:
         ["waves":

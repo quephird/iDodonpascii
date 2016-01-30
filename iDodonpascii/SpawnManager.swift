@@ -9,10 +9,9 @@
 import SpriteKit
 
 // This class needs to:
-//   * Know the current level
-//   * Keep track of elapsed time in the current level
+//   * Be able to access the entire current game state
+//   * Load the spawn configuration for the current level
 //   * Keep track of the next spawn time
-//   * Load the spawn configuration for that level
 //   * Be interrogated and know when to spawn new enemies
 
 class SpawnManager {
@@ -48,6 +47,7 @@ class SpawnManager {
         let newEnemyType = newWave["type"],
             newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Int)>
         for (x,y,_,_,_) in newEnemyParameters {
+            // TODO: Spawn based on enemy type
             Heli().spawn(self.parentNode!, position: CGPoint(x: x, y: y))
         }
     }

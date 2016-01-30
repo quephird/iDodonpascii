@@ -23,14 +23,25 @@ class Heli: SKSpriteNode, GameSprite {
         self.physicsBody?.affectedByGravity = false
     }
 
-    // TODO: implement flying pattern
     func createAnimations() {
-        let flyFrames:[SKTexture] = [
-            textureAtlas.textureNamed("heli1.png"),
-            textureAtlas.textureNamed("heli2.png")
-        ]
-        let flyAction = SKAction.animateWithTextures(flyFrames, timePerFrame: 0.25)
-        flyAnimation = SKAction.repeatActionForever(flyAction)
+        let animationFrames:[SKTexture] = [
+                textureAtlas.textureNamed("heli1.png"),
+                textureAtlas.textureNamed("heli2.png")
+            ],
+            flightPath = createPath(self.position, direction: Direction.Right)
+        let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
+        flyAnimation = SKAction.repeatActionForever(animationAction)
+        self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
+    }
+    
+    func createPath(startingPoint: CGPoint, direction: Direction) -> UIBezierPath {
+        // TODO: direction needs to be "pushed" into this object somehow and then utilized below.
+        let path = UIBezierPath(),
+            endingPoint = CGPoint(x: startingPoint.x+200.0, y: startingPoint.y),
+            controlPoint = CGPoint(x: startingPoint.x+100.0, y: startingPoint.y-400.0)
+        path.moveToPoint(startingPoint)
+        path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
+        return path
     }
 
     func onTap() {}

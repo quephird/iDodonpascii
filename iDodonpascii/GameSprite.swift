@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+// This is the base protocol for all sprites in the game.
+
 protocol GameSprite {
     var textureAtlas: SKTextureAtlas { get }
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize)

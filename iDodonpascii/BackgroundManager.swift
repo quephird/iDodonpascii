@@ -9,10 +9,10 @@
 import SpriteKit
 
 // This class needs to:
-//   * Know the current level
+//   * Be informed of the current level
 //   * Select proper background image for that level
 //   * Spawn two sprites for that image
-//   * Place and move them such that there is a continuous vertically scrolling background.
+//   * Place and move them such that there is a continuously vertical scrolling background.
 
 class BackgroundManager {
     var parentNode = SKNode(),

@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+// TODO: Determine if the Enemy enum is still necessary
 enum Direction {
     case Left
     case Right

@@ -126,23 +126,23 @@
 		879B990C1C398C15001F191C /* iDodonpascii */ = {
 			isa = PBXGroup;
 			children = (
-				879B994B1C3C8B13001F191C /* Enemy.swift */,
 				879B990D1C398C15001F191C /* AppDelegate.swift */,
-				879B99111C398C15001F191C /* GameScene.swift */,
-				879B99131C398C15001F191C /* GameViewController.swift */,
-				879B99151C398C15001F191C /* Main.storyboard */,
 				879B99181C398C15001F191C /* Assets.xcassets */,
-				879B991A1C398C15001F191C /* LaunchScreen.storyboard */,
-				879B991D1C398C15001F191C /* Info.plist */,
+				8764D1E31C47256900EC6F49 /* Background.swift */,
+				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
+				879B994B1C3C8B13001F191C /* Enemy.swift */,
+				879B99111C398C15001F191C /* GameScene.swift */,
 				879B99411C398F22001F191C /* GameSprite.swift */,
+				87F55E1A1C48218B006C8228 /* GameState.swift */,
+				879B99131C398C15001F191C /* GameViewController.swift */,
+				879B99551C3D9A8E001F191C /* Heli.swift */,
+				879B991D1C398C15001F191C /* Info.plist */,
+				879B991A1C398C15001F191C /* LaunchScreen.storyboard */,
+				879B99491C3C83C2001F191C /* Levels.swift */,
+				879B99151C398C15001F191C /* Main.storyboard */,
 				879B99431C398F45001F191C /* Player.swift */,
 				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
-				879B99491C3C83C2001F191C /* Levels.swift */,
-				879B99551C3D9A8E001F191C /* Heli.swift */,
-				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
 				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
-				8764D1E31C47256900EC6F49 /* Background.swift */,
-				87F55E1A1C48218B006C8228 /* GameState.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
