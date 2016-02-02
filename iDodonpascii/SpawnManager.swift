@@ -51,4 +51,15 @@ class SpawnManager {
             Heli().spawn(self.parentNode!, position: CGPoint(x: x, y: y))
         }
     }
+    
+    func clearOffscreenEnemies () {
+        self.parentNode?.enumerateChildNodesWithName("*", usingBlock: { (node, stop) -> Void in
+            if let _ = node as? Enemy {
+                if node.position.y < 0 || node.position.y > 750.0 ||
+                   node.position.x < 0 || node.position.x > 500.0 {
+                    node.removeFromParent()
+                }
+            }
+        })
+    }
 }

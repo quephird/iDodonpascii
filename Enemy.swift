@@ -14,8 +14,6 @@ enum Direction {
     case Right
 }
 
-enum Enemy {
-    case Heli(CGFloat, CGFloat, CGFloat, Direction, Int)
-    case Biplane(CGFloat, CGFloat, CGFloat, Direction, Int)
+protocol Enemy {
 }
 

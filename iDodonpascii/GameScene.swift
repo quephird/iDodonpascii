@@ -72,6 +72,7 @@ class GameScene: SKScene {
     }
 
     override func update(currentTime: CFTimeInterval) {
+        self.spawnManager.clearOffscreenEnemies()
         self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
         player.update()
         background.update(currentTime)

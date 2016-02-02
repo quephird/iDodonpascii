@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite {
+class Heli: SKSpriteNode, GameSprite, Enemy {
     var flyAnimation = SKAction()
 
     func spawn(parentNode:SKNode,
@@ -17,6 +17,7 @@ class Heli: SKSpriteNode, GameSprite {
         parentNode.addChild(self)
         createAnimations()
         self.size = size
+        self.name = "EnemyHeli"
         self.position = position
         self.runAction(flyAnimation)
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
@@ -37,8 +38,10 @@ class Heli: SKSpriteNode, GameSprite {
     func createPath(startingPoint: CGPoint, direction: Direction) -> UIBezierPath {
         // TODO: direction needs to be "pushed" into this object somehow and then utilized below.
         let path = UIBezierPath(),
-            endingPoint = CGPoint(x: startingPoint.x+200.0, y: startingPoint.y),
-            controlPoint = CGPoint(x: startingPoint.x+100.0, y: startingPoint.y-400.0)
+            // The +5 is a tiny hack to ensure that the heli will go beyond the maximum y
+            // such that it will be scrubbed.
+            endingPoint = CGPoint(x: startingPoint.x+200.0, y: startingPoint.y+5),
+            controlPoint = CGPoint(x: startingPoint.x+100.0, y: startingPoint.y-700.0)
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path

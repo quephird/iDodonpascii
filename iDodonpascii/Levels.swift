@@ -16,23 +16,23 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
         ["waves":
              [2.0:
                   ["type": "heli",
-                   "initParams": [(0.0, 600.0, 0.0, Direction.Right, 1),
-                                  (100.0, 600.0, 0.0, Direction.Right, 1)]],
-              5.0:
+                   "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
+                                  (100.0, 700.0, 0.0, Direction.Right, 1)]],
+              6.0:
                   ["type": "heli",
-                   "initParams": [(400.0, 600.0, 0.0, Direction.Left, 1),
-                                  (300.0, 600.0, 0.0, Direction.Left, 1),
-                                  (200.0, 600.0, 0.0, Direction.Left, 1)]],
-              8.0:
+                   "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
+                                  (300.0, 700.0, 0.0, Direction.Left, 1),
+                                  (200.0, 700.0, 0.0, Direction.Left, 1)]],
+              10.0:
                   ["type": "heli",
-                   "initParams": [(0.0, 600.0, 0.0, Direction.Right, 1),
-                                  (100.0, 600.0, 0.0, Direction.Right, 1),
-                                  (200.0, 600.0, 0.0, Direction.Right, 1)]],
-              11.0:
+                   "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
+                                  (100.0, 700.0, 0.0, Direction.Right, 1),
+                                  (200.0, 700.0, 0.0, Direction.Right, 1)]],
+              14.0:
                   ["type": "heli",
-                   "initParams": [(400.0, 600.0, 0.0, Direction.Left, 1),
-                                  (300.0, 600.0, 0.0, Direction.Left, 1),
-                                  (200.0, 600.0, 0.0, Direction.Left, 1)]],
+                   "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
+                                  (300.0, 700.0, 0.0, Direction.Left, 1),
+                                  (200.0, 700.0, 0.0, Direction.Left, 1)]],
              ]
          ]
     ]

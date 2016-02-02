@@ -14,6 +14,7 @@ class Background: SKSpriteNode, GameSprite {
                    color: UIColor.whiteColor(),
                    size: CGSize())
         self.texture = textureAtlas.textureNamed(textureName)
+        self.name = "Background"
         self.size = self.texture!.size()
     }
 

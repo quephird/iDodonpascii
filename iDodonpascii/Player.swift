@@ -16,6 +16,7 @@ class Player: SKSpriteNode, GameSprite {
                size: CGSize = CGSize(width: 72, height: 96)) {
         parentNode.addChild(self)
         self.size = size
+        self.name = "Player"
         self.position = position
         // Player needs a SKPhysicsBody in order for setting dx or dy to take effect.
         self.physicsBody = SKPhysicsBody(circleOfRadius: 12)
