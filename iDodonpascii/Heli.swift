@@ -8,8 +8,18 @@
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite, Enemy {
-    var flyAnimation = SKAction()
+class Heli: SKSpriteNode, GameSprite, Scrubbable {
+    var flyAnimation = SKAction(),
+        direction: Direction? = nil
+
+    init(direction: Direction) {
+        self.direction = direction
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func spawn(parentNode:SKNode,
                position: CGPoint,
@@ -17,7 +27,7 @@ class Heli: SKSpriteNode, GameSprite, Enemy {
         parentNode.addChild(self)
         createAnimations()
         self.size = size
-        self.name = "EnemyHeli"
+        self.name = "Heli"
         self.position = position
         self.runAction(flyAnimation)
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
@@ -38,10 +48,11 @@ class Heli: SKSpriteNode, GameSprite, Enemy {
     func createPath(startingPoint: CGPoint, direction: Direction) -> UIBezierPath {
         // TODO: direction needs to be "pushed" into this object somehow and then utilized below.
         let path = UIBezierPath(),
-            // The +5 is a tiny hack to ensure that the heli will go beyond the maximum y
+            // The +50 is a tiny hack to ensure that the heli will go beyond the maximum y
             // such that it will be scrubbed.
-            endingPoint = CGPoint(x: startingPoint.x+200.0, y: startingPoint.y+5),
-            controlPoint = CGPoint(x: startingPoint.x+100.0, y: startingPoint.y-700.0)
+            dx = CGFloat(self.direction == Direction.Right ? 200.0 : -200.0),
+            endingPoint = CGPoint(x: startingPoint.x + dx, y: startingPoint.y+50),
+            controlPoint = CGPoint(x: startingPoint.x + 0.5*dx, y: startingPoint.y-700.0)
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path

@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class PlayerBullet: SKSpriteNode, Bullet, GameSprite {
+class PlayerBullet: SKSpriteNode, Scrubbable, GameSprite {
     let π = CGFloat(M_PI)
 
     func spawn(parentNode: SKNode,

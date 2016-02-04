@@ -26,6 +26,7 @@
 		879B994C1C3C8B13001F191C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B994B1C3C8B13001F191C /* Enemy.swift */; };
 		879B99561C3D9A8E001F191C /* Heli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99551C3D9A8E001F191C /* Heli.swift */; };
 		879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99571C3E18D1001F191C /* BackgroundManager.swift */; };
+		87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F278941C613A4100A94CBF /* Scrubbable.swift */; };
 		87F55E1B1C48218B006C8228 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F55E1A1C48218B006C8228 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		879B994B1C3C8B13001F191C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = ../Enemy.swift; sourceTree = "<group>"; };
 		879B99551C3D9A8E001F191C /* Heli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heli.swift; sourceTree = "<group>"; };
 		879B99571C3E18D1001F191C /* BackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
+		87F278941C613A4100A94CBF /* Scrubbable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubbable.swift; sourceTree = "<group>"; };
 		87F55E1A1C48218B006C8228 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,8 +132,8 @@
 				879B99181C398C15001F191C /* Assets.xcassets */,
 				8764D1E31C47256900EC6F49 /* Background.swift */,
 				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
-				879B994B1C3C8B13001F191C /* Enemy.swift */,
 				879B99111C398C15001F191C /* GameScene.swift */,
+				879B994B1C3C8B13001F191C /* Enemy.swift */,
 				879B99411C398F22001F191C /* GameSprite.swift */,
 				87F55E1A1C48218B006C8228 /* GameState.swift */,
 				879B99131C398C15001F191C /* GameViewController.swift */,
@@ -143,6 +145,7 @@
 				879B99431C398F45001F191C /* Player.swift */,
 				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
 				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
+				87F278941C613A4100A94CBF /* Scrubbable.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */,
 				879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */,
 				87F55E1B1C48218B006C8228 /* GameState.swift in Sources */,
+				87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */,
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
 				879B99421C398F22001F191C /* GameSprite.swift in Sources */,
 				879B99121C398C15001F191C /* GameScene.swift in Sources */,

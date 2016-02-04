@@ -11,6 +11,7 @@ import SpriteKit
 // For now, this file contains just a structure containing all data
 // describing the enemies to be spawned in the game.
 
+// TODO: Figure out how to scale (x,y) coords based on resolution of device
 var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<String, Any>>>> =
     [1:
         ["waves":
@@ -33,6 +34,11 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                    "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
                                   (300.0, 700.0, 0.0, Direction.Left, 1),
                                   (200.0, 700.0, 0.0, Direction.Left, 1)]],
+              20.0:
+                  ["type": "heli",
+                   "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
+                                  (100.0, 700.0, 0.0, Direction.Right, 1),
+                                  (200.0, 700.0, 0.0, Direction.Right, 1)]]
              ]
          ]
     ]

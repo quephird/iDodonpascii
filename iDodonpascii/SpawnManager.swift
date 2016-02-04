@@ -46,17 +46,17 @@ class SpawnManager {
     func spawnNewEnemies(newWave: Dictionary<String, Any>) {
         let newEnemyType = newWave["type"],
             newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Int)>
-        for (x,y,_,_,_) in newEnemyParameters {
+        for (x, y, _, direction, _) in newEnemyParameters {
             // TODO: Spawn based on enemy type
-            Heli().spawn(self.parentNode!, position: CGPoint(x: x, y: y))
+            Heli(direction: direction).spawn(self.parentNode!, position: CGPoint(x: x, y: y))
         }
     }
     
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodesWithName("*", usingBlock: { (node, stop) -> Void in
-            if let _ = node as? Enemy {
-                if node.position.y < 0 || node.position.y > 750.0 ||
-                   node.position.x < 0 || node.position.x > 500.0 {
+            if let _ = node as? Scrubbable {
+                if node.position.y < -50.0 || node.position.y > 750.0 ||
+                   node.position.x < -50.0 || node.position.x > 500.0 {
                     node.removeFromParent()
                 }
             }
