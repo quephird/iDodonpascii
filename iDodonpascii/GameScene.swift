@@ -18,7 +18,8 @@ class GameScene: SKScene {
         gameState = GameState(),
         player = Player(),
         background = BackgroundManager(),
-        spawnManager = SpawnManager()
+        spawnManager = SpawnManager(),
+        scoreLabel = SKLabelNode()
     
     var playerBullets = Set<PlayerBullet>()
     
@@ -27,12 +28,19 @@ class GameScene: SKScene {
         self.addChild(world)
 
         gameState.startGame()
-        
+
+        scoreLabel.fontName = "Courier"
+        scoreLabel.fontSize = 20
+        scoreLabel.fontColor = SKColor.cyanColor()
+        scoreLabel.position = CGPoint(x: 0.15*self.size.width, y: 0.95*self.size.height)
+        scoreLabel.zPosition = 100
+        self.world.addChild(scoreLabel)
+
         // TODO: Move these into SpawnManager?
         background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
         player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-
         spawnManager.beginSpawningEnemies(gameState, parentNode: world)
+        
 
         // TODO: Move player bullet generation elsewhere; it doesn't belong here
         let waitABit = SKAction.waitForDuration(0.25),
@@ -72,6 +80,7 @@ class GameScene: SKScene {
     }
 
     override func update(currentTime: CFTimeInterval) {
+        self.scoreLabel.text = String(format: "%06u", self.gameState.score!)
         self.spawnManager.clearOffscreenEnemies()
         self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
         player.update()

@@ -12,10 +12,12 @@ import SpriteKit
 
 class GameState {
     var currentLevel: Int? = nil,
-        startTime: CFTimeInterval? = nil
+        startTime: CFTimeInterval? = nil,
+        score: UInt? = nil
 
     func startGame() {
         self.startTime = CACurrentMediaTime()
         self.currentLevel = 1
+        self.score = 0
     }
 }
