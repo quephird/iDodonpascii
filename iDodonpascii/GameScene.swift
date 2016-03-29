@@ -20,8 +20,9 @@ class GameScene: SKScene {
         background = BackgroundManager(),
         spawnManager = SpawnManager(),
         scoreLabel = SKLabelNode()
-    
-    var playerBullets = Set<PlayerBullet>()
+
+    var playerBullets = Set<PlayerBullet>(),
+        lifeNodes = [SKSpriteNode]()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
@@ -29,12 +30,24 @@ class GameScene: SKScene {
 
         gameState.startGame()
 
+        // TODO: Need HUDManager and move all this stuff there
         scoreLabel.fontName = "Courier"
         scoreLabel.fontSize = 20
         scoreLabel.fontColor = SKColor.cyanColor()
         scoreLabel.position = CGPoint(x: 0.15*self.size.width, y: 0.95*self.size.height)
         scoreLabel.zPosition = 100
         self.world.addChild(scoreLabel)
+        
+        // TODO: Need to figure out how to track life nodes so that they can be removed when the player dies.
+        for i in 0..<self.gameState.lives! {
+            let lifeNode = SKSpriteNode()
+            lifeNode.size = CGSize(width: 24, height: 24)
+            lifeNode.position = CGPoint(x: self.size.width - CGFloat(i+1)*30.0, y: 0.97*self.size.height)
+            lifeNode.texture = SKTexture(imageNamed: "playerLife.png")
+            lifeNode.zPosition = 100
+//            lifeNodes[i] = lifeNode
+            world.addChild(lifeNode)
+        }
 
         // TODO: Move these into SpawnManager?
         background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
