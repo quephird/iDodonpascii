@@ -27,6 +27,7 @@
 		87ABB64E1CAB66A6006782A3 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABB64D1CAB66A6006782A3 /* HUD.swift */; };
 		87ABB6501CAF7F6E006782A3 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABB64F1CAF7F6E006782A3 /* StartScene.swift */; };
 		87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D639E31CB0F28600BFE3A9 /* Main.storyboard */; };
+		87D639E81CB19B2900BFE3A9 /* StartGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */; };
 		87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F278941C613A4100A94CBF /* Scrubbable.swift */; };
 		87F55E1B1C48218B006C8228 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F55E1A1C48218B006C8228 /* GameState.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		87ABB64D1CAB66A6006782A3 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		87ABB64F1CAF7F6E006782A3 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		87D639E41CB0F28600BFE3A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameButton.swift; sourceTree = "<group>"; };
 		87F278941C613A4100A94CBF /* Scrubbable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubbable.swift; sourceTree = "<group>"; };
 		87F55E1A1C48218B006C8228 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 				87F278941C613A4100A94CBF /* Scrubbable.swift */,
 				87ABB64D1CAB66A6006782A3 /* HUD.swift */,
 				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
+				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */,
 				879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */,
 				87F55E1B1C48218B006C8228 /* GameState.swift in Sources */,
+				87D639E81CB19B2900BFE3A9 /* StartGameButton.swift in Sources */,
 				87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */,
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
 				879B99421C398F22001F191C /* GameSprite.swift in Sources */,
