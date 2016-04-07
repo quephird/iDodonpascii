@@ -13,7 +13,7 @@ import SpriteKit
 //   * Manage the game loop
 //   * Respond to user input
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     let world = SKNode(),
         gameState = GameState(),
         player = Player(),
@@ -37,7 +37,7 @@ class GameScene: SKScene {
         
 
         // TODO: Move player bullet generation elsewhere; it doesn't belong here
-        let waitABit = SKAction.waitForDuration(0.25),
+        let waitABit = SKAction.waitForDuration(0.5),
             moveAction = SKAction.moveByX(0, y: 400, duration: 1),
             newBulletSound = SKAction.playSoundFileNamed("playerBullet.wav", waitForCompletion: false),
             spawnNewBullet = SKAction.runBlock {
@@ -50,6 +50,10 @@ class GameScene: SKScene {
             sequence = SKAction.sequence([waitABit, spawnNewBullet])
         self.runAction(SKAction.repeatActionForever(sequence))
 
+        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: view.frame)
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.None.rawValue
+        self.physicsWorld.contactDelegate = self
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -84,5 +88,16 @@ class GameScene: SKScene {
     // TODO: Move this elsewhere; bullet generation and movement doesn't belong here
     func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
         return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
+    }
+
+    func didBeginContact(contact: SKPhysicsContact) {
+        let node1 = contact.bodyA.node,
+            node2 = contact.bodyB.node,
+            categoryMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        if (categoryMask == PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue) {
+            runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+            node1?.removeFromParent()
+            node2?.removeFromParent()
+        }
     }
 }

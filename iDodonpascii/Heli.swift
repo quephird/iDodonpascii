@@ -30,8 +30,13 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable {
         self.name = "Heli"
         self.position = position
         self.runAction(flyAnimation)
-        self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
         self.physicsBody?.affectedByGravity = false
+
+        self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
+        self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
+//        self.physicsBody?.usesPreciseCollisionDetection = true
     }
 
     func createAnimations() {
