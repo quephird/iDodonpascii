@@ -32,7 +32,7 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
         self.position = position
         self.runAction(flyAnimation)
 
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
@@ -63,6 +63,4 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path
     }
-
-    func onTap() {}
 }
