@@ -6,14 +6,7 @@
 //  Copyright © 2016 danielle kefford. All rights reserved.
 //
 
-import SpriteKit
-
-// TODO: Determine if the Enemy enum is still necessary
-enum Direction {
-    case Left
-    case Right
-}
-
 protocol Enemy {
+    var points: UInt { get }
 }
 

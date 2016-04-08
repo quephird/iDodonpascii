@@ -8,9 +8,10 @@
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite, Scrubbable {
+class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
     var flyAnimation = SKAction(),
-        direction: Direction? = nil
+        direction: Direction? = nil,
+        points: UInt = 100
 
     init(direction: Direction) {
         self.direction = direction
@@ -30,13 +31,13 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable {
         self.name = "Heli"
         self.position = position
         self.runAction(flyAnimation)
+
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
         self.physicsBody?.affectedByGravity = false
-
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
-//        self.physicsBody?.usesPreciseCollisionDetection = true
+        self.physicsBody?.usesPreciseCollisionDetection = true
     }
 
     func createAnimations() {

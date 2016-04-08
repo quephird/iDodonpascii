@@ -63,14 +63,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.update(currentTime)
     }
 
+    func updateScore(points: UInt) {
+        self.gameState.score += points
+    }
+
     func didBeginContact(contact: SKPhysicsContact) {
-        let node1 = contact.bodyA.node,
-            node2 = contact.bodyB.node,
-            categoryMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        if (categoryMask == PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue) {
-            runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
-            node1?.removeFromParent()
-            node2?.removeFromParent()
+        let bodyA = contact.bodyA,
+            bodyB = contact.bodyB,
+            categoryMask = bodyA.categoryBitMask | bodyB.categoryBitMask
+
+        switch categoryMask {
+            case PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue:
+                if let enemy = bodyA.node as? Enemy {
+                    updateScore(enemy.points)
+                } else if let enemy = bodyB.node as? Enemy {
+                    updateScore(enemy.points)
+                }
+
+                runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+                bodyA.node?.removeFromParent()
+                bodyB.node?.removeFromParent()
+            default:
+                break
         }
     }
 }

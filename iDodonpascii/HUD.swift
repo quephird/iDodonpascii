@@ -40,6 +40,6 @@ class HUD {
     }
     
     func update(scene: GameScene) {
-        self.scoreLabel.text = String(format: "%06u", scene.gameState.score!)
+        self.scoreLabel.text = String(format: "%06u", scene.gameState.score)
     }
 }
