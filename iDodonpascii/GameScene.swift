@@ -26,34 +26,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         self.addChild(world)
-
-        gameState.startGame()
-        hud.setup(self)
-
-        // TODO: Move these into SpawnManager?
-        background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
-        player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-        spawnManager.beginSpawningEnemies(gameState, parentNode: world)
-        
-
-        // TODO: Move player bullet generation elsewhere; it doesn't belong here
-        let waitABit = SKAction.waitForDuration(0.5),
-            moveAction = SKAction.moveByX(0, y: 400, duration: 1),
-            newBulletSound = SKAction.playSoundFileNamed("playerBullet.wav", waitForCompletion: false),
-            spawnNewBullet = SKAction.runBlock {
-                let newBullet = PlayerBullet()
-                newBullet.spawn(self.world, position: self.makeNewBulletPosition(self.player.position))
-                newBullet.runAction(SKAction.repeatActionForever(moveAction))
-                newBullet.runAction(newBulletSound)
-//                self.playerBullets.insert(newBullet)
-            },
-            sequence = SKAction.sequence([waitABit, spawnNewBullet])
-        self.runAction(SKAction.repeatActionForever(sequence))
-
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: view.frame)
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.None.rawValue
         self.physicsWorld.contactDelegate = self
+
+        self.gameState.startGame()
+        self.hud.setup(self)
+        self.background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
+        self.player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
+        self.spawnManager.beginSpawningEnemies(gameState, parentNode: world)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -81,13 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.hud.update(self)
         self.spawnManager.clearOffscreenEnemies()
         self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
-        player.update()
         background.update(currentTime)
-    }
-    
-    // TODO: Move this elsewhere; bullet generation and movement doesn't belong here
-    func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
-        return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
     }
 
     func didBeginContact(contact: SKPhysicsContact) {

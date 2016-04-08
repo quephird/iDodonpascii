@@ -29,7 +29,6 @@ class StartScene: SKScene {
             for node in nodes {
                 // TODO: I don't know if I like this; comparing names of things smells.
                 if (node.name == "StartGameButton") {
-                    print("play")
                     self.switchScene()
                 }
             }
