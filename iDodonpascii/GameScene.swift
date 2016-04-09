@@ -49,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.position.x += dx
             player.position.y += dy
             player.lastTouchLocation = location
+            // We break here because this game does not support multitouch
+            break
         }
     }
 
