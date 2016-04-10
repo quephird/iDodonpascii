@@ -76,19 +76,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         switch categoryMask {
             case PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue:
-                if let enemy = bodyA.node as? Enemy {
-                    bodyB.node?.removeFromParent()
-                    updateScore(enemy.points)
-                    enemy.explodeAndDie()
-                } else if let enemy = bodyB.node as? Enemy {
-                    bodyA.node?.removeFromParent()
-                    updateScore(enemy.points)
-                    enemy.explodeAndDie()
+                if let enemy = bodyA.node as? Enemy,
+                       bullet = bodyB.node as? PlayerBullet {
+                    self.handleEnemyShot(enemy, bullet: bullet)
+                } else if let enemy = bodyB.node as? Enemy,
+                              bullet = bodyA.node as? PlayerBullet {
+                    self.handleEnemyShot(enemy, bullet: bullet)
                 }
 
                 runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
             default:
                 break
         }
+    }
+
+    func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
+        self.updateScore(enemy.points)
+        bullet.removeFromParent()
+        enemy.explodeAndDie()
     }
 }

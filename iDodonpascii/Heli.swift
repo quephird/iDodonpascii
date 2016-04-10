@@ -37,7 +37,7 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
-        self.physicsBody?.usesPreciseCollisionDetection = true
+//        self.physicsBody?.usesPreciseCollisionDetection = true
     }
 
     func createAnimations() {
@@ -65,7 +65,9 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
     }
 
     func explodeAndDie() {
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.None.rawValue
+        // TODO: Figure out sometime why setting the contactTestBitMask to 0 is insufficient
+        //       in disabling contact detection.
+        self.physicsBody = nil
         let explosionFrames:[SKTexture] = [
                 textureAtlas.textureNamed("explosion1.png"),
                 textureAtlas.textureNamed("explosion2.png"),
