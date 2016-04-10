@@ -8,5 +8,6 @@
 
 protocol Enemy {
     var points: UInt { get }
+    func explodeAndDie()
 }
 

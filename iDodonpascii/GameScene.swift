@@ -77,14 +77,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch categoryMask {
             case PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue:
                 if let enemy = bodyA.node as? Enemy {
+                    bodyB.node?.removeFromParent()
                     updateScore(enemy.points)
+                    enemy.explodeAndDie()
                 } else if let enemy = bodyB.node as? Enemy {
+                    bodyA.node?.removeFromParent()
                     updateScore(enemy.points)
+                    enemy.explodeAndDie()
                 }
 
                 runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
-                bodyA.node?.removeFromParent()
-                bodyB.node?.removeFromParent()
             default:
                 break
         }

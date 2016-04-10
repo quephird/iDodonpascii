@@ -63,4 +63,19 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path
     }
+
+    func explodeAndDie() {
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.None.rawValue
+        let explosionFrames:[SKTexture] = [
+                textureAtlas.textureNamed("explosion1.png"),
+                textureAtlas.textureNamed("explosion2.png"),
+                textureAtlas.textureNamed("explosion3.png"),
+            ],
+            explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
+            explodeAndDieAction = SKAction.sequence([
+                    explosionAction,
+                    SKAction.removeFromParent()
+            ])
+        self.runAction(explodeAndDieAction)
+    }
 }
