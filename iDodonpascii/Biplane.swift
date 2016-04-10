@@ -1,17 +1,16 @@
 //
-//  Heli.swift
-//  iDodonpascii
-//
-//  Created by danielle kefford on 1/6/16.
-//  Copyright © 2016 danielle kefford. All rights reserved.
+// Created by danielle kefford on 4/10/16.
+// Copyright (c) 2016 danielle kefford. All rights reserved.
 //
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
+class Biplane: SKSpriteNode, GameSprite, Scrubbable, Enemy {
+    // TODO: See if this is a necessary property, should be able to create and action and run it.
     var flyAnimation = SKAction(),
         direction: Direction? = nil,
-        points: UInt = 100
+        points: UInt = 150,
+        spawnDelay: Double? = nil
 
     // TODO: This needs to take a set of properties
     init(direction: Direction) {
@@ -27,9 +26,9 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
                position: CGPoint,
                size: CGSize = CGSize(width: 96, height: 96)) {
         parentNode.addChild(self)
-        createAnimations()
+        self.createAnimations()
         self.size = size
-        self.name = "Heli"
+        self.name = "Biplane"
         self.position = position
         self.runAction(flyAnimation)
 
@@ -42,43 +41,42 @@ class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
 
     func createAnimations() {
         let animationFrames:[SKTexture] = [
-                textureAtlas.textureNamed("heli1.png"),
-                textureAtlas.textureNamed("heli2.png")
-            ],
-            flightPath = createPath(self.position, direction: Direction.Right)
+                textureAtlas.textureNamed("biplane1.png"),
+                textureAtlas.textureNamed("biplane2.png")
+        ],
+        flightPath = createPath(self.position, direction: Direction.Right)
         let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
         flyAnimation = SKAction.repeatActionForever(animationAction)
-        self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
+        let delayAction = SKAction.waitForDuration(self.spawnDelay!),
+            flightPathAction = SKAction.followPath(flightPath.CGPath, duration: 3.0),
+            flightSequence = SKAction.sequence([delayAction, flightPathAction])
+        self.runAction(flightSequence)
     }
-    
+
     func createPath(startingPoint: CGPoint, direction: Direction) -> UIBezierPath {
         // TODO: direction needs to be "pushed" into this object somehow and then utilized below.
+        // TODO: MOAR BAD MAGIC NUMBERZ
         let path = UIBezierPath(),
-            // The +50 is a tiny hack to ensure that the heli will go beyond the maximum y
-            // such that it will be scrubbed.
-            dx = CGFloat(self.direction == Direction.Right ? 200.0 : -200.0),
-            endingPoint = CGPoint(x: startingPoint.x + dx, y: startingPoint.y+50),
-            controlPoint = CGPoint(x: startingPoint.x + 0.5*dx, y: startingPoint.y-700.0)
+            dx = CGFloat(self.direction == Direction.Right ? 600.0 : -600.0),
+            endingPoint = CGPoint(x: startingPoint.x + dx, y: startingPoint.y)
         path.moveToPoint(startingPoint)
-        path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
+        path.addLineToPoint(endingPoint)
         return path
     }
 
     // TODO: Figure out how to centralize this behavior
     func explodeAndDie() {
-        // TODO: Figure out sometime why setting the contactTestBitMask to 0 is insufficient
-        //       in disabling contact detection.
         self.physicsBody = nil
         let explosionFrames:[SKTexture] = [
                 textureAtlas.textureNamed("explosion1.png"),
                 textureAtlas.textureNamed("explosion2.png"),
                 textureAtlas.textureNamed("explosion3.png"),
-            ],
-            explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
-            explodeAndDieAction = SKAction.sequence([
-                    explosionAction,
-                    SKAction.removeFromParent()
-            ])
+        ],
+        explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
+        explodeAndDieAction = SKAction.sequence([
+                explosionAction,
+                SKAction.removeFromParent()
+        ])
         self.runAction(explodeAndDieAction)
     }
 }

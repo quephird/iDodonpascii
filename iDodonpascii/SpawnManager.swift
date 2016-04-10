@@ -36,7 +36,7 @@ class SpawnManager {
     }
 
     func getNextWaveTime(currentWaveTime: CFTimeInterval) -> Double? {
-        return waveTimes.filter { $0 > currentWaveTime }.first
+        return waveTimes.filter { $0 > currentWaveTime }.sort().first
     }
     
     func getNewWave(waveTime: Double) -> Dictionary<String, Any> {
@@ -44,19 +44,29 @@ class SpawnManager {
     }
     
     func spawnNewEnemies(newWave: Dictionary<String, Any>) {
-        let newEnemyType = newWave["type"],
-            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Int)>
-        for (x, y, _, direction, _) in newEnemyParameters {
-            // TODO: Spawn based on enemy type
-            Heli(direction: direction).spawn(self.parentNode!, position: CGPoint(x: x, y: y))
+        let newEnemyType = newWave["type"] as? String,
+            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Double)>
+        switch newEnemyType {
+            case "heli"?:
+                for (x, y, _, direction, _) in newEnemyParameters {
+                    Heli(direction: direction).spawn(self.parentNode!, position: CGPoint(x: x, y: y))
+                }
+            case "biplane"?:
+                for (x, y, _, direction, d) in newEnemyParameters {
+                    let newBiplane = Biplane(direction: direction)
+                    newBiplane.spawnDelay = d
+                    newBiplane.spawn(self.parentNode!, position: CGPoint(x: x, y: y))
+                }
+            default:
+                break
         }
     }
     
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodesWithName("*", usingBlock: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
-                if node.position.y < -50.0 || node.position.y > 750.0 ||
-                   node.position.x < -50.0 || node.position.x > 500.0 {
+                if node.position.y < -100.0 || node.position.y > 750.0 ||
+                   node.position.x < -100.0 || node.position.x > 500.0 {
                     node.removeFromParent()
                 }
             }
