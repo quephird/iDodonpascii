@@ -5,7 +5,7 @@
 
 import SpriteKit
 
-class Biplane: SKSpriteNode, GameSprite, Scrubbable, Enemy {
+class Biplane: SKSpriteNode, GameSprite, Enemy {
     // TODO: See if this is a necessary property, should be able to create and action and run it.
     var flyAnimation = SKAction(),
         direction: Direction? = nil,
@@ -26,10 +26,16 @@ class Biplane: SKSpriteNode, GameSprite, Scrubbable, Enemy {
                position: CGPoint,
                size: CGSize = CGSize(width: 96, height: 96)) {
         parentNode.addChild(self)
+        print("Before create animations")
+        print(self.position)
         self.createAnimations()
+        print("After create animations")
+        print(self.position)
         self.size = size
         self.name = "Biplane"
         self.position = position
+        print("After setting position")
+        print(self.position)
         self.runAction(flyAnimation)
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
@@ -61,6 +67,8 @@ class Biplane: SKSpriteNode, GameSprite, Scrubbable, Enemy {
             endingPoint = CGPoint(x: startingPoint.x + dx, y: startingPoint.y)
         path.moveToPoint(startingPoint)
         path.addLineToPoint(endingPoint)
+        print("Inside create path")
+        print(path)
         return path
     }
 

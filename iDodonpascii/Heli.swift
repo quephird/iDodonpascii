@@ -8,57 +8,63 @@
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite, Scrubbable, Enemy {
-    var flyAnimation = SKAction(),
-        direction: Direction? = nil,
-        points: UInt = 100
+class Heli: SKSpriteNode, GameSprite, Enemy {
+    // TODO: Move these properties into Enemy
+    var world: SKNode? = nil
+    var spawnDelay: Double? = nil
+    var direction: Direction? = nil
+    var hitPoints: Int? = nil
+    var points: UInt = 100
 
-    // TODO: This needs to take a set of properties
-    init(direction: Direction) {
-        self.direction = direction
+    init(initParms: EnemyInitializationParameters) {
+        self.world = initParms.world
+        self.spawnDelay = initParms.spawnDelay
+        self.direction = initParms.direction
+        self.hitPoints = initParms.hitPoints
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+        self.name = "Heli"
+        self.position = CGPoint(x: initParms.initialX, y: initParms.initialY)
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // TODO: make spawn() take no arguments
     func spawn(parentNode:SKNode,
                position: CGPoint,
                size: CGSize = CGSize(width: 96, height: 96)) {
-        parentNode.addChild(self)
-        createAnimations()
         self.size = size
-        self.name = "Heli"
-        self.position = position
-        self.runAction(flyAnimation)
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
+
+        self.animateAndMove()
+        self.world!.addChild(self)
     }
 
-    func createAnimations() {
+    func animateAndMove() {
         let animationFrames:[SKTexture] = [
                 textureAtlas.textureNamed("heli1.png"),
                 textureAtlas.textureNamed("heli2.png")
-            ],
-            flightPath = createPath(self.position, direction: Direction.Right)
+            ]
         let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
-        flyAnimation = SKAction.repeatActionForever(animationAction)
+        let flightPath = self.createPath()
+        self.runAction(SKAction.repeatActionForever(animationAction))
         self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
     }
-    
-    func createPath(startingPoint: CGPoint, direction: Direction) -> UIBezierPath {
-        // TODO: direction needs to be "pushed" into this object somehow and then utilized below.
-        let path = UIBezierPath(),
+
+    func createPath() -> UIBezierPath {
+        let path = UIBezierPath()
             // The +50 is a tiny hack to ensure that the heli will go beyond the maximum y
             // such that it will be scrubbed.
-            dx = CGFloat(self.direction == Direction.Right ? 200.0 : -200.0),
-            endingPoint = CGPoint(x: startingPoint.x + dx, y: startingPoint.y+50),
-            controlPoint = CGPoint(x: startingPoint.x + 0.5*dx, y: startingPoint.y-700.0)
+        let dx = CGFloat(self.direction == Direction.Right ? 200.0 : -200.0)
+        let startingPoint = CGPoint(x: 0, y: 50)
+        let endingPoint = CGPoint(x: dx, y: 50)
+        let controlPoint = CGPoint(x: 0.5*dx, y: -700.0)
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path

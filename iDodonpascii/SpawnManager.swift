@@ -45,20 +45,28 @@ class SpawnManager {
     
     func spawnNewEnemies(newWave: Dictionary<String, Any>) {
         let newEnemyType = newWave["type"] as? String,
-            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Double)>
-        switch newEnemyType {
+            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Int)>
+        for (initialX, initialY, spawnDelay, direction, hitPoints) in newEnemyParameters {
+            let initParms = EnemyInitializationParameters(
+                world: self.parentNode!,
+                initialX: initialX,
+                initialY: initialY,
+                spawnDelay: spawnDelay,
+                direction: direction,
+                hitPoints: hitPoints
+            )
+            switch newEnemyType {
             case "heli"?:
-                for (x, y, _, direction, _) in newEnemyParameters {
-                    Heli(direction: direction).spawn(self.parentNode!, position: CGPoint(x: x, y: y))
-                }
+                let newHeli = Heli(initParms: initParms)
+                newHeli.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
+            // TODO: Refactor Biplane to take struct in constructor.
             case "biplane"?:
-                for (x, y, _, direction, d) in newEnemyParameters {
-                    let newBiplane = Biplane(direction: direction)
-                    newBiplane.spawnDelay = d
-                    newBiplane.spawn(self.parentNode!, position: CGPoint(x: x, y: y))
-                }
+                let newBiplane = Biplane(direction: direction)
+                newBiplane.spawnDelay = spawnDelay
+                newBiplane.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
             default:
                 break
+            }
         }
     }
     

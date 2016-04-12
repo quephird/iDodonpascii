@@ -6,7 +6,7 @@
 //  Copyright © 2016 danielle kefford. All rights reserved.
 //
 
-protocol Enemy {
+protocol Enemy: Scrubbable {
     var points: UInt { get }
     func explodeAndDie()
 }
