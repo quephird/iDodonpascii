@@ -8,22 +8,11 @@
 
 import SpriteKit
 
-class Heli: SKSpriteNode, GameSprite, Enemy {
-    // TODO: Move these properties into Enemy
-    var world: SKNode? = nil
-    var spawnDelay: Double? = nil
-    var direction: Direction? = nil
-    var hitPoints: Int? = nil
-    var points: UInt = 100
-
-    init(initParms: EnemyInitializationParameters) {
-        self.world = initParms.world
-        self.spawnDelay = initParms.spawnDelay
-        self.direction = initParms.direction
-        self.hitPoints = initParms.hitPoints
-        super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+class Heli: Enemy {
+    override init(initParms: EnemyInitializationParameters) {
+        super.init(initParms: initParms)
         self.name = "Heli"
-        self.position = CGPoint(x: initParms.initialX, y: initParms.initialY)
+        self.points = 100
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -52,8 +41,9 @@ class Heli: SKSpriteNode, GameSprite, Enemy {
                 textureAtlas.textureNamed("heli2.png")
             ]
         let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
-        let flightPath = self.createPath()
         self.runAction(SKAction.repeatActionForever(animationAction))
+
+        let flightPath = self.createPath()
         self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
     }
 
@@ -71,7 +61,7 @@ class Heli: SKSpriteNode, GameSprite, Enemy {
     }
 
     // TODO: Figure out how to centralize this behavior
-    func explodeAndDie() {
+    override func explodeAndDie() {
         // TODO: Figure out sometime why setting the contactTestBitMask to 0 is insufficient
         //       in disabling contact detection.
         self.physicsBody = nil

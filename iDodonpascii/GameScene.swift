@@ -91,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
-        self.updateScore(enemy.points)
+        self.updateScore(enemy.points!)
         bullet.removeFromParent()
         enemy.explodeAndDie()
     }

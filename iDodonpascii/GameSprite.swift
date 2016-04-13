@@ -10,9 +10,10 @@ import SpriteKit
 
 // This is the base protocol for all sprites in the game.
 
+// TODO: Figure out how to enforce implementation of spawn()
 protocol GameSprite {
     var textureAtlas: SKTextureAtlas { get }
-    func spawn(parentNode: SKNode, position: CGPoint, size: CGSize)
+//    func spawn(parentNode: SKNode, position: CGPoint, size: CGSize)
 }
 
 extension GameSprite {

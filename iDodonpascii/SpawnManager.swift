@@ -59,10 +59,8 @@ class SpawnManager {
             case "heli"?:
                 let newHeli = Heli(initParms: initParms)
                 newHeli.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
-            // TODO: Refactor Biplane to take struct in constructor.
             case "biplane"?:
-                let newBiplane = Biplane(direction: direction)
-                newBiplane.spawnDelay = spawnDelay
+                let newBiplane = Biplane(initParms: initParms)
                 newBiplane.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
             default:
                 break
