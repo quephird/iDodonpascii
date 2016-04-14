@@ -58,10 +58,10 @@ class SpawnManager {
             switch newEnemyType {
             case "heli"?:
                 let newHeli = Heli(initParms: initParms)
-                newHeli.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
+                newHeli.spawn()
             case "biplane"?:
                 let newBiplane = Biplane(initParms: initParms)
-                newBiplane.spawn(self.parentNode!, position: CGPoint(x: initialX, y: initialY))
+                newBiplane.spawn()
             default:
                 break
             }

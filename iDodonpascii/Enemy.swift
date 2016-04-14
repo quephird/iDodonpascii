@@ -14,6 +14,7 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
     var direction: Direction? = nil
     var hitPoints: Int? = nil
     var points: UInt? = nil
+    var animationFrames: [SKTexture] = []
 
     init(initParms: EnemyInitializationParameters) {
         self.world = initParms.world
@@ -30,7 +31,18 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
     }
 
     func explodeAndDie() {
-        fatalError("explodeAndDie has not been implemented")
+        self.physicsBody = nil
+        let explosionFrames:[SKTexture] = [
+                textureAtlas.textureNamed("explosion1.png"),
+                textureAtlas.textureNamed("explosion2.png"),
+                textureAtlas.textureNamed("explosion3.png"),
+        ],
+        explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
+        explodeAndDieAction = SKAction.sequence([
+                explosionAction,
+                SKAction.removeFromParent()
+        ])
+        self.runAction(explodeAndDieAction)
     }
 }
 

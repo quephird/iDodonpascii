@@ -10,34 +10,30 @@ class Biplane: Enemy {
         super.init(initParms: initParms)
         self.name = "Biplane"
         self.points = 150
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-
-    func spawn(parentNode:SKNode,
-               position: CGPoint,
-               size: CGSize = CGSize(width: 96, height: 96)) {
-        self.size = size
+        self.animationFrames = [
+            textureAtlas.textureNamed("biplane1.png"),
+            textureAtlas.textureNamed("biplane2.png")
+        ]
+        self.size = CGSize(width: 96, height: 96)
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
+    }
 
-        animateAndMove()
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func spawn() {
         self.world!.addChild(self)
+        animateAndMove()
     }
 
     func animateAndMove() {
-        let animationFrames:[SKTexture] = [
-                textureAtlas.textureNamed("biplane1.png"),
-                textureAtlas.textureNamed("biplane2.png")
-            ]
-        let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
+        let animationAction = SKAction.animateWithTextures(self.animationFrames, timePerFrame: 0.25)
         self.runAction(SKAction.repeatActionForever(animationAction))
 
         let delayAction = SKAction.waitForDuration(self.spawnDelay!)
@@ -56,21 +52,5 @@ class Biplane: Enemy {
         path.moveToPoint(startingPoint)
         path.addLineToPoint(endingPoint)
         return path
-    }
-
-    // TODO: Figure out how to centralize this behavior
-    override func explodeAndDie() {
-        self.physicsBody = nil
-        let explosionFrames:[SKTexture] = [
-                textureAtlas.textureNamed("explosion1.png"),
-                textureAtlas.textureNamed("explosion2.png"),
-                textureAtlas.textureNamed("explosion3.png"),
-        ],
-        explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
-        explodeAndDieAction = SKAction.sequence([
-                explosionAction,
-                SKAction.removeFromParent()
-        ])
-        self.runAction(explodeAndDieAction)
     }
 }

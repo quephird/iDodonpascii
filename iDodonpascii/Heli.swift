@@ -9,37 +9,35 @@
 import SpriteKit
 
 class Heli: Enemy {
+    // TODO: size (or scale) needs to be an init parm
     override init(initParms: EnemyInitializationParameters) {
         super.init(initParms: initParms)
         self.name = "Heli"
         self.points = 100
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // TODO: make spawn() take no arguments
-    func spawn(parentNode:SKNode,
-               position: CGPoint,
-               size: CGSize = CGSize(width: 96, height: 96)) {
-        self.size = size
+        self.animationFrames = [
+            textureAtlas.textureNamed("heli1.png"),
+            textureAtlas.textureNamed("heli2.png")
+        ]
+        self.size = CGSize(width: 96, height: 96)
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
+    }
 
-        self.animateAndMove()
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // TODO: make spawn() take no arguments;
+    func spawn() {
         self.world!.addChild(self)
+        self.animateAndMove()
     }
 
     func animateAndMove() {
-        let animationFrames:[SKTexture] = [
-                textureAtlas.textureNamed("heli1.png"),
-                textureAtlas.textureNamed("heli2.png")
-            ]
         let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
         self.runAction(SKAction.repeatActionForever(animationAction))
 
@@ -58,23 +56,5 @@ class Heli: Enemy {
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path
-    }
-
-    // TODO: Figure out how to centralize this behavior
-    override func explodeAndDie() {
-        // TODO: Figure out sometime why setting the contactTestBitMask to 0 is insufficient
-        //       in disabling contact detection.
-        self.physicsBody = nil
-        let explosionFrames:[SKTexture] = [
-                textureAtlas.textureNamed("explosion1.png"),
-                textureAtlas.textureNamed("explosion2.png"),
-                textureAtlas.textureNamed("explosion3.png"),
-            ],
-            explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
-            explodeAndDieAction = SKAction.sequence([
-                    explosionAction,
-                    SKAction.removeFromParent()
-            ])
-        self.runAction(explodeAndDieAction)
     }
 }
