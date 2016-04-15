@@ -43,6 +43,8 @@ class Heli: Enemy {
 
         let flightPath = self.createPath()
         self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
+
+        fireBullet()
     }
 
     func createPath() -> UIBezierPath {
@@ -56,5 +58,42 @@ class Heli: Enemy {
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path
+    }
+
+    // TODO: BLECH... move this stuff to EnemyBullet.swift
+    func fireBullet() {
+        let newBullet = SKSpriteNode()
+        self.world?.addChild(newBullet)
+        newBullet.texture = SKTexture(imageNamed: "heliBullet.png")
+        newBullet.size = CGSize(width: 32, height: 32)
+
+        newBullet.physicsBody = SKPhysicsBody(circleOfRadius: 16.0)
+        newBullet.physicsBody?.affectedByGravity = false
+        newBullet.physicsBody?.allowsRotation = false
+        newBullet.physicsBody?.categoryBitMask = PhysicsCategory.EnemyBullet.rawValue
+        newBullet.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        newBullet.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy.rawValue
+
+        let randomDelay = drand48()
+        let randomDelayAction = SKAction.waitForDuration(randomDelay)
+
+        let spinAction = SKAction.rotateByAngle(6.28, duration: 1.0)
+        let x = CGFloat(self.direction == Direction.Right ? 50.0 : -50.0)
+
+        let moveAction = SKAction.moveBy(CGVectorMake(x, -400.0), duration: 1)
+        let playSoundAction = SKAction.playSoundFileNamed("enemyBullet.wav", waitForCompletion: false)
+        let animationAction = SKAction.runBlock {
+            // Set the position of the bullet to that of the heli _after_ the delay;
+            // otherwise the bullet will appear to lag behind.
+            newBullet.position = self.position
+            newBullet.runAction(SKAction.repeatActionForever(moveAction))
+            newBullet.runAction(SKAction.repeatActionForever(spinAction))
+        }
+        let newBulletAction = SKAction.sequence([randomDelayAction, playSoundAction, animationAction])
+        self.runAction(newBulletAction)
+    }
+
+    func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
+        return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
     }
 }

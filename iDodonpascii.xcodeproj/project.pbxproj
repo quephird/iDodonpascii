@@ -11,6 +11,7 @@
 		60DE375F19B8B799D1C481A0 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE39C4901797F44216682E /* Direction.swift */; };
 		60DE3B2C2E27007D9640DF7C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE33A750D6C134A67DD591 /* Enemy.swift */; };
 		60DE3B2C6DD7BCADC80A3E06 /* EnemyInitializationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */; };
+		60DE3C4BD23798FCE2081F25 /* enemyBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60DE3029787D3B97B163EEEC /* enemyBullet.wav */; };
 		60DE3F642B3E627C2F9DA12C /* Biplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */; };
 		87395A691CB630F700FA9E4A /* enemyShot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87395A671CB630F700FA9E4A /* enemyShot.wav */; };
 		87395A6A1CB630F700FA9E4A /* playerBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87395A681CB630F700FA9E4A /* playerBullet.wav */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60DE3029787D3B97B163EEEC /* enemyBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = enemyBullet.wav; path = iDodonpascii.sounds/enemyBullet.wav; sourceTree = SOURCE_ROOT; };
 		60DE33A750D6C134A67DD591 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = iDodonpascii/Enemy.swift; sourceTree = SOURCE_ROOT; };
 		60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyInitializationParameters.swift; sourceTree = "<group>"; };
 		60DE39C4901797F44216682E /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				60DE39C4901797F44216682E /* Direction.swift */,
 				60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */,
 				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
+				60DE3029787D3B97B163EEEC /* enemyBullet.wav */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */,
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
 				87395A6A1CB630F700FA9E4A /* playerBullet.wav in Resources */,
+				60DE3C4BD23798FCE2081F25 /* enemyBullet.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
