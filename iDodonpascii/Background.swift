@@ -21,6 +21,7 @@ class Background: SKSpriteNode, GameSprite {
         self.position = startingPosition
         self.name = "Background"
         self.size = self.texture!.size()
+        self.setScale(0.5)
     }
 
     override init(texture: SKTexture!, color: (UIColor!), size: CGSize) {
@@ -35,7 +36,6 @@ class Background: SKSpriteNode, GameSprite {
                position: CGPoint,
                size: CGSize = CGSize(width: 800, height: 1400)) {
         self.position = position
-        self.setScale(0.5)
         parentNode.addChild(self)
     }
 }

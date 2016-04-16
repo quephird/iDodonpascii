@@ -9,17 +9,15 @@ import SpriteKit
 
 class StartScene: SKScene {
     override func didMoveToView(view: SKView) {
-        let startBackground: Background = Background(textureName: "start.png",
-                                                     startingPosition: CGPoint(x: 0, y: 0))
-        startBackground.spawn(self,
-                              position: CGPoint(x: 0.25*startBackground.size.width,
-                                                y: 0.25*startBackground.size.height),
-                              size: self.size)
+        let startingPosition = CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height)
+        let startBackground = Background(textureName: "start.png",
+                                         startingPosition: startingPosition)
+        self.addChild(startBackground)
 
         let startGameButton = StartGameButton()
         startGameButton.spawn(self,
-                              position: CGPoint(x: 0.5*startBackground.size.width,
-                                                y: 0.2*startBackground.size.height))
+                              position: CGPoint(x: 0.5*self.size.width,
+                                                y: 0.2*self.size.height))
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
