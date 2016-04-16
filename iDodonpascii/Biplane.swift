@@ -33,7 +33,7 @@ class Biplane: Enemy {
     }
 
     func animateAndMove() {
-        let animationAction = SKAction.animateWithTextures(self.animationFrames, timePerFrame: 0.25)
+        let animationAction = SKAction.animateWithTextures(self.animationFrames, timePerFrame: 0.1)
         self.runAction(SKAction.repeatActionForever(animationAction))
 
         let delayAction = SKAction.waitForDuration(self.spawnDelay!)
