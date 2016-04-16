@@ -14,25 +14,24 @@ import SpriteKit
 //   * Respond to user input
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    let world = SKNode(),
-        gameState = GameState(),
-        player = Player(),
-        background = BackgroundManager(),
-        spawnManager = SpawnManager(),
-        hud = HUD()
+    let gameState = GameState()
+    let player = Player()
+    let spawnManager = SpawnManager()
+    let hud = HUD()
 
+    var backgroundManager: BackgroundManager? = nil
     var playerBullets = Set<PlayerBullet>()
     
     override func didMoveToView(view: SKView) {
-        self.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        self.addChild(world)
         self.physicsWorld.contactDelegate = self
+
+        self.backgroundManager = BackgroundManager(world: self)
+        self.backgroundManager?.spawnBackgrounds()
 
         self.gameState.startGame()
         self.hud.setup(self)
-        self.background.spawnBackgrounds(gameState.currentLevel!, parentNode: world)
-        self.player.spawn(world, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-        self.spawnManager.beginSpawningEnemies(gameState, parentNode: world)
+        self.player.spawn(self, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
+        self.spawnManager.beginSpawningEnemies(gameState, parentNode: self)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -62,7 +61,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.hud.update(self)
         self.spawnManager.clearOffscreenEnemies()
         self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
-        background.update(currentTime)
     }
 
     func updateScore(points: UInt) {

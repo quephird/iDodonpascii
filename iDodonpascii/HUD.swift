@@ -25,7 +25,7 @@ class HUD {
         scoreLabel.fontColor = SKColor.cyanColor()
         scoreLabel.position = CGPoint(x: 0.15*scene.size.width, y: 0.95*scene.size.height)
         scoreLabel.zPosition = 100
-        scene.world.addChild(scoreLabel)
+        scene.addChild(scoreLabel)
         
         // TODO: Need to figure out how to track life nodes so that they can be removed when the player dies.
         for i in 0..<scene.gameState.lives! {
@@ -35,7 +35,7 @@ class HUD {
             lifeNode.texture = SKTexture(imageNamed: "playerLife.png")
             lifeNode.zPosition = 100
             //            lifeNodes[i] = lifeNode
-            scene.world.addChild(lifeNode)
+            scene.addChild(lifeNode)
         }
     }
     

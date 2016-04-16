@@ -56,6 +56,7 @@ class Player: SKSpriteNode, GameSprite {
         self.runAction(SKAction.repeatActionForever(sequence))
     }
 
+    // TODO: Remove this; it is a silly function
     func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
         return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
     }

@@ -9,11 +9,16 @@
 import SpriteKit
 
 class Background: SKSpriteNode, GameSprite {
-    init(textureName: String) {
+    var startingPosition: CGPoint? = nil
+
+    init(textureName: String,
+         startingPosition: CGPoint) {
         super.init(texture: SKTexture(),
                    color: UIColor.whiteColor(),
                    size: CGSize())
         self.texture = textureAtlas.textureNamed(textureName)
+        self.startingPosition = startingPosition
+        self.position = startingPosition
         self.name = "Background"
         self.size = self.texture!.size()
     }
