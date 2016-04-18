@@ -33,7 +33,6 @@ class BackgroundManager {
         let topStartingPosition = CGPoint(x: 0.5*world.size.width, y: 1.5*world.size.height)
         self.topBackgroundNode = Background(textureName: currentBackgroundTexture!,
                                              startingPosition: topStartingPosition)
-        print(self.world!.size)
 
         let bottomStartingPosition = CGPoint(x: 0.5*world.size.width, y: 0.5*world.size.height)
         self.bottomBackgroundNode = Background(textureName: currentBackgroundTexture!,
