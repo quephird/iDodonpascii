@@ -14,7 +14,7 @@ class GameState {
     var currentLevel: Int? = nil,
         startTime: CFTimeInterval? = nil,
         score: UInt = 0,
-        lives: Int? = nil
+        lives: Int = 0
 
     func startGame() {
         self.startTime = CACurrentMediaTime()

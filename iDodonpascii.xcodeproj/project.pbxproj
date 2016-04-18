@@ -12,6 +12,7 @@
 		60DE375F19B8B799D1C481A0 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE39C4901797F44216682E /* Direction.swift */; };
 		60DE3B2C2E27007D9640DF7C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE33A750D6C134A67DD591 /* Enemy.swift */; };
 		60DE3B2C6DD7BCADC80A3E06 /* EnemyInitializationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */; };
+		60DE3C539ADC85BA7D5CCC52 /* playerShot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 60DE3C23947FFC52DBEFF841 /* playerShot.wav */; };
 		60DE3F642B3E627C2F9DA12C /* Biplane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */; };
 		8764D1E41C47256900EC6F49 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764D1E31C47256900EC6F49 /* Background.swift */; };
 		8773BD031CC496BD00435900 /* enemyBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8773BD001CC496BD00435900 /* enemyBullet.wav */; };
@@ -61,6 +62,7 @@
 		60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyInitializationParameters.swift; sourceTree = "<group>"; };
 		60DE39C4901797F44216682E /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		60DE3C23947FFC52DBEFF841 /* playerShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerShot.wav; sourceTree = "<group>"; };
 		60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyBullet.swift; path = ../EnemyBullet.swift; sourceTree = "<group>"; };
 		60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Biplane.swift; sourceTree = "<group>"; };
 		8764D1E31C47256900EC6F49 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				8773BD001CC496BD00435900 /* enemyBullet.wav */,
 				8773BD011CC496BD00435900 /* enemyShot.wav */,
 				8773BD021CC496BD00435900 /* playerBullet.wav */,
+				60DE3C23947FFC52DBEFF841 /* playerShot.wav */,
 			);
 			path = iDodonpascii.sounds;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
 				8773BD041CC496BD00435900 /* enemyShot.wav in Resources */,
 				8773BD051CC496BD00435900 /* playerBullet.wav in Resources */,
+				60DE3C539ADC85BA7D5CCC52 /* playerShot.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
