@@ -19,6 +19,7 @@ class Background: SKSpriteNode, GameSprite {
         self.texture = textureAtlas.textureNamed(textureName)
         self.startingPosition = startingPosition
         self.position = startingPosition
+        self.zPosition = 0
         self.name = "Background"
         self.size = self.texture!.size()
         self.setScale(0.5)

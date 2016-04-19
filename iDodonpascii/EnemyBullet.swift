@@ -13,6 +13,7 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
         parentNode.world!.addChild(self)
         self.parentNode = parentNode
         self.size = CGSize(width: 32, height: 32)
+        self.zPosition = 100
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 16.0)
         self.physicsBody?.affectedByGravity = false

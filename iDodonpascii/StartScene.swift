@@ -36,9 +36,7 @@ class StartScene: SKScene {
     
     func switchScene() {
         let nextScene = GameScene(size: self.size)
-        // TODO: I'm not sure I like this but it works.
-        //       Need to think about better way to transition.
-        let transition = SKTransition.flipVerticalWithDuration(1.0)
+        let transition = SKTransition.crossFadeWithDuration(1.0)
         self.scene!.view?.presentScene(nextScene, transition: transition)
     }
 }

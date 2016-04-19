@@ -19,6 +19,7 @@ class StartGameButton: SKSpriteNode, GameSprite {
         self.setScale(0.5)
         self.name = "StartGameButton"
         self.position = position
+        self.zPosition = 100
         
         let flashFrames:[SKTexture] = [
             textureAtlas.textureNamed("startGameButtonOn.png"),

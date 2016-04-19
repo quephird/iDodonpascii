@@ -58,6 +58,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func update(currentTime: CFTimeInterval) {
+        if self.gameState.lives == 0 {
+            switchScene()
+        }
         self.hud.update(self)
         self.spawnManager.clearOffscreenEnemies()
         self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
@@ -97,5 +100,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.updateScore(enemy.points!)
         bullet.removeFromParent()
         enemy.explodeAndDie()
+    }
+
+    func switchScene() {
+        let nextScene = EndScene(size: self.size)
+        let transition = SKTransition.crossFadeWithDuration(1.0)
+        self.scene!.view?.presentScene(nextScene, transition: transition)
     }
 }

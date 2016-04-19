@@ -19,6 +19,7 @@ class PlayerBullet: SKSpriteNode, Scrubbable, GameSprite {
         self.size = size
         self.name = "PlayerBullet"
         self.position = position
+        self.zPosition = 100
         self.texture = SKTexture(imageNamed: "playerBullet.png")
         
         let spinAction = SKAction.rotateByAngle(2*π, duration: 1.0)

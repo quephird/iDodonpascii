@@ -24,6 +24,7 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
 
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
         self.position = CGPoint(x: initParms.initialX, y: initParms.initialY)
+        self.zPosition = 100
     }
 
     required init(coder aDecoder: NSCoder) {

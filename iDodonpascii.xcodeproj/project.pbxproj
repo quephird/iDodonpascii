@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60DE362A2D6F098C621816CF /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */; };
 		60DE36DA7BDAEECF90E788B6 /* EnemyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */; };
+		60DE36F28C6C490F57AC3197 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3D03089E356C084E3235 /* EndScene.swift */; };
 		60DE375F19B8B799D1C481A0 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE39C4901797F44216682E /* Direction.swift */; };
 		60DE3B2C2E27007D9640DF7C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE33A750D6C134A67DD591 /* Enemy.swift */; };
 		60DE3B2C6DD7BCADC80A3E06 /* EnemyInitializationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */; };
@@ -63,7 +64,8 @@
 		60DE39C4901797F44216682E /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		60DE3C23947FFC52DBEFF841 /* playerShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerShot.wav; sourceTree = "<group>"; };
-		60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyBullet.swift; path = ../EnemyBullet.swift; sourceTree = "<group>"; };
+		60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBullet.swift; sourceTree = "<group>"; };
+		60DE3D03089E356C084E3235 /* EndScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Biplane.swift; sourceTree = "<group>"; };
 		8764D1E31C47256900EC6F49 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		8773BD001CC496BD00435900 /* enemyBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemyBullet.wav; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				60DE39C4901797F44216682E /* Direction.swift */,
 				60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */,
 				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
+				60DE3D03089E356C084E3235 /* EndScene.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				60DE3F642B3E627C2F9DA12C /* Biplane.swift in Sources */,
 				60DE3B2C6DD7BCADC80A3E06 /* EnemyInitializationParameters.swift in Sources */,
 				60DE36DA7BDAEECF90E788B6 /* EnemyBullet.swift in Sources */,
+				60DE36F28C6C490F57AC3197 /* EndScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
