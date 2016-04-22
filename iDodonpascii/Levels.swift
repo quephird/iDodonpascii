@@ -26,30 +26,39 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                                   (300.0, 700.0, 0.0, Direction.Left, 1),
                                   (200.0, 700.0, 0.0, Direction.Left, 1)]],
               10.0:
-                  ["type": "heli",
-                   "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
-                                  (100.0, 700.0, 0.0, Direction.Right, 1),
-                                  (200.0, 700.0, 0.0, Direction.Right, 1)]],
+                  ["type": "biplane",
+                   "initParams": [(-100.0, 400.0, 0.0, Direction.Right, 1),
+                                  (-100.0, 400.0, 0.5, Direction.Right, 1),
+                                  (-100.0, 400.0, 1.0, Direction.Right, 1),
+                                  (-100.0, 400.0, 1.5, Direction.Right, 1),
+                                  (-100.0, 400.0, 2.0, Direction.Right, 1)]],
               14.0:
                   ["type": "heli",
-                   "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
-                                  (300.0, 700.0, 0.0, Direction.Left, 1),
-                                  (200.0, 700.0, 0.0, Direction.Left, 1)]],
-              5.0:
-                  ["type": "biplane",
-                   "initParams": [(-100.0, 500.0, 0.0, Direction.Right, 1),
-                                  (-100.0, 500.0, 0.5, Direction.Right, 1),
-                                  (-100.0, 500.0, 1.0, Direction.Right, 1)]],
-              24.0:
+                   "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
+                                  (100.0, 700.0, 0.0, Direction.Right, 1),
+                                  (200.0, 700.0, 0.0, Direction.Right, 1)]],
+              18.0:
                   ["type": "heli",
                    "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
                                   (300.0, 700.0, 0.0, Direction.Left, 1),
                                   (200.0, 700.0, 0.0, Direction.Left, 1)]],
-              28.0:
+              22.0:
+                  ["type": "heli",
+                   "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),
+                                  (300.0, 700.0, 0.0, Direction.Left, 1),
+                                  (200.0, 700.0, 0.0, Direction.Left, 1)]],
+              26.0:
                   ["type": "heli",
                    "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
                                   (100.0, 700.0, 0.0, Direction.Right, 1),
                                   (200.0, 700.0, 0.0, Direction.Right, 1)]],
+              30.0:
+              ["type": "biplane",
+                   "initParams": [(500.0, 400.0, 0.0, Direction.Left, 1),
+                                  (500.0, 400.0, 0.5, Direction.Left, 1),
+                                  (500.0, 400.0, 1.0, Direction.Left, 1),
+                                  (500.0, 400.0, 1.5, Direction.Left, 1),
+                                  (500.0, 400.0, 2.0, Direction.Left, 1)]],
              ]
          ]
     ]

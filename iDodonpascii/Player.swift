@@ -11,17 +11,18 @@ import SpriteKit
 class Player: SKSpriteNode, GameSprite {
     var lastTouchLocation: CGPoint? = nil
     
-    func spawn(world: SKNode,
+    func spawn(world: SKScene,
                position: CGPoint,
                size: CGSize = CGSize(width: 72, height: 96)) {
-        world.addChild(self)
         self.size = size
         self.name = "Player"
         self.position = position
+        self.zPosition = 100
 
         self.setupAnimationFrames()
         self.setupPhysicsBody()
         self.startFiringBullets(world)
+        world.addChild(self)
     }
 
     func setupAnimationFrames() {

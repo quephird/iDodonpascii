@@ -3,6 +3,7 @@
 // Copyright (c) 2016 danielle kefford. All rights reserved.
 //
 
+import CoreGraphics
 import SpriteKit
 
 class Biplane: Enemy {
@@ -38,19 +39,44 @@ class Biplane: Enemy {
 
         let delayAction = SKAction.waitForDuration(self.spawnDelay!)
         let flightPath = createPath()
-        let flightPathAction = SKAction.followPath(flightPath.CGPath, duration: 3.0)
+        let flightPathAction = SKAction.followPath(flightPath, duration: 5.0)
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
         self.runAction(flightActionSequence)
     }
 
-    func createPath() -> UIBezierPath {
+    func createPath() -> CGPath {
         // TODO: MOAR BAD MAGIC NUMBERZ
-        let path = UIBezierPath()
-        let dx = CGFloat(self.direction == Direction.Right ? 600.0 : -600.0)
-        let startingPoint = CGPoint(x: 0.0, y: 0.0)
-        let endingPoint = CGPoint(x: dx, y: 0.0)
-        path.moveToPoint(startingPoint)
-        path.addLineToPoint(endingPoint)
-        return path
+        var dx: CGFloat
+        var startAngle: CGFloat
+        var endAngle: CGFloat
+        var clockwise: Bool
+
+        if self.direction == Direction.Right {
+            dx = CGFloat(600.0)
+            startAngle = -0.5*CGFloat(M_PI)
+            endAngle = 1.5*CGFloat(M_PI)
+            clockwise = false
+        } else {
+            dx = CGFloat(-600.0)
+            startAngle = 1.5*CGFloat(M_PI)
+            endAngle = -0.5*CGFloat(M_PI)
+            clockwise = true
+        }
+        let radius = CGFloat(100.0)
+
+        let loopPath = CGPathCreateMutable()
+        CGPathMoveToPoint(loopPath, nil, 0, 0)
+        CGPathAddLineToPoint(loopPath, nil, 0.5*dx, 0)
+        CGPathAddArc(loopPath,
+                     nil,
+                     0.5*dx,
+                     radius,
+                     radius,
+                     startAngle,
+                     endAngle,
+                     clockwise)
+        CGPathAddLineToPoint(loopPath, nil, dx, 0)
+
+        return loopPath
     }
 }

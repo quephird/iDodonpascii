@@ -32,11 +32,4 @@ class Background: SKSpriteNode, GameSprite {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not needed")
     }
-
-    func spawn(parentNode: SKNode,
-               position: CGPoint,
-               size: CGSize = CGSize(width: 800, height: 1400)) {
-        self.position = position
-        parentNode.addChild(self)
-    }
 }
