@@ -37,6 +37,7 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
                 textureAtlas.textureNamed("explosion1.png"),
                 textureAtlas.textureNamed("explosion2.png"),
                 textureAtlas.textureNamed("explosion3.png"),
+                textureAtlas.textureNamed("explosion4.png"),
         ],
         explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
         explodeAndDieAction = SKAction.sequence([
