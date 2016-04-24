@@ -42,6 +42,8 @@ class BackgroundManager {
     func spawnBackgrounds() {
         for node in [self.topBackgroundNode!, self.bottomBackgroundNode!] {
             self.world!.addChild(node)
+            node.setScale(world!.computeProperScale(node))
+
             let dy = CGVectorMake(0.0, -self.world!.size.height)
             let moveAction = SKAction.moveBy(dy, duration: 3.0)
             let resetPositionAction = SKAction.runBlock {

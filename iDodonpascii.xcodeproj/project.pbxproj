@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60DE326A9E360DC191CA130D /* SKSceneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3C8A10CB82409FA80297 /* SKSceneExtension.swift */; };
 		60DE362A2D6F098C621816CF /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */; };
 		60DE36DA7BDAEECF90E788B6 /* EnemyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */; };
 		60DE36F28C6C490F57AC3197 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DE3D03089E356C084E3235 /* EndScene.swift */; };
@@ -64,6 +65,7 @@
 		60DE39C4901797F44216682E /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		60DE3C23947FFC52DBEFF841 /* playerShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerShot.wav; sourceTree = "<group>"; };
+		60DE3C8A10CB82409FA80297 /* SKSceneExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSceneExtension.swift; sourceTree = "<group>"; };
 		60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBullet.swift; sourceTree = "<group>"; };
 		60DE3D03089E356C084E3235 /* EndScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Biplane.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */,
 				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
 				60DE3D03089E356C084E3235 /* EndScene.swift */,
+				60DE3C8A10CB82409FA80297 /* SKSceneExtension.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				60DE3B2C6DD7BCADC80A3E06 /* EnemyInitializationParameters.swift in Sources */,
 				60DE36DA7BDAEECF90E788B6 /* EnemyBullet.swift in Sources */,
 				60DE36F28C6C490F57AC3197 /* EndScene.swift in Sources */,
+				60DE326A9E360DC191CA130D /* SKSceneExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

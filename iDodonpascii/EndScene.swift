@@ -17,6 +17,7 @@ class EndScene: SKScene {
         let startingPosition = CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height)
         let endBackground = Background(textureName: "end.png",
                                        startingPosition: startingPosition)
+        endBackground.setScale(self.computeProperScale(endBackground))
         self.addChild(endBackground)
 
         let waitAction = SKAction.waitForDuration(3.0)

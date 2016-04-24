@@ -12,6 +12,7 @@ class StartScene: SKScene {
         let startingPosition = CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height)
         let startBackground = Background(textureName: "start.png",
                                          startingPosition: startingPosition)
+        startBackground.setScale(self.computeProperScale(startBackground))
         self.addChild(startBackground)
 
         let startGameButton = StartGameButton()
