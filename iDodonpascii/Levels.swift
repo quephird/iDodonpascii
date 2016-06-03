@@ -20,6 +20,11 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                   ["type": "heli",
                    "initParams": [(0.0, 700.0, 0.0, Direction.Right, 1),
                                   (100.0, 700.0, 0.0, Direction.Right, 1)]],
+              4.0:
+                  ["type": "pinkPlane",
+                   "initParams": [(50.0, 700.0, 0.0, Direction.Right, 1),
+                                  (350.0, 700.0, 0.0, Direction.Left, 1)]],
+
               6.0:
                   ["type": "heli",
                    "initParams": [(400.0, 700.0, 0.0, Direction.Left, 1),

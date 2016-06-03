@@ -62,6 +62,9 @@ class SpawnManager {
             case "biplane"?:
                 let newBiplane = Biplane(initParms: initParms)
                 newBiplane.spawn()
+            case "pinkPlane"?:
+                let newPinkPlane = PinkPlane(initParms: initParms)
+                newPinkPlane.spawn()
             default:
                 break
             }

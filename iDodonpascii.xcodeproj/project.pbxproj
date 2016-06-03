@@ -21,6 +21,7 @@
 		8773BD041CC496BD00435900 /* enemyShot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8773BD011CC496BD00435900 /* enemyShot.wav */; };
 		8773BD051CC496BD00435900 /* playerBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8773BD021CC496BD00435900 /* playerBullet.wav */; };
 		87754EC81C4424C700C47B30 /* SpawnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87754EC71C4424C700C47B30 /* SpawnManager.swift */; };
+		87873CDF1CFB58D8000DE467 /* PinkPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87873CDE1CFB58D8000DE467 /* PinkPlane.swift */; };
 		879B990E1C398C15001F191C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B990D1C398C15001F191C /* AppDelegate.swift */; };
 		879B99121C398C15001F191C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99111C398C15001F191C /* GameScene.swift */; };
 		879B99141C398C15001F191C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99131C398C15001F191C /* GameViewController.swift */; };
@@ -74,6 +75,7 @@
 		8773BD011CC496BD00435900 /* enemyShot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = enemyShot.wav; sourceTree = "<group>"; };
 		8773BD021CC496BD00435900 /* playerBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = playerBullet.wav; sourceTree = "<group>"; };
 		87754EC71C4424C700C47B30 /* SpawnManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpawnManager.swift; sourceTree = "<group>"; };
+		87873CDE1CFB58D8000DE467 /* PinkPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinkPlane.swift; sourceTree = "<group>"; };
 		879B990A1C398C15001F191C /* iDodonpascii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDodonpascii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879B990D1C398C15001F191C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		879B99111C398C15001F191C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -163,33 +165,34 @@
 		879B990C1C398C15001F191C /* iDodonpascii */ = {
 			isa = PBXGroup;
 			children = (
-				87D639E31CB0F28600BFE3A9 /* Main.storyboard */,
 				879B990D1C398C15001F191C /* AppDelegate.swift */,
 				879B99181C398C15001F191C /* Assets.xcassets */,
 				8764D1E31C47256900EC6F49 /* Background.swift */,
 				879B99571C3E18D1001F191C /* BackgroundManager.swift */,
+				60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */,
+				60DE39C4901797F44216682E /* Direction.swift */,
+				60DE3D03089E356C084E3235 /* EndScene.swift */,
 				60DE33A750D6C134A67DD591 /* Enemy.swift */,
 				60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */,
+				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
 				879B99111C398C15001F191C /* GameScene.swift */,
 				879B99411C398F22001F191C /* GameSprite.swift */,
 				87F55E1A1C48218B006C8228 /* GameState.swift */,
 				879B99131C398C15001F191C /* GameViewController.swift */,
 				879B99551C3D9A8E001F191C /* Heli.swift */,
+				87ABB64D1CAB66A6006782A3 /* HUD.swift */,
 				879B991D1C398C15001F191C /* Info.plist */,
 				879B99491C3C83C2001F191C /* Levels.swift */,
+				87D639E31CB0F28600BFE3A9 /* Main.storyboard */,
+				60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */,
+				87873CDE1CFB58D8000DE467 /* PinkPlane.swift */,
 				879B99431C398F45001F191C /* Player.swift */,
 				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
-				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
 				87F278941C613A4100A94CBF /* Scrubbable.swift */,
-				87ABB64D1CAB66A6006782A3 /* HUD.swift */,
-				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
-				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
-				60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */,
-				60DE39C4901797F44216682E /* Direction.swift */,
-				60DE3EBF4D12A8D9DEF2B809 /* Biplane.swift */,
-				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
-				60DE3D03089E356C084E3235 /* EndScene.swift */,
 				60DE3C8A10CB82409FA80297 /* SKSceneExtension.swift */,
+				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
+				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
+				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
 				879B99421C398F22001F191C /* GameSprite.swift in Sources */,
 				879B99121C398C15001F191C /* GameScene.swift in Sources */,
+				87873CDF1CFB58D8000DE467 /* PinkPlane.swift in Sources */,
 				87ABB6501CAF7F6E006782A3 /* StartScene.swift in Sources */,
 				879B99561C3D9A8E001F191C /* Heli.swift in Sources */,
 				87754EC81C4424C700C47B30 /* SpawnManager.swift in Sources */,
