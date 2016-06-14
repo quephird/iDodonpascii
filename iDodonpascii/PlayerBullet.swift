@@ -14,7 +14,7 @@ class PlayerBullet: SKSpriteNode, Scrubbable, GameSprite {
 
     func spawn(parentNode: SKNode,
                position: CGPoint,
-               size: CGSize = CGSize(width: 16, height: 16)) {
+               size: CGSize = CGSize(width: 12, height: 12)) {
         parentNode.addChild(self)
         self.size = size
         self.name = "PlayerBullet"

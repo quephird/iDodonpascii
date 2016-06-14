@@ -15,7 +15,7 @@ class Biplane: Enemy {
             textureAtlas.textureNamed("biplane1.png"),
             textureAtlas.textureNamed("biplane2.png")
         ]
-        self.size = CGSize(width: 96, height: 96)
+        self.size = CGSize(width: 75, height: 75)
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false

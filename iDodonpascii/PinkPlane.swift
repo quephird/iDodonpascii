@@ -42,7 +42,7 @@ class PinkPlane: Enemy {
         
         let delayAction = SKAction.waitForDuration(self.spawnDelay!)
         let flightPath = createPath()
-        let flightPathAction = SKAction.followPath(flightPath, duration: 5.0)
+        let flightPathAction = SKAction.followPath(flightPath, duration: 7.0)
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
         self.runAction(flightActionSequence)
     }
@@ -55,7 +55,7 @@ class PinkPlane: Enemy {
         var centerX: CGFloat
         var centerY: CGFloat
         var dx: CGFloat
-        var dy: CGFloat = -300
+        let dy: CGFloat = -300
         let radius = CGFloat(100.0)
         
         if self.direction == Direction.Right {

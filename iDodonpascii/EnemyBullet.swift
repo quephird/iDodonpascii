@@ -12,7 +12,7 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
         super.init(texture: SKTexture(imageNamed: "heliBullet.png"), color: UIColor(), size: CGSize())
         parentNode.world!.addChild(self)
         self.parentNode = parentNode
-        self.size = CGSize(width: 32, height: 32)
+        self.size = CGSize(width: 25, height: 25)
         self.zPosition = 100
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 16.0)
