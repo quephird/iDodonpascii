@@ -46,5 +46,25 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
         ])
         self.runAction(explodeAndDieAction)
     }
+    
+    func getPlayerPosition() -> CGPoint {
+        let gameScene = self.world! as! GameScene
+        return gameScene.player.position
+    }
+    
+    // TODO: Figure out how to customize bullet types and bullet patterns 
+    //       per each enemy subclass.
+    func startFiringBullets() {
+        let randomDelay = drand48()
+        let randomInitialDelayAction = SKAction.waitForDuration(randomDelay)
+        let bulletCycleAction = SKAction.waitForDuration(0.75)
+        let spawnNewBulletAction = SKAction.runBlock{
+            let newBullet = EnemyBullet(parentNode: self)
+            newBullet.spawn()
+        }
+        let continuousFiringAction = SKAction.sequence([spawnNewBulletAction, bulletCycleAction])
+        self.runAction(SKAction.sequence([randomInitialDelayAction,
+                                          SKAction.repeatActionForever(continuousFiringAction)]))
+    }
 }
 

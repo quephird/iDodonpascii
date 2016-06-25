@@ -33,6 +33,7 @@ class BluePlane: Enemy {
     func spawn() {
         self.world!.addChild(self)
         self.animateAndMove()
+        self.startFiringBullets()
     }
     
     func animateAndMove() {
@@ -44,9 +45,6 @@ class BluePlane: Enemy {
         let flightPathAction = SKAction.followPath(flightPath, duration: 3.0)
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
         self.runAction(flightActionSequence)
-        
-        // TODO: Figure out why bullets aren't firing.
-        fireBullet()
     }
     
     func createPath() -> CGPath {
@@ -56,10 +54,5 @@ class BluePlane: Enemy {
         CGPathMoveToPoint(path, nil, 0.0, 0.0)
         CGPathAddLineToPoint(path, nil, dx, -200.0)
         return path
-    }
-    
-    func fireBullet() {
-        let newBullet = EnemyBullet(parentNode: self)
-        newBullet.spawn()
     }
 }

@@ -31,9 +31,11 @@ class Heli: Enemy {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // TODO: Figure out how to move this into base class
     func spawn() {
         self.world!.addChild(self)
         self.animateAndMove()
+        self.startFiringBullets()
     }
 
     func animateAndMove() {
@@ -42,25 +44,22 @@ class Heli: Enemy {
 
         let flightPath = self.createPath()
         self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
-
-        fireBullet()
     }
 
     func createPath() -> UIBezierPath {
         let path = UIBezierPath()
-            // The +50 is a tiny hack to ensure that the heli will go beyond the maximum y
-            // such that it will be scrubbed.
         let dx = CGFloat(self.direction == Direction.Right ? 200.0 : -200.0)
-        let startingPoint = CGPoint(x: 0, y: 50)
-        let endingPoint = CGPoint(x: dx, y: 50)
+        
+        // TODO: Improve method of determining:
+        //         * computing starting point to avoid being scrubbed before ever
+        //              entering the field of play.
+        //         * computing ending point to insure scrubbing after _leaving_
+        //              the field of play.
+        let startingPoint = CGPoint(x: 0, y: 40)
+        let endingPoint = CGPoint(x: dx, y: 60)
         let controlPoint = CGPoint(x: 0.5*dx, y: -700.0)
         path.moveToPoint(startingPoint)
         path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
         return path
-    }
-
-    func fireBullet() {
-        let newBullet = EnemyBullet(parentNode: self)
-        newBullet.spawn()
     }
 }

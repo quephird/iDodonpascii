@@ -30,7 +30,8 @@ class Biplane: Enemy {
 
     func spawn() {
         self.world!.addChild(self)
-        animateAndMove()
+        self.animateAndMove()
+        self.startFiringBullets()
     }
 
     func animateAndMove() {
@@ -52,12 +53,12 @@ class Biplane: Enemy {
         var clockwise: Bool
 
         if self.direction == Direction.Right {
-            dx = CGFloat(600.0)
+            dx = CGFloat(610.0)
             startAngle = -0.5*CGFloat(M_PI)
             endAngle = 1.5*CGFloat(M_PI)
             clockwise = false
         } else {
-            dx = CGFloat(-600.0)
+            dx = CGFloat(-610.0)
             startAngle = 1.5*CGFloat(M_PI)
             endAngle = -0.5*CGFloat(M_PI)
             clockwise = true

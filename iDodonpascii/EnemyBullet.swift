@@ -27,16 +27,18 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // TODO: Delay needs to be set by the caller, not in here;
-    //       this will allow for multiple shots per Enemy.
     func spawn() {
-        let randomDelay = drand48()
-        let randomDelayAction = SKAction.waitForDuration(randomDelay)
         let playSoundAction = SKAction.playSoundFileNamed("enemyBullet.wav", waitForCompletion: false)
 
         let spinAction = SKAction.rotateByAngle(6.28, duration: 1.0)
-        let x = CGFloat(self.parentNode!.direction == Direction.Right ? 50.0 : -50.0)
-        let moveAction = SKAction.moveBy(CGVectorMake(x, -400.0), duration: 1)
+        
+        let dx = self.parentNode!.getPlayerPosition().x - self.parentNode!.position.x
+        let dy = self.parentNode!.getPlayerPosition().y - self.parentNode!.position.y
+        let dr = sqrt(dx*dx + dy*dy)
+                // ACHTUNG! We divide dr by 400 to "normalize" in a sense; we want the bullet to travel
+        //          400 pixels in any direction per second.
+        let moveAction = SKAction.moveBy(CGVectorMake(dx, dy), duration: Double(dr/400.0))
+
         let animationAction = SKAction.runBlock {
             // Set the position of the bullet to that of the heli _after_ the delay;
             // otherwise the bullet will appear to lag behind.
@@ -44,7 +46,7 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
             self.runAction(SKAction.repeatActionForever(moveAction))
             self.runAction(SKAction.repeatActionForever(spinAction))
         }
-        let entireAction = SKAction.sequence([randomDelayAction, playSoundAction, animationAction])
+        let entireAction = SKAction.sequence([playSoundAction, animationAction])
         self.runAction(entireAction)
     }
 }

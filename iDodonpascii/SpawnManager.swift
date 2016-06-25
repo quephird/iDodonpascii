@@ -74,6 +74,9 @@ class SpawnManager {
         }
     }
     
+    // TODO: Need to improve method of determining which nodes to scrub;
+    //       we're waaaaaay too dependent on magic numbers and hidden
+    //       dependence on the starting and ending points of enemy paths.
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodesWithName("*", usingBlock: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
