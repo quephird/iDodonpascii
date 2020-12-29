@@ -24,19 +24,19 @@ class SpawnManager {
         self.gameState = gameState
         self.parentNode = parentNode
         self.waveTimes = [Double](levels[gameState.currentLevel!]!["waves"]!.keys)
-        self.nextWaveTime = waveTimes.minElement()
+        self.nextWaveTime = waveTimes.min()
     }
 
     func checkForSpawnableEnemies(elapsedTime: CFTimeInterval) {
-        if elapsedTime >= nextWaveTime {
-            let newWave = getNewWave(nextWaveTime!)
-            spawnNewEnemies(newWave)
-            self.nextWaveTime = getNextWaveTime(elapsedTime)
+        if elapsedTime >= nextWaveTime! {
+            let newWave = getNewWave(waveTime: nextWaveTime!)
+            spawnNewEnemies(newWave: newWave)
+            self.nextWaveTime = getNextWaveTime(currentWaveTime: elapsedTime)
         }
     }
 
     func getNextWaveTime(currentWaveTime: CFTimeInterval) -> Double? {
-        return waveTimes.filter { $0 > currentWaveTime }.sort().first
+        return waveTimes.filter { $0 > currentWaveTime }.sorted().first
     }
     
     func getNewWave(waveTime: Double) -> Dictionary<String, Any> {
@@ -65,9 +65,9 @@ class SpawnManager {
             case "pinkPlane"?:
                 let newPinkPlane = PinkPlane(initParms: initParms)
                 newPinkPlane.spawn()
-            case "bluePlane"?:
-                let newBluePlane = BluePlane(initParms: initParms)
-                newBluePlane.spawn()
+//            case "bluePlane"?:
+//                let newBluePlane = BluePlane(initParms: initParms)
+//                newBluePlane.spawn()
             default:
                 break
             }
@@ -78,7 +78,7 @@ class SpawnManager {
     //       we're waaaaaay too dependent on magic numbers and hidden
     //       dependence on the starting and ending points of enemy paths.
     func clearOffscreenEnemies () {
-        self.parentNode?.enumerateChildNodesWithName("*", usingBlock: { (node, stop) -> Void in
+        self.parentNode?.enumerateChildNodes(withName: "*", using: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
                 if node.position.y < -100.0 || node.position.y > 750.0 ||
                    node.position.x < -100.0 || node.position.x > 500.0 {

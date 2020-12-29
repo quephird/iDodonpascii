@@ -30,23 +30,23 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
     func spawn() {
         let playSoundAction = SKAction.playSoundFileNamed("enemyBullet.wav", waitForCompletion: false)
 
-        let spinAction = SKAction.rotateByAngle(6.28, duration: 1.0)
+        let spinAction = SKAction.rotate(byAngle: 6.28, duration: 1.0)
         
         let dx = self.parentNode!.getPlayerPosition().x - self.parentNode!.position.x
         let dy = self.parentNode!.getPlayerPosition().y - self.parentNode!.position.y
         let dr = sqrt(dx*dx + dy*dy)
                 // ACHTUNG! We divide dr by 400 to "normalize" in a sense; we want the bullet to travel
         //          400 pixels in any direction per second.
-        let moveAction = SKAction.moveBy(CGVectorMake(dx, dy), duration: Double(dr/400.0))
+        let moveAction = SKAction.move(by: CGVector(dx: dx, dy: dy), duration: Double(dr/400.0))
 
-        let animationAction = SKAction.runBlock {
+        let animationAction = SKAction.run {
             // Set the position of the bullet to that of the heli _after_ the delay;
             // otherwise the bullet will appear to lag behind.
             self.position = self.parentNode!.position
-            self.runAction(SKAction.repeatActionForever(moveAction))
-            self.runAction(SKAction.repeatActionForever(spinAction))
+            self.run(SKAction.repeatForever(moveAction))
+            self.run(SKAction.repeatForever(spinAction))
         }
         let entireAction = SKAction.sequence([playSoundAction, animationAction])
-        self.runAction(entireAction)
+        self.run(entireAction)
     }
 }

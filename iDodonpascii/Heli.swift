@@ -39,11 +39,11 @@ class Heli: Enemy {
     }
 
     func animateAndMove() {
-        let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
-        self.runAction(SKAction.repeatActionForever(animationAction))
+        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.25)
+        self.run(SKAction.repeatForever(animationAction))
 
         let flightPath = self.createPath()
-        self.runAction(SKAction.followPath(flightPath.CGPath, duration: 3.0))
+        self.run(SKAction.follow(flightPath.cgPath, duration: 3.0))
     }
 
     func createPath() -> UIBezierPath {
@@ -58,8 +58,8 @@ class Heli: Enemy {
         let startingPoint = CGPoint(x: 0, y: 40)
         let endingPoint = CGPoint(x: dx, y: 60)
         let controlPoint = CGPoint(x: 0.5*dx, y: -700.0)
-        path.moveToPoint(startingPoint)
-        path.addQuadCurveToPoint(endingPoint, controlPoint: controlPoint)
+        path.move(to: startingPoint)
+        path.addQuadCurve(to: endingPoint, controlPoint: controlPoint)
         return path
     }
 }

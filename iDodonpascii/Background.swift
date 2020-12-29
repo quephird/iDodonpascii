@@ -14,7 +14,7 @@ class Background: SKSpriteNode, GameSprite {
     init(textureName: String,
          startingPosition: CGPoint) {
         super.init(texture: SKTexture(),
-                   color: UIColor.whiteColor(),
+                   color: UIColor.white,
                    size: CGSize())
         self.texture = textureAtlas.textureNamed(textureName)
         self.startingPosition = startingPosition
@@ -24,8 +24,8 @@ class Background: SKSpriteNode, GameSprite {
         self.size = self.texture!.size()
     }
 
-    override init(texture: SKTexture!, color: (UIColor!), size: CGSize) {
-        super.init(texture: texture, color: color, size: size)
+    override init(texture: SKTexture!, color: (UIColor?), size: CGSize) {
+        super.init(texture: texture, color: color ?? UIColor.white, size: size)
     }
     
     required init?(coder aDecoder: NSCoder) {

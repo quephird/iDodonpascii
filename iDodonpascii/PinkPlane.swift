@@ -37,14 +37,14 @@ class PinkPlane: Enemy {
     }
     
     func animateAndMove() {
-        let animationAction = SKAction.animateWithTextures(self.animationFrames, timePerFrame: 0.1)
-        self.runAction(SKAction.repeatActionForever(animationAction))
+        let animationAction = SKAction.animate(with: self.animationFrames, timePerFrame: 0.1)
+        self.run(SKAction.repeatForever(animationAction))
         
-        let delayAction = SKAction.waitForDuration(self.spawnDelay!)
+        let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
         let flightPath = createPath()
-        let flightPathAction = SKAction.followPath(flightPath, duration: 7.0)
+        let flightPathAction = SKAction.follow(flightPath, duration: 7.0)
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
-        self.runAction(flightActionSequence)
+        self.run(flightActionSequence)
     }
     
     func createPath() -> CGPath {
@@ -61,31 +61,24 @@ class PinkPlane: Enemy {
         if self.direction == Direction.Right {
             centerX = radius
             centerY = dy
-            startAngle = -1.0*CGFloat(M_PI)
-            endAngle = 2.0*CGFloat(M_PI)
+            startAngle = -1.0*CGFloat(Double.pi)
+            endAngle = 2.0*CGFloat(Double.pi)
             clockwise = false
             dx = 2.0*radius
         } else {
             centerX = -radius
             centerY = dy
             startAngle = CGFloat(0.0)
-            endAngle = -3.0*CGFloat(M_PI)
+            endAngle = -3.0*CGFloat(Double.pi)
             clockwise = true
             dx = -2.0*radius
         }
         
-        let loopPath = CGPathCreateMutable()
-        CGPathMoveToPoint(loopPath, nil, 0, 0)
-        CGPathAddLineToPoint(loopPath, nil, 0, dy)
-        CGPathAddArc(loopPath,
-                     nil,
-                     centerX,
-                     centerY,
-                     radius,
-                     startAngle,
-                     endAngle,
-                     clockwise)
-        CGPathAddLineToPoint(loopPath, nil, dx, 100)
+        let loopPath = CGMutablePath()
+        loopPath.move(to: CGPoint(x: 0, y: 0))
+        loopPath.addLine(to: CGPoint(x: 0, y: dy))
+        loopPath.addArc(center: CGPoint(x: centerX, y: centerY), radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        loopPath.addLine(to: CGPoint(x: dx, y: 100))
         
         return loopPath
     }
