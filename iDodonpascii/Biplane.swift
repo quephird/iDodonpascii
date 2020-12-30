@@ -54,13 +54,13 @@ class Biplane: Enemy {
 
         if self.direction == Direction.Right {
             dx = CGFloat(610.0)
-            startAngle = -0.5*CGFloat(Double.pi)
-            endAngle = 1.5*CGFloat(Double.pi)
+            startAngle = -.π*0.5
+            endAngle = .π*1.5
             clockwise = false
         } else {
             dx = CGFloat(-610.0)
-            startAngle = 1.5*CGFloat(Double.pi)
-            endAngle = -0.5*CGFloat(Double.pi)
+            startAngle = .π*1.5
+            endAngle = -.π*0.5
             clockwise = true
         }
         let radius = CGFloat(100.0)
