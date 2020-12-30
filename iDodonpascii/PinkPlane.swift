@@ -61,15 +61,15 @@ class PinkPlane: Enemy {
         if self.direction == Direction.Right {
             centerX = radius
             centerY = dy
-            startAngle = -1.0*CGFloat(Double.pi)
-            endAngle = 2.0*CGFloat(Double.pi)
+            startAngle = -.π
+            endAngle = .π*2.0
             clockwise = false
             dx = 2.0*radius
         } else {
             centerX = -radius
             centerY = dy
             startAngle = CGFloat(0.0)
-            endAngle = -3.0*CGFloat(Double.pi)
+            endAngle = -.π*3.0
             clockwise = true
             dx = -2.0*radius
         }

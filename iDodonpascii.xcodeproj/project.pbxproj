@@ -35,6 +35,7 @@
 		879B994A1C3C83C2001F191C /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99491C3C83C2001F191C /* Levels.swift */; };
 		879B99561C3D9A8E001F191C /* Heli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99551C3D9A8E001F191C /* Heli.swift */; };
 		879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879B99571C3E18D1001F191C /* BackgroundManager.swift */; };
+		87A17E5D259C274200210971 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A17E5C259C274200210971 /* Constants.swift */; };
 		87ABB64E1CAB66A6006782A3 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABB64D1CAB66A6006782A3 /* HUD.swift */; };
 		87ABB6501CAF7F6E006782A3 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ABB64F1CAF7F6E006782A3 /* StartScene.swift */; };
 		87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D639E31CB0F28600BFE3A9 /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		879B99491C3C83C2001F191C /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
 		879B99551C3D9A8E001F191C /* Heli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heli.swift; sourceTree = "<group>"; };
 		879B99571C3E18D1001F191C /* BackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
+		87A17E5C259C274200210971 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		87ABB64D1CAB66A6006782A3 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		87ABB64F1CAF7F6E006782A3 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		87D639E41CB0F28600BFE3A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
 				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
 				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
+				87A17E5C259C274200210971 /* Constants.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */,
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
 				879B99421C398F22001F191C /* GameSprite.swift in Sources */,
+				87A17E5D259C274200210971 /* Constants.swift in Sources */,
 				879B99121C398C15001F191C /* GameScene.swift in Sources */,
 				87873CDF1CFB58D8000DE467 /* PinkPlane.swift in Sources */,
 				87ABB6501CAF7F6E006782A3 /* StartScene.swift in Sources */,
