@@ -39,12 +39,12 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
                 textureAtlas.textureNamed("explosion3.png"),
                 textureAtlas.textureNamed("explosion4.png"),
         ],
-        explosionAction = SKAction.animateWithTextures(explosionFrames, timePerFrame: 0.1),
+        explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1),
         explodeAndDieAction = SKAction.sequence([
                 explosionAction,
                 SKAction.removeFromParent()
         ])
-        self.runAction(explodeAndDieAction)
+        self.run(explodeAndDieAction)
     }
     
     func getPlayerPosition() -> CGPoint {
@@ -56,15 +56,15 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
     //       per each enemy subclass.
     func startFiringBullets() {
         let randomDelay = drand48()
-        let randomInitialDelayAction = SKAction.waitForDuration(randomDelay)
-        let bulletCycleAction = SKAction.waitForDuration(0.75)
-        let spawnNewBulletAction = SKAction.runBlock{
+        let randomInitialDelayAction = SKAction.wait(forDuration: randomDelay)
+        let bulletCycleAction = SKAction.wait(forDuration: 0.75)
+        let spawnNewBulletAction = SKAction.run{
             let newBullet = EnemyBullet(parentNode: self)
             newBullet.spawn()
         }
         let continuousFiringAction = SKAction.sequence([spawnNewBulletAction, bulletCycleAction])
-        self.runAction(SKAction.sequence([randomInitialDelayAction,
-                                          SKAction.repeatActionForever(continuousFiringAction)]))
+        self.run(SKAction.sequence([randomInitialDelayAction,
+                                    SKAction.repeatForever(continuousFiringAction)]))
     }
 }
 

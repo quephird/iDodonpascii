@@ -42,15 +42,15 @@ class BackgroundManager {
     func spawnBackgrounds() {
         for node in [self.topBackgroundNode!, self.bottomBackgroundNode!] {
             self.world!.addChild(node)
-            node.setScale(world!.computeProperScale(node))
+            node.setScale(world!.computeProperScale(backgroundImage: node))
 
-            let dy = CGVectorMake(0.0, -self.world!.size.height)
-            let moveAction = SKAction.moveBy(dy, duration: 3.0)
-            let resetPositionAction = SKAction.runBlock {
+            let dy = CGVector(dx: 0.0, dy: -self.world!.size.height)
+            let moveAction = SKAction.move(by: dy, duration: 3.0)
+            let resetPositionAction = SKAction.run {
                 node.position = node.startingPosition!
             }
             let loopAction = SKAction.sequence([moveAction, resetPositionAction])
-            node.runAction(SKAction.repeatActionForever(loopAction))
+            node.run(SKAction.repeatForever(loopAction))
         }
     }
 }

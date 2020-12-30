@@ -25,7 +25,7 @@ class StartGameButton: SKSpriteNode, GameSprite {
             textureAtlas.textureNamed("startGameButtonOn.png"),
             textureAtlas.textureNamed("startGameButtonOff.png")
         ],
-        flashAction = SKAction.animateWithTextures(flashFrames, timePerFrame: 0.5)
-        self.runAction(SKAction.repeatActionForever(flashAction))
+        flashAction = SKAction.animate(with: flashFrames, timePerFrame: 0.5)
+        self.run(SKAction.repeatForever(flashAction))
     }
 }

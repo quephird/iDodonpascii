@@ -22,27 +22,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundManager: BackgroundManager? = nil
     var playerBullets = Set<PlayerBullet>()
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
 
         self.backgroundManager = BackgroundManager(world: self)
         self.backgroundManager?.spawnBackgrounds()
 
         self.gameState.startGame()
-        self.hud.setup(self)
-        self.player.spawn(self, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
-        self.spawnManager.beginSpawningEnemies(gameState, parentNode: self)
+        self.hud.setup(scene: self)
+        self.player.spawn(world: self, position: CGPoint(x: 0.5*self.size.width, y: 0.1*self.size.height))
+        self.spawnManager.beginSpawningEnemies(gameState: gameState, parentNode: self)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            player.lastTouchLocation = touch.locationInNode(self)
+            player.lastTouchLocation = touch.location(in: self)
         }
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.locationInNode(self),
+            let location = touch.location(in: self),
                 dx = location.x - (player.lastTouchLocation?.x)!,
                 dy = location.y - (player.lastTouchLocation?.y)!
             player.position.x += dx
@@ -53,17 +53,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         player.lastTouchLocation = nil
     }
 
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: CFTimeInterval) {
         if self.gameState.lives == 0 {
             switchScene()
         }
-        self.hud.update(self)
+        self.hud.update(scene: self)
         self.spawnManager.clearOffscreenEnemies()
-        self.spawnManager.checkForSpawnableEnemies(currentTime - self.gameState.startTime!)
+        self.spawnManager.checkForSpawnableEnemies(elapsedTime: currentTime - self.gameState.startTime!)
     }
 
     func updateScore(points: UInt) {
@@ -78,33 +78,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch categoryMask {
             case PhysicsCategory.PlayerBullet.rawValue | PhysicsCategory.Enemy.rawValue:
                 if let enemy = bodyA.node as? Enemy,
-                       bullet = bodyB.node as? PlayerBullet {
-                    self.handleEnemyShot(enemy, bullet: bullet)
+                   let bullet = bodyB.node as? PlayerBullet {
+                    self.handleEnemyShot(enemy: enemy, bullet: bullet)
                 } else if let enemy = bodyB.node as? Enemy,
-                              bullet = bodyA.node as? PlayerBullet {
-                    self.handleEnemyShot(enemy, bullet: bullet)
+                          let bullet = bodyA.node as? PlayerBullet {
+                    self.handleEnemyShot(enemy: enemy, bullet: bullet)
                 }
-                runAction(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+                run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.Player.rawValue:
                 // TODO: Need to determine Player node and trigger explosion and reset position
                 // TODO: Think about how to automatically trigger the update of the HUD when decrementing lives
                 self.gameState.lives -= 1
                 self.hud.removeLife()
-                runAction(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
+                run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
             default:
                 break
         }
     }
 
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
-        self.updateScore(enemy.points!)
+        self.updateScore(points: enemy.points!)
         bullet.removeFromParent()
         enemy.explodeAndDie()
     }
 
     func switchScene() {
         let nextScene = EndScene(size: self.size)
-        let transition = SKTransition.crossFadeWithDuration(1.0)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
         self.scene!.view?.presentScene(nextScene, transition: transition)
     }
 }

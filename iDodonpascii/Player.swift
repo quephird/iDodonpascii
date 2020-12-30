@@ -21,7 +21,7 @@ class Player: SKSpriteNode, GameSprite {
 
         self.setupAnimationFrames()
         self.setupPhysicsBody()
-        self.startFiringBullets(world)
+        self.startFiringBullets(world: world)
         world.addChild(self)
     }
 
@@ -30,8 +30,8 @@ class Player: SKSpriteNode, GameSprite {
                 textureAtlas.textureNamed("player1.png"),
                 textureAtlas.textureNamed("player2.png")
         ],
-        flyAction = SKAction.animateWithTextures(flyFrames, timePerFrame: 0.25)
-        self.runAction(SKAction.repeatActionForever(flyAction))
+        flyAction = SKAction.animate(with: flyFrames, timePerFrame: 0.25)
+        self.run(SKAction.repeatForever(flyAction))
     }
 
     func setupPhysicsBody() {
@@ -45,17 +45,17 @@ class Player: SKSpriteNode, GameSprite {
 
     func startFiringBullets(world: SKNode) {
         let TIME_BETWEEN_BULLETS = 0.5,
-            waitABit = SKAction.waitForDuration(TIME_BETWEEN_BULLETS),
-            moveAction = SKAction.moveByX(0, y: 400, duration: 1),
+            waitABit = SKAction.wait(forDuration: TIME_BETWEEN_BULLETS),
+            moveAction = SKAction.moveBy(x: 0, y: 400, duration: 1),
             newBulletSound = SKAction.playSoundFileNamed("playerBullet.wav", waitForCompletion: false),
-            spawnNewBullet = SKAction.runBlock {
+            spawnNewBullet = SKAction.run {
                 let newBullet = PlayerBullet()
-                newBullet.spawn(world, position: self.makeNewBulletPosition(self.position))
-                newBullet.runAction(SKAction.repeatActionForever(moveAction))
-                newBullet.runAction(newBulletSound)
+                newBullet.spawn(parentNode: world, position: self.makeNewBulletPosition(playerPosition: self.position))
+                newBullet.run(SKAction.repeatForever(moveAction))
+                newBullet.run(newBulletSound)
             },
             sequence = SKAction.sequence([waitABit, spawnNewBullet])
-        self.runAction(SKAction.repeatActionForever(sequence))
+        self.run(SKAction.repeatForever(sequence))
     }
 
     // TODO: Remove this; it is a silly function

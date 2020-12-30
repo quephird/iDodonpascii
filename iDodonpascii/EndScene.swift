@@ -13,27 +13,24 @@
 import SpriteKit
 
 class EndScene: SKScene {
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         let startingPosition = CGPoint(x: 0.5*self.size.width, y: 0.5*self.size.height)
         let endBackground = Background(textureName: "end.png",
                                        startingPosition: startingPosition)
-        endBackground.setScale(self.computeProperScale(endBackground))
+        endBackground.setScale(self.computeProperScale(backgroundImage: endBackground))
         self.addChild(endBackground)
 
-        let waitAction = SKAction.waitForDuration(3.0)
-        let switchSceneAction = SKAction.runBlock {
+        let waitAction = SKAction.wait(forDuration: 3.0)
+        let switchSceneAction = SKAction.run {
             self.switchScene()
         }
         let entireAction = SKAction.sequence([waitAction, switchSceneAction])
-        self.runAction(entireAction)
-    }
-
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.run(entireAction)
     }
 
     func switchScene() {
         let nextScene = StartScene(size: self.size)
-        let transition = SKTransition.crossFadeWithDuration(1.0)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
         self.scene!.view?.presentScene(nextScene, transition: transition)
     }
 }

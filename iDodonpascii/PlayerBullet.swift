@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class PlayerBullet: SKSpriteNode, Scrubbable, GameSprite {
-    let π = CGFloat(M_PI)
+    let π = CGFloat(Double.pi)
 
     func spawn(parentNode: SKNode,
                position: CGPoint,
@@ -22,8 +22,8 @@ class PlayerBullet: SKSpriteNode, Scrubbable, GameSprite {
         self.zPosition = 100
         self.texture = SKTexture(imageNamed: "playerBullet.png")
         
-        let spinAction = SKAction.rotateByAngle(2*π, duration: 1.0)
-        self.runAction(SKAction.repeatActionForever(spinAction))
+        let spinAction = SKAction.rotate(byAngle: 2*π, duration: 1.0)
+        self.run(SKAction.repeatForever(spinAction))
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10.0)
         self.physicsBody?.affectedByGravity = false

@@ -22,7 +22,7 @@ class HUD {
         // TODO: Need HUDManager and move all this stuff there
         scoreLabel.fontName = "Courier"
         scoreLabel.fontSize = 20
-        scoreLabel.fontColor = SKColor.cyanColor()
+        scoreLabel.fontColor = UIColor.cyan
         scoreLabel.position = CGPoint(x: 0.15*scene.size.width, y: 0.95*scene.size.height)
         scoreLabel.zPosition = 100
         scene.addChild(scoreLabel)
