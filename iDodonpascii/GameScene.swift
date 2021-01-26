@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameState.score += points
     }
 
-    func didBeginContact(contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) {
         let bodyA = contact.bodyA,
             bodyB = contact.bodyB,
             categoryMask = bodyA.categoryBitMask | bodyB.categoryBitMask
