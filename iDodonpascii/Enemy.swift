@@ -9,6 +9,8 @@
 import SpriteKit
 
 class Enemy: SKSpriteNode, GameSprite, Scrubbable {
+    static let DELAY_BETWEEN_BULLETS: TimeInterval = 2.0;
+
     var world: SKNode? = nil
     var spawnDelay: Double? = nil
     var direction: Direction? = nil
@@ -57,7 +59,7 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
     func startFiringBullets() {
         let randomDelay = drand48()
         let randomInitialDelayAction = SKAction.wait(forDuration: randomDelay)
-        let bulletCycleAction = SKAction.wait(forDuration: 0.75)
+        let bulletCycleAction = SKAction.wait(forDuration: Enemy.DELAY_BETWEEN_BULLETS)
         let spawnNewBulletAction = SKAction.run{
             let newBullet = EnemyBullet(parentNode: self)
             newBullet.spawn()
