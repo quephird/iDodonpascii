@@ -49,8 +49,8 @@ class SpawnManager {
         for (initialX, initialY, spawnDelay, direction, hitPoints) in newEnemyParameters {
             let initParms = EnemyInitializationParameters(
                 world: self.parentNode!,
-                initialX: initialX,
-                initialY: initialY,
+                initialX: Double(UIScreen.main.bounds.width)*initialX,
+                initialY: Double(UIScreen.main.bounds.height)*initialY,
                 spawnDelay: spawnDelay,
                 direction: direction,
                 hitPoints: hitPoints
@@ -80,8 +80,10 @@ class SpawnManager {
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodes(withName: "*", using: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
-                if node.position.y < -100.0 || node.position.y > 750.0 ||
-                   node.position.x < -100.0 || node.position.x > 500.0 {
+                if node.position.y < -0.10*UIScreen.main.bounds.height ||
+                    node.position.y > 1.10*UIScreen.main.bounds.height ||
+                    node.position.x < -0.10*UIScreen.main.bounds.width ||
+                    node.position.x > 1.10*UIScreen.main.bounds.width {
                     node.removeFromParent()
                 }
             }
