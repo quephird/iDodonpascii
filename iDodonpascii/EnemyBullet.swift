@@ -35,7 +35,7 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
         let dx = self.parentNode!.getPlayerPosition().x - self.parentNode!.position.x
         let dy = self.parentNode!.getPlayerPosition().y - self.parentNode!.position.y
         let dr = sqrt(dx*dx + dy*dy)
-                // ACHTUNG! We divide dr by 400 to "normalize" in a sense; we want the bullet to travel
+        // ACHTUNG! We divide dr by 400 to "normalize" in a sense; we want the bullet to travel
         //          400 pixels in any direction per second.
         let moveAction = SKAction.move(by: CGVector(dx: dx, dy: dy), duration: Double(dr/400.0))
 
