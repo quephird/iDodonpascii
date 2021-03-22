@@ -73,23 +73,23 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left, 1),
                                   (0.80, 0.95, 0.0, Direction.Left, 1),
                                   (0.60, 0.95, 0.0, Direction.Left, 1)]],
-//              37.0:
-//                  ["type": "bluePlane",
-//                   "initParams": [(-0.10, 600.0, 0.0, Direction.Right, 1),
-//                                  (-0.10, 500.0, 0.3, Direction.Right, 1),
-//                                  (-0.10, 0.55, 0.6, Direction.Right, 1),
-//                                  (-0.10, 300.0, 0.9, Direction.Right, 1)]],
+              37.0:
+                  ["type": "bluePlane",
+                   "initParams": [(-0.07, 0.90, 0.0, Direction.Right, 1),
+                                  (-0.07, 0.80, 0.3, Direction.Right, 1),
+                                  (-0.07, 0.70, 0.6, Direction.Right, 1),
+                                  (-0.07, 0.60, 0.9, Direction.Right, 1)]],
               40.0:
                   ["type": "heli",
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left, 1),
                                   (0.80, 0.95, 0.0, Direction.Left, 1),
                                   (0.60, 0.95, 0.0, Direction.Left, 1)]],
-//              43.0:
-//                  ["type": "bluePlane",
-//                   "initParams": [(500.0, 600.0, 0.0, Direction.Left, 1),
-//                                  (500.0, 500.0, 0.3, Direction.Left, 1),
-//                                  (500.0, 0.55, 0.6, Direction.Left, 1),
-//                                  (500.0, 300.0, 0.9, Direction.Left, 1)]],
+              43.0:
+                  ["type": "bluePlane",
+                   "initParams": [(1.07, 0.90, 0.0, Direction.Left, 1),
+                                  (1.07, 0.80, 0.3, Direction.Left, 1),
+                                  (1.07, 0.70, 0.6, Direction.Left, 1),
+                                  (1.07, 0.60, 0.9, Direction.Left, 1)]],
               46.0:
                   ["type": "pinkPlane",
                    "initParams": [(0.10, 0.95, 0.0, Direction.Right, 1),
