@@ -80,10 +80,10 @@ class SpawnManager {
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodes(withName: "*", using: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
-                if node.position.y < -0.10*UIScreen.main.bounds.height ||
-                    node.position.y > 1.10*UIScreen.main.bounds.height ||
-                    node.position.x < -0.10*UIScreen.main.bounds.width ||
-                    node.position.x > 1.10*UIScreen.main.bounds.width {
+                if node.position.y < -0.20*UIScreen.main.bounds.height ||
+                    node.position.y > 1.20*UIScreen.main.bounds.height ||
+                    node.position.x < -0.20*UIScreen.main.bounds.width ||
+                    node.position.x > 1.20*UIScreen.main.bounds.width {
                     node.removeFromParent()
                 }
             }

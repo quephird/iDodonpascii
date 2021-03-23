@@ -30,11 +30,15 @@ class BackgroundManager {
         self.world = world
         let currentBackgroundTexture = backgroundTextures[currentLevel]
 
-        let topStartingPosition = CGPoint(x: 0.5*world.size.width, y: 1.5*world.size.height)
+        let topX = 0.5*UIScreen.main.bounds.width
+        let topY = 1.5*UIScreen.main.bounds.height
+        let topStartingPosition = CGPoint(x: topX, y: topY)
         self.topBackgroundNode = Background(textureName: currentBackgroundTexture!,
                                              startingPosition: topStartingPosition)
 
-        let bottomStartingPosition = CGPoint(x: 0.5*world.size.width, y: 0.5*world.size.height)
+        let bottomX = 0.5*UIScreen.main.bounds.width
+        let bottomY = 0.5*UIScreen.main.bounds.height
+        let bottomStartingPosition = CGPoint(x: bottomX, y: bottomY)
         self.bottomBackgroundNode = Background(textureName: currentBackgroundTexture!,
                                                 startingPosition: bottomStartingPosition)
     }
@@ -42,10 +46,11 @@ class BackgroundManager {
     func spawnBackgrounds() {
         for node in [self.topBackgroundNode!, self.bottomBackgroundNode!] {
             self.world!.addChild(node)
-            node.setScale(world!.computeProperScale(backgroundImage: node))
+            node.setScale(self.world!.size.height/node.size.height)
 
-            let dy = CGVector(dx: 0.0, dy: -self.world!.size.height)
-            let moveAction = SKAction.move(by: dy, duration: 3.0)
+            let dy = -UIScreen.main.bounds.height
+            let dl = CGVector(dx: 0.0, dy: dy)
+            let moveAction = SKAction.move(by: dl, duration: 3.0)
             let resetPositionAction = SKAction.run {
                 node.position = node.startingPosition!
             }
