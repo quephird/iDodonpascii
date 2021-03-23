@@ -37,22 +37,22 @@ class BluePlane: Enemy {
     }
     
     func animateAndMove() {
-        let animationAction = SKAction.animateWithTextures(animationFrames, timePerFrame: 0.25)
-        self.runAction(SKAction.repeatActionForever(animationAction))
+        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.25)
+        self.run(SKAction.repeatForever(animationAction))
         
-        let delayAction = SKAction.waitForDuration(self.spawnDelay!)
+        let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
         let flightPath = self.createPath()
-        let flightPathAction = SKAction.followPath(flightPath, duration: 3.0)
+        let flightPathAction = SKAction.follow(flightPath, duration: 3.0)
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
-        self.runAction(flightActionSequence)
+        self.run(flightActionSequence)
     }
     
     func createPath() -> CGPath {
-        let path = CGPathCreateMutable()
+        let path = CGMutablePath()
         // TODO: These two magic numbers also need to be scaled.
         let dx = CGFloat(self.direction == Direction.Right ? 600.0 : -600.0)
-        CGPathMoveToPoint(path, nil, 0.0, 0.0)
-        CGPathAddLineToPoint(path, nil, dx, -200.0)
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        path.addLine(to: CGPoint(x: dx, y: -200.0))
         return path
     }
 }
