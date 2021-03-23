@@ -97,9 +97,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
-        self.updateScore(points: enemy.points!)
+        // TODO: Think about moving the hit point logic out
+        enemy.hitPoints! -= 1
         bullet.removeFromParent()
-        enemy.explodeAndDie()
+
+        if enemy.hitPoints == 0 {
+            self.updateScore(points: enemy.points!)
+        }
+        enemy.handleShot()
     }
 
     func switchScene() {

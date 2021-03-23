@@ -18,7 +18,8 @@ class BluePlane: Enemy {
             textureAtlas.textureNamed("bluePlane2.png")
         ]
         self.size = CGSize(width: 75, height: 75)
-        
+        self.hitPoints = 1
+
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue

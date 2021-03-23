@@ -33,22 +33,23 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func explodeAndDie() {
+    // NOTA BENE: By default enemies take only one shot and immediately die
+    func handleShot() {
         self.physicsBody = nil
         let explosionFrames:[SKTexture] = [
-                textureAtlas.textureNamed("explosion1.png"),
-                textureAtlas.textureNamed("explosion2.png"),
-                textureAtlas.textureNamed("explosion3.png"),
-                textureAtlas.textureNamed("explosion4.png"),
+            textureAtlas.textureNamed("explosion1.png"),
+            textureAtlas.textureNamed("explosion2.png"),
+            textureAtlas.textureNamed("explosion3.png"),
+            textureAtlas.textureNamed("explosion4.png"),
         ],
         explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1),
         explodeAndDieAction = SKAction.sequence([
-                explosionAction,
-                SKAction.removeFromParent()
+            explosionAction,
+            SKAction.removeFromParent()
         ])
         self.run(explodeAndDieAction)
     }
-    
+
     func getPlayerPosition() -> CGPoint {
         let gameScene = self.world! as! GameScene
         return gameScene.player.position
