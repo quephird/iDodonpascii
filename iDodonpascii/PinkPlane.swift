@@ -19,6 +19,7 @@ class PinkPlane: Enemy {
             textureAtlas.textureNamed("PinkPlane2.png")
         ]
         self.size = CGSize(width: 100, height: 100)
+        self.hitPoints = 3
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
         self.physicsBody?.affectedByGravity = false
@@ -81,5 +82,19 @@ class PinkPlane: Enemy {
         loopPath.addLine(to: CGPoint(x: dx, y: 100))
         
         return loopPath
+    }
+
+    override func handleShot() {
+        if self.hitPoints == 0 {
+            super.handleShot()
+        } else {
+            let explosionFrames:[SKTexture] = [
+                textureAtlas.textureNamed("pinkPlaneShot1.png"),
+                textureAtlas.textureNamed("pinkPlaneShot2.png")
+            ]
+            let explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1)
+            let repeatExplosionAction = SKAction.repeatForever(explosionAction)
+            self.run(repeatExplosionAction)
+        }
     }
 }

@@ -11,8 +11,7 @@ import SpriteKit
 // For now, this file contains just a structure containing all data
 // describing the enemies to be spawned in the game.
 
-// TODO: Figure out how to scale (x,y) coords based on resolution of device;
-//       possibly use proportions instead of absolute coordinates.
+// TODO: Remove hit point configuration from here
 var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<String, Any>>>> =
     [1:
         ["waves":

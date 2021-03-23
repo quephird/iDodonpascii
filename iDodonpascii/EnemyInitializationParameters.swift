@@ -5,6 +5,7 @@
 
 import SpriteKit
 
+// TODO: Remove hit points from here
 struct EnemyInitializationParameters {
     var world: SKNode
     var initialX: Double
