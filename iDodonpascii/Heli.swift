@@ -16,9 +16,13 @@ class Heli: Enemy {
         self.points = 100
         self.animationFrames = [
             textureAtlas.textureNamed("heli1.png"),
-            textureAtlas.textureNamed("heli2.png")
+            textureAtlas.textureNamed("heli2.png"),
+            textureAtlas.textureNamed("heli3.png"),
+            textureAtlas.textureNamed("heli4.png"),
+            textureAtlas.textureNamed("heli5.png"),
+            textureAtlas.textureNamed("heli6.png")
         ]
-        self.size = CGSize(width: 75, height: 75)
+        self.size = CGSize(width: 100, height: 100)
         self.hitPoints = 1
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 0.3*self.size.width)
@@ -40,7 +44,7 @@ class Heli: Enemy {
     }
 
     func animateAndMove() {
-        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.25)
+        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
 
         let flightPath = self.createPath()
