@@ -22,7 +22,6 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
         self.world = initParms.world
         self.spawnDelay = initParms.spawnDelay
         self.direction = initParms.direction
-        self.hitPoints = initParms.hitPoints
 
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
         self.position = CGPoint(x: initParms.initialX, y: initParms.initialY)

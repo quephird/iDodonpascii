@@ -12,5 +12,4 @@ struct EnemyInitializationParameters {
     var initialY: Double
     var spawnDelay: Double
     var direction: Direction
-    var hitPoints: Int
 }

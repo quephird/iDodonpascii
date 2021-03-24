@@ -45,15 +45,14 @@ class SpawnManager {
     
     func spawnNewEnemies(newWave: Dictionary<String, Any>) {
         let newEnemyType = newWave["type"] as? String,
-            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction, Int)>
-        for (initialX, initialY, spawnDelay, direction, hitPoints) in newEnemyParameters {
+            newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction)>
+        for (initialX, initialY, spawnDelay, direction) in newEnemyParameters {
             let initParms = EnemyInitializationParameters(
                 world: self.parentNode!,
                 initialX: Double(UIScreen.main.bounds.width)*initialX,
                 initialY: Double(UIScreen.main.bounds.height)*initialY,
                 spawnDelay: spawnDelay,
-                direction: direction,
-                hitPoints: hitPoints
+                direction: direction
             )
             switch newEnemyType {
             case "heli"?:
