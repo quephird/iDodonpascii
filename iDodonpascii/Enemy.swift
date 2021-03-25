@@ -34,6 +34,8 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
 
     // NOTA BENE: By default enemies take only one shot and immediately die
     func handleShot() {
+        self.removeAllActions()
+
         self.physicsBody = nil
         let explosionFrames:[SKTexture] = [
             textureAtlas.textureNamed("explosion1.png"),

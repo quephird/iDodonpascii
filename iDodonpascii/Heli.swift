@@ -47,6 +47,9 @@ class Heli: Enemy {
         let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
 
+        let engineRunningAction = SKAction.repeatForever(SKAction.playSoundFileNamed("blueHeli.wav", waitForCompletion: true))
+        self.run(engineRunningAction)
+
         let flightPath = self.createPath()
         self.run(SKAction.follow(flightPath.cgPath, duration: 3.0))
     }
