@@ -39,6 +39,9 @@ class Biplane: Enemy {
         let animationAction = SKAction.animate(with: self.animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
 
+        let engineRunningAction = SKAction.repeatForever(SKAction.playSoundFileNamed("redPlane.wav", waitForCompletion: true))
+        self.run(engineRunningAction)
+
         let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
         let flightPath = createPath()
         let flightPathAction = SKAction.follow(flightPath, duration: 5.0)

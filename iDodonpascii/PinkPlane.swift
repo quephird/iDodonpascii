@@ -40,7 +40,10 @@ class PinkPlane: Enemy {
     func animateAndMove() {
         let animationAction = SKAction.animate(with: self.animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
-        
+
+        let engineRunningAction = SKAction.repeatForever(SKAction.playSoundFileNamed("pinkPlaneEngine.wav", waitForCompletion: true))
+        self.run(engineRunningAction)
+
         let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
         let flightPath = createPath()
         let flightPathAction = SKAction.follow(flightPath, duration: 7.0)
