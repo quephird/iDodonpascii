@@ -8,5 +8,6 @@ enum PhysicsCategory: UInt32 {
     case PlayerBullet = 0b1
     case EnemyBullet  = 0b10
     case Player       = 0b100
-    case Enemy        = 0b1000
+    case PlayerGraze  = 0b1000
+    case Enemy        = 0b10000
 }
