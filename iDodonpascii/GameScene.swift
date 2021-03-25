@@ -84,13 +84,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                           let bullet = bodyA.node as? PlayerBullet {
                     self.handleEnemyShot(enemy: enemy, bullet: bullet)
                 }
-                run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+                self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+            case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.PlayerGraze.rawValue:
+                self.run(SKAction.playSoundFileNamed("bulletGraze.wav", waitForCompletion: false))
+                self.updateScore(points: 10)
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.Player.rawValue:
                 // TODO: Need to determine Player node and trigger explosion and reset position
                 // TODO: Think about how to automatically trigger the update of the HUD when decrementing lives
+
                 self.gameState.lives -= 1
                 self.hud.removeLife()
-                run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
+                self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
             default:
                 break
         }

@@ -22,6 +22,9 @@ class Player: SKSpriteNode, GameSprite {
         self.setupAnimationFrames()
         self.setupPhysicsBody()
         self.startFiringBullets(world: world)
+
+        let grazingNode = self.makeGrazingNode()
+        world.addChild(grazingNode)
         world.addChild(self)
     }
 
@@ -41,6 +44,25 @@ class Player: SKSpriteNode, GameSprite {
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
+    }
+
+    // We have to make a new node because we essentially cannot have one
+    // radius for grazing and one for death with the same SKSpriteNode.
+    func makeGrazingNode() -> SKSpriteNode {
+        let grazingNode = SKSpriteNode(color: SKColor.clear, size: CGSize(width: 0, height: 0))
+        grazingNode.position = position
+        grazingNode.physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        grazingNode.physicsBody?.isDynamic = true
+        grazingNode.physicsBody?.categoryBitMask = PhysicsCategory.PlayerGraze.rawValue
+        grazingNode.physicsBody?.contactTestBitMask = PhysicsCategory.EnemyBullet.rawValue
+        grazingNode.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        grazingNode.physicsBody?.allowsRotation = false
+        grazingNode.physicsBody?.affectedByGravity = false
+        let followDistance = SKRange.init(lowerLimit: 0.0, upperLimit: 0.0)
+        let followConstraint = SKConstraint.distance(followDistance, to: self)
+        grazingNode.constraints = [followConstraint]
+
+        return grazingNode
     }
 
     func startFiringBullets(world: SKNode) {

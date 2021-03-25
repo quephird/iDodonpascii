@@ -19,7 +19,7 @@ class EnemyBullet: SKSpriteNode, Scrubbable, GameSprite {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.EnemyBullet.rawValue
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player.rawValue | PhysicsCategory.PlayerGraze.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
     }
 
