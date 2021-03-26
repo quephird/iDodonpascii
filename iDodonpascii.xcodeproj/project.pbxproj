@@ -43,6 +43,8 @@
 		87C3522C260C58D700A8DF4C /* blueHeli.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C3522B260C58D700A8DF4C /* blueHeli.wav */; };
 		87C35238260C5D0400A8DF4C /* redPlane.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35237260C5D0400A8DF4C /* redPlane.wav */; };
 		87C35249260C7ABC00A8DF4C /* bulletGraze.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35248260C7ABC00A8DF4C /* bulletGraze.wav */; };
+		87C35254260D82DC00A8DF4C /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C35253260D82DC00A8DF4C /* Star.swift */; };
+		87C35259260DAD0200A8DF4C /* starPickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35258260DAD0200A8DF4C /* starPickup.wav */; };
 		87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D639E31CB0F28600BFE3A9 /* Main.storyboard */; };
 		87D639E81CB19B2900BFE3A9 /* StartGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */; };
 		87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F278941C613A4100A94CBF /* Scrubbable.swift */; };
@@ -109,6 +111,8 @@
 		87C3522B260C58D700A8DF4C /* blueHeli.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blueHeli.wav; sourceTree = "<group>"; };
 		87C35237260C5D0400A8DF4C /* redPlane.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = redPlane.wav; sourceTree = "<group>"; };
 		87C35248260C7ABC00A8DF4C /* bulletGraze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bulletGraze.wav; sourceTree = "<group>"; };
+		87C35253260D82DC00A8DF4C /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		87C35258260DAD0200A8DF4C /* starPickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = starPickup.wav; sourceTree = "<group>"; };
 		87D639E41CB0F28600BFE3A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameButton.swift; sourceTree = "<group>"; };
 		87F278941C613A4100A94CBF /* Scrubbable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubbable.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				87C3522B260C58D700A8DF4C /* blueHeli.wav */,
+				87C35258260DAD0200A8DF4C /* starPickup.wav */,
 				87C35248260C7ABC00A8DF4C /* bulletGraze.wav */,
 				8773BD001CC496BD00435900 /* enemyBullet.wav */,
 				8773BD011CC496BD00435900 /* enemyShot.wav */,
@@ -211,6 +216,7 @@
 				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
 				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
 				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
+				87C35253260D82DC00A8DF4C /* Star.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				879B99401C398E73001F191C /* iDodonpascii.atlas in Resources */,
 				8773BD031CC496BD00435900 /* enemyBullet.wav in Resources */,
 				87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */,
+				87C35259260DAD0200A8DF4C /* starPickup.wav in Resources */,
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
 				8773BD041CC496BD00435900 /* enemyShot.wav in Resources */,
 				8773BD051CC496BD00435900 /* playerBullet.wav in Resources */,
@@ -385,6 +392,7 @@
 				879B99581C3E18D1001F191C /* BackgroundManager.swift in Sources */,
 				879B99461C3B37A7001F191C /* PlayerBullet.swift in Sources */,
 				87F55E1B1C48218B006C8228 /* GameState.swift in Sources */,
+				87C35254260D82DC00A8DF4C /* Star.swift in Sources */,
 				87D639E81CB19B2900BFE3A9 /* StartGameButton.swift in Sources */,
 				87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */,
 				879B994A1C3C83C2001F191C /* Levels.swift in Sources */,
