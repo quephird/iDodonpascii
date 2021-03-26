@@ -95,6 +95,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.gameState.lives -= 1
                 self.hud.removeLife()
                 self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
+
+            // TODO: Part 5
+            //
+            // Add case branch to handle contact between star and player
+            //
+            // * Play bonus sound
+            // * remove star from world
+            // * award points to player
+            case PhysicsCategory.Star.rawValue | PhysicsCategory.Player.rawValue:
+                print("I just collided with a star!")
             default:
                 break
         }
@@ -107,6 +117,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         if enemy.hitPoints == 0 {
             self.updateScore(points: enemy.points!)
+            let newStar = Star(enemy.position)
+            self.addChild(newStar)
+            newStar.animateAndMove()
         }
         enemy.handleShot()
     }

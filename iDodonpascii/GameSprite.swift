@@ -13,6 +13,7 @@ import SpriteKit
 // TODO: Figure out how to enforce implementation of spawn()
 protocol GameSprite {
     var textureAtlas: SKTextureAtlas { get }
+
 //    func spawn(parentNode: SKNode, position: CGPoint, size: CGSize)
 }
 

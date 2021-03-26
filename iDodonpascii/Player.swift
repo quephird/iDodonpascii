@@ -40,7 +40,7 @@ class Player: SKSpriteNode, GameSprite {
     func setupPhysicsBody() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: 12)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Player.rawValue
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.EnemyBullet.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.Star.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.affectedByGravity = false
