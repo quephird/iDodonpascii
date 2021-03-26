@@ -43,13 +43,13 @@ class Star: SKSpriteNode, GameSprite, Scrubbable {
         self.run(SKAction.repeatForever(animationAction))
 
         let flightPath = self.createPath()
-        let flightPathAction = SKAction.follow(flightPath, duration: 10.0)
+        let flightPathAction = SKAction.follow(flightPath, duration: 6.0)
         self.run(flightPathAction)
     }
 
     func createPath() -> CGPath {
         let path = CGMutablePath()
-        let dx = CGFloat.random(in: -20...20)
+        let dx = CGFloat.random(in: -100...100)
         path.move(to: CGPoint(x: 0.0, y: 0.0))
         path.addLine(to: CGPoint(x: dx, y: -1000.0))
         return path

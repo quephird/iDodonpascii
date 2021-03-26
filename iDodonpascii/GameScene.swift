@@ -85,9 +85,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.handleEnemyShot(enemy: enemy, bullet: bullet)
                 }
                 self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
+
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.PlayerGraze.rawValue:
                 self.run(SKAction.playSoundFileNamed("bulletGraze.wav", waitForCompletion: false))
-                self.updateScore(points: 10)
+                self.updateScore(points: 50)
+
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.Player.rawValue:
                 // TODO: Need to determine Player node and trigger explosion and reset position
                 // TODO: Think about how to automatically trigger the update of the HUD when decrementing lives
@@ -96,15 +98,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.hud.removeLife()
                 self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
 
-            // TODO: Part 5
-            //
-            // Add case branch to handle contact between star and player
-            //
-            // * Play bonus sound
-            // * remove star from world
-            // * award points to player
             case PhysicsCategory.Star.rawValue | PhysicsCategory.Player.rawValue:
-                print("I just collided with a star!")
+                if let star = bodyA.node as? Star {
+                    star.removeFromParent()
+                } else if let star = bodyB.node as? Star {
+                    star.removeFromParent()
+                }
+                self.updateScore(points: 25)
+                self.run(SKAction.playSoundFileNamed("starPickup.wav", waitForCompletion: false))
             default:
                 break
         }
