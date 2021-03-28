@@ -11,4 +11,5 @@ enum PhysicsCategory: UInt32 {
     case PlayerGraze  = 0b1000
     case Enemy        = 0b10000
     case Star         = 0b100000
+    case OneThousand  = 0b1000000
 }
