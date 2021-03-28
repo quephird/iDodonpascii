@@ -84,7 +84,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                           let bullet = bodyA.node as? PlayerBullet {
                     self.handleEnemyShot(enemy: enemy, bullet: bullet)
                 }
-                self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
 
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.PlayerGraze.rawValue:
                 self.run(SKAction.playSoundFileNamed("bulletGraze.wav", waitForCompletion: false))
@@ -112,16 +111,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
-        // TODO: Think about moving the hit point logic out
-        enemy.hitPoints! -= 1
+        self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
         bullet.removeFromParent()
-
-        if enemy.hitPoints == 0 {
-            self.updateScore(points: enemy.points!)
-            let newStar = Star(enemy.position)
-            self.addChild(newStar)
-            newStar.animateAndMove()
-        }
         enemy.handleShot()
     }
 

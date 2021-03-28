@@ -88,8 +88,28 @@ class PinkPlane: Enemy {
     }
 
     override func handleShot() {
+        self.hitPoints! -= 1
+
         if self.hitPoints == 0 {
-            super.handleShot()
+            let newBonus = OneThousand(self.position)
+            self.world!.addChild(newBonus)
+            newBonus.animateAndMove()
+
+            self.removeAllActions()
+
+            self.physicsBody = nil
+            let explosionFrames:[SKTexture] = [
+                textureAtlas.textureNamed("explosion1.png"),
+                textureAtlas.textureNamed("explosion2.png"),
+                textureAtlas.textureNamed("explosion3.png"),
+                textureAtlas.textureNamed("explosion4.png"),
+            ],
+            explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1),
+            explodeAndDieAction = SKAction.sequence([
+                explosionAction,
+                SKAction.removeFromParent()
+            ])
+            self.run(explodeAndDieAction)
         } else {
             let explosionFrames:[SKTexture] = [
                 textureAtlas.textureNamed("pinkPlaneShot1.png"),

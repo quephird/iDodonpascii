@@ -34,21 +34,30 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
 
     // NOTA BENE: By default enemies take only one shot and immediately die
     func handleShot() {
-        self.removeAllActions()
+        self.hitPoints! -= 1
 
-        self.physicsBody = nil
-        let explosionFrames:[SKTexture] = [
-            textureAtlas.textureNamed("explosion1.png"),
-            textureAtlas.textureNamed("explosion2.png"),
-            textureAtlas.textureNamed("explosion3.png"),
-            textureAtlas.textureNamed("explosion4.png"),
-        ],
-        explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1),
-        explodeAndDieAction = SKAction.sequence([
-            explosionAction,
-            SKAction.removeFromParent()
-        ])
-        self.run(explodeAndDieAction)
+        if self.hitPoints == 0 {
+            (self.world! as! GameScene).updateScore(points: self.points!)
+            let newStar = Star(self.position)
+            self.world!.addChild(newStar)
+            newStar.animateAndMove()
+
+            self.removeAllActions()
+
+            self.physicsBody = nil
+            let explosionFrames:[SKTexture] = [
+                textureAtlas.textureNamed("explosion1.png"),
+                textureAtlas.textureNamed("explosion2.png"),
+                textureAtlas.textureNamed("explosion3.png"),
+                textureAtlas.textureNamed("explosion4.png"),
+            ],
+            explosionAction = SKAction.animate(with: explosionFrames, timePerFrame: 0.1),
+            explodeAndDieAction = SKAction.sequence([
+                explosionAction,
+                SKAction.removeFromParent()
+            ])
+            self.run(explodeAndDieAction)
+        }
     }
 
     func getPlayerPosition() -> CGPoint {
