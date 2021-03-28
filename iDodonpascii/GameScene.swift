@@ -105,6 +105,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 self.updateScore(points: 25)
                 self.run(SKAction.playSoundFileNamed("starPickup.wav", waitForCompletion: false))
+
+            case PhysicsCategory.OneThousand.rawValue | PhysicsCategory.Player.rawValue:
+                if let bonus = bodyA.node as? OneThousand {
+                    bonus.removeFromParent()
+                } else if let bonus = bodyB.node as? OneThousand {
+                    bonus.removeFromParent()
+                }
+                self.updateScore(points: 1000)
+                self.run(SKAction.playSoundFileNamed("1000Pickup.wav", waitForCompletion: false))
             default:
                 break
         }

@@ -17,9 +17,10 @@ class OneThousand: SKSpriteNode, GameSprite, Scrubbable {
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
         self.name = "Star"
         self.animationFrames = [
-            textureAtlas.textureNamed("1000.png"),
+            textureAtlas.textureNamed("10001.png"),
+            textureAtlas.textureNamed("10002.png"),
         ]
-        self.size = CGSize(width: 130, height: 60)
+        self.size = CGSize(width: 128, height: 64)
         self.position = initialPosition
         self.zPosition = 100
 
