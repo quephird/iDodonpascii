@@ -10,6 +10,7 @@ import SpriteKit
 
 class Player: SKSpriteNode, GameSprite {
     var lastTouchLocation: CGPoint? = nil
+    var numberOfShots = 1
     
     func spawn(world: SKScene,
                position: CGPoint,
@@ -66,6 +67,8 @@ class Player: SKSpriteNode, GameSprite {
     }
 
     func startFiringBullets(world: SKNode) {
+        self.removeAction(forKey: "playerBullets")
+
         let bulletIndices = 1 ..< self.numberOfShots+1
         let offset: Double = Double(self.numberOfShots+1)*Double.pi/36.0
         let angles = bulletIndices.map { index in
@@ -75,7 +78,7 @@ class Player: SKSpriteNode, GameSprite {
             self.makeNewBulletAction(angle: angle, world: world)
         }
         let allBulletsInParallel = SKAction.group(actions)
-        self.run(allBulletsInParallel)
+        self.run(allBulletsInParallel, withKey: "playerBullets")
     }
 
     func makeNewBulletAction(angle: Double, world: SKNode) -> SKAction {

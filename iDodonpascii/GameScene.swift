@@ -98,6 +98,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
 
             case PhysicsCategory.ExtraShot.rawValue | PhysicsCategory.Player.rawValue:
+                if let extraShot = bodyA.node as? ExtraShotPowerup,
+                   let player = bodyB.node as? Player {
+                    print("A is the extra shot")
+                    extraShot.removeFromParent()
+                    player.numberOfShots += 1
+                    player.startFiringBullets(world: self)
+                } else if let extraShot = bodyB.node as? ExtraShotPowerup,
+                          let player = bodyA.node as? Player {
+                    print("B is the extra shot")
+                    extraShot.removeFromParent()
+                    player.numberOfShots += 1
+                    player.startFiringBullets(world: self)
+                }
                 self.run(SKAction.playSoundFileNamed("extraShotPickup.wav", waitForCompletion: false))
 
             case PhysicsCategory.Star.rawValue | PhysicsCategory.Player.rawValue:

@@ -41,7 +41,6 @@ class ExtraShotPowerup: SKSpriteNode, GameSprite {
     func animateAndMove() {
         let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.25)
         self.run(SKAction.repeatForever(animationAction))
-        print("(x,y): \(self.position.x), \(self.position.y)")
 
         // This is the equation of a cycloid
         let loopPath = SKAction.customAction(withDuration: 20.0) { node, currentTime in
