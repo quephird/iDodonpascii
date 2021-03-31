@@ -66,19 +66,6 @@ class Player: SKSpriteNode, GameSprite {
     }
 
     func startFiringBullets(world: SKNode) {
-//        let TIME_BETWEEN_BULLETS = 0.5,
-//            waitABit = SKAction.wait(forDuration: TIME_BETWEEN_BULLETS),
-//            moveAction = SKAction.moveBy(x: 0, y: 400, duration: 1),
-//            newBulletSound = SKAction.playSoundFileNamed("playerBullet.wav", waitForCompletion: false),
-//            spawnNewBullet = SKAction.run {
-//                let newBullet = PlayerBullet()
-//                newBullet.spawn(parentNode: world, position: self.makeNewBulletPosition(playerPosition: self.position))
-//                newBullet.run(SKAction.repeatForever(moveAction))
-//                newBullet.run(newBulletSound)
-//            },
-//            sequence = SKAction.sequence([waitABit, spawnNewBullet])
-//        self.run(SKAction.repeatForever(sequence))
-
         let bulletIndices = 1 ..< self.numberOfShots+1
         let offset: Double = Double(self.numberOfShots+1)*Double.pi/36.0
         let angles = bulletIndices.map { index in
@@ -89,11 +76,6 @@ class Player: SKSpriteNode, GameSprite {
         }
         let allBulletsInParallel = SKAction.group(actions)
         self.run(allBulletsInParallel)
-    }
-
-    // TODO: Remove this; it is a silly function
-    func makeNewBulletPosition (playerPosition: CGPoint) -> CGPoint {
-        return CGPoint(x: playerPosition.x, y: playerPosition.y+48)
     }
 
     func makeNewBulletAction(angle: Double, world: SKNode) -> SKAction {
