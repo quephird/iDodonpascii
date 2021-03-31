@@ -97,6 +97,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.hud.removeLife()
                 self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
 
+            case PhysicsCategory.ExtraShot.rawValue | PhysicsCategory.Player.rawValue:
+                self.run(SKAction.playSoundFileNamed("extraShotPickup.wav", waitForCompletion: false))
+
             case PhysicsCategory.Star.rawValue | PhysicsCategory.Player.rawValue:
                 if let star = bodyA.node as? Star {
                     star.removeFromParent()

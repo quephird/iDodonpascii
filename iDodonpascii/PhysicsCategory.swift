@@ -12,4 +12,5 @@ enum PhysicsCategory: UInt32 {
     case Enemy        = 0b10000
     case Star         = 0b100000
     case OneThousand  = 0b1000000
+    case ExtraShot    = 0b10000000
 }

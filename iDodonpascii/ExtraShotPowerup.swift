@@ -26,7 +26,7 @@ class ExtraShotPowerup: SKSpriteNode, GameSprite {
 
         self.physicsBody = SKPhysicsBody(circleOfRadius: 32)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.categoryBitMask    = PhysicsCategory.OneThousand.rawValue
+        self.physicsBody?.categoryBitMask    = PhysicsCategory.ExtraShot.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Player.rawValue
         self.physicsBody?.collisionBitMask   = PhysicsCategory.None.rawValue
 
