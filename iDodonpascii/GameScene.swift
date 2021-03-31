@@ -122,6 +122,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
         self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
         bullet.removeFromParent()
+
+        // At any one time, we will be only concerned with one enemy
+        // and any enemy will only have a single parent, so this makes
+        // the logic here much simpler. That said, we also rely on a
+        // user-defined count instead of the child node count because
+        // there's weird race condition that happens when the last two
+        // baddies are shot too closely with respect to time.
+
+        if let powerupOpportunity = enemy.parent as? PowerupOpportunity {
+            if powerupOpportunity.baddieCount == 1 {
+                let newExtraShot = ExtraShotPowerup(enemy.position)
+                self.addChild(newExtraShot)
+                newExtraShot.animateAndMove()
+            }
+        }
+
         enemy.handleShot()
     }
 

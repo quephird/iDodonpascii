@@ -17,15 +17,18 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
         ["waves":
              [2.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(0.00, 0.95, 0.0, Direction.Right),
                                   (0.20, 0.95, 0.0, Direction.Right)]],
               5.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               8.0:
                   ["type": "biplane",
+                   "powerup": true,
                    "initParams": [(-0.05, 0.55, 0.0, Direction.Right),
                                   (-0.05, 0.55, 0.4, Direction.Right),
                                   (-0.05, 0.55, 0.8, Direction.Right),
@@ -33,35 +36,42 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                                   (-0.05, 0.55, 1.6, Direction.Right)]],
               11.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(0.00, 0.95, 0.0, Direction.Right),
                                   (0.20, 0.95, 0.0, Direction.Right),
                                   (0.40, 0.95, 0.0, Direction.Right)]],
               14.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               17.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               20.0:
                   ["type": "pinkPlane",
+                   "powerup": false,
                    "initParams": [(0.10, 0.95, 0.0, Direction.Right),
                                   (0.90, 0.95, 0.0, Direction.Left)]],
               25.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               28.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(0.00, 0.95, 0.0, Direction.Right),
                                   (0.20, 0.95, 0.0, Direction.Right),
                                   (0.40, 0.95, 0.0, Direction.Right)]],
               31.0:
                   ["type": "biplane",
+                   "powerup": true,
                    "initParams": [(1.05, 0.55, 0.0, Direction.Left),
                                   (1.05, 0.55, 0.4, Direction.Left),
                                   (1.05, 0.55, 0.8, Direction.Left),
@@ -69,28 +79,33 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                                   (1.05, 0.55, 1.6, Direction.Left)]],
               34.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               37.0:
                   ["type": "bluePlane",
+                   "powerup": false,
                    "initParams": [(-0.07, 0.90, 0.0, Direction.Right),
                                   (-0.07, 0.80, 0.3, Direction.Right),
                                   (-0.07, 0.70, 0.6, Direction.Right),
                                   (-0.07, 0.60, 0.9, Direction.Right)]],
               40.0:
                   ["type": "heli",
+                   "powerup": false,
                    "initParams": [(1.00, 0.95, 0.0, Direction.Left),
                                   (0.80, 0.95, 0.0, Direction.Left),
                                   (0.60, 0.95, 0.0, Direction.Left)]],
               43.0:
                   ["type": "bluePlane",
+                   "powerup": false,
                    "initParams": [(1.07, 0.90, 0.0, Direction.Left),
                                   (1.07, 0.80, 0.3, Direction.Left),
                                   (1.07, 0.70, 0.6, Direction.Left),
                                   (1.07, 0.60, 0.9, Direction.Left)]],
               46.0:
                   ["type": "pinkPlane",
+                   "powerup": false,
                    "initParams": [(0.10, 0.95, 0.0, Direction.Right),
                                   (0.90, 0.95, 0.0, Direction.Left)]],
                 

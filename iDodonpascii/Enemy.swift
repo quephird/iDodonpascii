@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Enemy: SKSpriteNode, GameSprite, Scrubbable {
-    static let DELAY_BETWEEN_BULLETS: TimeInterval = 2.0;
+    static let DELAY_BETWEEN_BULLETS: TimeInterval = 4.0;
 
     var world: SKNode? = nil
     var spawnDelay: Double? = nil
@@ -32,11 +32,14 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // NOTA BENE: By default enemies take only one shot and immediately die
     func handleShot() {
         self.hitPoints! -= 1
 
         if self.hitPoints == 0 {
+            if let powerupOpportunity = self.parent as? PowerupOpportunity {
+                powerupOpportunity.baddieCount -= 1
+            }
+
             (self.world! as! GameScene).updateScore(points: self.points!)
             let newStar = Star(self.position)
             self.world!.addChild(newStar)

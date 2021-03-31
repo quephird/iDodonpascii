@@ -31,8 +31,8 @@ class BluePlane: Enemy {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func spawn() {
-        self.world!.addChild(self)
+    func spawn(_ parentNode: SKNode) {
+        parentNode.addChild(self)
         self.animateAndMove()
         self.startFiringBullets()
     }
