@@ -95,7 +95,6 @@ class SpawnManager {
                 }
             } else if let powerupOpportunity = node as? PowerupOpportunity {
                 if powerupOpportunity.children.count == 0 {
-                    print("Disposing powerup opportunity...")
                     powerupOpportunity.removeFromParent()
                 }
             }
