@@ -37,8 +37,8 @@ class Heli: Enemy {
     }
 
     // TODO: Figure out how to move this into base class
-    func spawn() {
-        self.world!.addChild(self)
+    func spawn(_ parentNode: SKNode) {
+        parentNode.addChild(self)
         self.animateAndMove()
         self.startFiringBullets()
     }

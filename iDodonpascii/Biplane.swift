@@ -29,8 +29,8 @@ class Biplane: Enemy {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func spawn() {
-        self.world!.addChild(self)
+    func spawn(_ parentNode: SKNode) {
+        parentNode.addChild(self)
         self.animateAndMove()
         self.startFiringBullets()
     }
@@ -57,12 +57,12 @@ class Biplane: Enemy {
         var clockwise: Bool
 
         if self.direction == Direction.Right {
-            dx = CGFloat(610.0)
+            dx = UIScreen.main.bounds.width*1.3
             startAngle = -.π*0.5
             endAngle = .π*1.5
             clockwise = false
         } else {
-            dx = CGFloat(-610.0)
+            dx = -UIScreen.main.bounds.width*1.3
             startAngle = .π*1.5
             endAngle = -.π*0.5
             clockwise = true

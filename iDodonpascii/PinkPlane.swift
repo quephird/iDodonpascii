@@ -32,9 +32,9 @@ class PinkPlane: Enemy {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func spawn() {
-        self.world!.addChild(self)
-        animateAndMove()
+    func spawn(_ parentNode: SKNode) {
+        parentNode.addChild(self)
+        self.animateAndMove()
     }
     
     func animateAndMove() {

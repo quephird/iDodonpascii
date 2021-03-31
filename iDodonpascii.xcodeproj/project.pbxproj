@@ -41,12 +41,15 @@
 		87C3520C26094EF100A8DF4C /* BluePlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3520B26094EF100A8DF4C /* BluePlane.swift */; };
 		87C35227260C4C0D00A8DF4C /* pinkPlaneEngine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35226260C4C0D00A8DF4C /* pinkPlaneEngine.wav */; };
 		87C3522C260C58D700A8DF4C /* blueHeli.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C3522B260C58D700A8DF4C /* blueHeli.wav */; };
-		87C35238260C5D0400A8DF4C /* redPlane.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35237260C5D0400A8DF4C /* redPlane.wav */; };
 		87C35249260C7ABC00A8DF4C /* bulletGraze.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35248260C7ABC00A8DF4C /* bulletGraze.wav */; };
 		87C35254260D82DC00A8DF4C /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C35253260D82DC00A8DF4C /* Star.swift */; };
 		87C35259260DAD0200A8DF4C /* starPickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35258260DAD0200A8DF4C /* starPickup.wav */; };
 		87C3526726102A1800A8DF4C /* OneThousand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3526626102A1800A8DF4C /* OneThousand.swift */; };
-		87C35272261042D400A8DF4C /* 1000Pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35271261042D400A8DF4C /* 1000Pickup.wav */; };
+		87C35272261042D400A8DF4C /* extraShotPickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C35271261042D400A8DF4C /* extraShotPickup.wav */; };
+		87C352802611764100A8DF4C /* PowerupOpportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C3527F2611764100A8DF4C /* PowerupOpportunity.swift */; };
+		87C352852612EBF600A8DF4C /* ExtraShotPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C352842612EBF600A8DF4C /* ExtraShotPowerup.swift */; };
+		87C3528D2613216800A8DF4C /* redPlane.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C3528C2613216800A8DF4C /* redPlane.wav */; };
+		87C352A126141ADB00A8DF4C /* 1000Pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87C352A026141ADB00A8DF4C /* 1000Pickup.wav */; };
 		87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D639E31CB0F28600BFE3A9 /* Main.storyboard */; };
 		87D639E81CB19B2900BFE3A9 /* StartGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */; };
 		87F278951C613A4100A94CBF /* Scrubbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F278941C613A4100A94CBF /* Scrubbable.swift */; };
@@ -111,12 +114,15 @@
 		87C3520B26094EF100A8DF4C /* BluePlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluePlane.swift; sourceTree = "<group>"; };
 		87C35226260C4C0D00A8DF4C /* pinkPlaneEngine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pinkPlaneEngine.wav; sourceTree = "<group>"; };
 		87C3522B260C58D700A8DF4C /* blueHeli.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blueHeli.wav; sourceTree = "<group>"; };
-		87C35237260C5D0400A8DF4C /* redPlane.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = redPlane.wav; sourceTree = "<group>"; };
 		87C35248260C7ABC00A8DF4C /* bulletGraze.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bulletGraze.wav; sourceTree = "<group>"; };
 		87C35253260D82DC00A8DF4C /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		87C35258260DAD0200A8DF4C /* starPickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = starPickup.wav; sourceTree = "<group>"; };
 		87C3526626102A1800A8DF4C /* OneThousand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneThousand.swift; sourceTree = "<group>"; };
-		87C35271261042D400A8DF4C /* 1000Pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1000Pickup.wav; sourceTree = "<group>"; };
+		87C35271261042D400A8DF4C /* extraShotPickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = extraShotPickup.wav; sourceTree = "<group>"; };
+		87C3527F2611764100A8DF4C /* PowerupOpportunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupOpportunity.swift; sourceTree = "<group>"; };
+		87C352842612EBF600A8DF4C /* ExtraShotPowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraShotPowerup.swift; sourceTree = "<group>"; };
+		87C3528C2613216800A8DF4C /* redPlane.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = redPlane.wav; sourceTree = "<group>"; };
+		87C352A026141ADB00A8DF4C /* 1000Pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1000Pickup.wav; sourceTree = "<group>"; };
 		87D639E41CB0F28600BFE3A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameButton.swift; sourceTree = "<group>"; };
 		87F278941C613A4100A94CBF /* Scrubbable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubbable.swift; sourceTree = "<group>"; };
@@ -151,7 +157,8 @@
 		8773BCFF1CC4967200435900 /* iDodonpascii.sounds */ = {
 			isa = PBXGroup;
 			children = (
-				87C35271261042D400A8DF4C /* 1000Pickup.wav */,
+				87C35271261042D400A8DF4C /* extraShotPickup.wav */,
+				87C352A026141ADB00A8DF4C /* 1000Pickup.wav */,
 				87C3522B260C58D700A8DF4C /* blueHeli.wav */,
 				87C35258260DAD0200A8DF4C /* starPickup.wav */,
 				87C35248260C7ABC00A8DF4C /* bulletGraze.wav */,
@@ -160,7 +167,7 @@
 				87C35226260C4C0D00A8DF4C /* pinkPlaneEngine.wav */,
 				8773BD021CC496BD00435900 /* playerBullet.wav */,
 				60DE3C23947FFC52DBEFF841 /* playerShot.wav */,
-				87C35237260C5D0400A8DF4C /* redPlane.wav */,
+				87C3528C2613216800A8DF4C /* redPlane.wav */,
 			);
 			path = iDodonpascii.sounds;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				60DE33A750D6C134A67DD591 /* Enemy.swift */,
 				60DE3CF691B10887137AB5F5 /* EnemyBullet.swift */,
 				60DE362989B86622E853A782 /* EnemyInitializationParameters.swift */,
+				87C352842612EBF600A8DF4C /* ExtraShotPowerup.swift */,
 				879B99111C398C15001F191C /* GameScene.swift */,
 				879B99411C398F22001F191C /* GameSprite.swift */,
 				87F55E1A1C48218B006C8228 /* GameState.swift */,
@@ -212,17 +220,18 @@
 				879B991D1C398C15001F191C /* Info.plist */,
 				879B99491C3C83C2001F191C /* Levels.swift */,
 				87D639E31CB0F28600BFE3A9 /* Main.storyboard */,
+				87C3526626102A1800A8DF4C /* OneThousand.swift */,
 				60DE3BD3D0BCD5ED04606591 /* PhysicsCategory.swift */,
 				87873CDE1CFB58D8000DE467 /* PinkPlane.swift */,
 				879B99431C398F45001F191C /* Player.swift */,
 				879B99451C3B37A7001F191C /* PlayerBullet.swift */,
+				87C3527F2611764100A8DF4C /* PowerupOpportunity.swift */,
 				87F278941C613A4100A94CBF /* Scrubbable.swift */,
 				60DE3C8A10CB82409FA80297 /* SKSceneExtension.swift */,
 				87754EC71C4424C700C47B30 /* SpawnManager.swift */,
 				87D639E71CB19B2900BFE3A9 /* StartGameButton.swift */,
 				87ABB64F1CAF7F6E006782A3 /* StartScene.swift */,
 				87C35253260D82DC00A8DF4C /* Star.swift */,
-				87C3526626102A1800A8DF4C /* OneThousand.swift */,
 			);
 			path = iDodonpascii;
 			sourceTree = "<group>";
@@ -360,10 +369,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C3522C260C58D700A8DF4C /* blueHeli.wav in Resources */,
-				87C35272261042D400A8DF4C /* 1000Pickup.wav in Resources */,
+				87C35272261042D400A8DF4C /* extraShotPickup.wav in Resources */,
 				879B99401C398E73001F191C /* iDodonpascii.atlas in Resources */,
 				8773BD031CC496BD00435900 /* enemyBullet.wav in Resources */,
 				87D639E61CB0F28600BFE3A9 /* Main.storyboard in Resources */,
+				87C352A126141ADB00A8DF4C /* 1000Pickup.wav in Resources */,
 				87C35259260DAD0200A8DF4C /* starPickup.wav in Resources */,
 				879B99191C398C15001F191C /* Assets.xcassets in Resources */,
 				8773BD041CC496BD00435900 /* enemyShot.wav in Resources */,
@@ -371,7 +381,7 @@
 				87C35249260C7ABC00A8DF4C /* bulletGraze.wav in Resources */,
 				60DE3C539ADC85BA7D5CCC52 /* playerShot.wav in Resources */,
 				87C35227260C4C0D00A8DF4C /* pinkPlaneEngine.wav in Resources */,
-				87C35238260C5D0400A8DF4C /* redPlane.wav in Resources */,
+				87C3528D2613216800A8DF4C /* redPlane.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +419,7 @@
 				879B99121C398C15001F191C /* GameScene.swift in Sources */,
 				87873CDF1CFB58D8000DE467 /* PinkPlane.swift in Sources */,
 				87ABB6501CAF7F6E006782A3 /* StartScene.swift in Sources */,
+				87C352852612EBF600A8DF4C /* ExtraShotPowerup.swift in Sources */,
 				879B99561C3D9A8E001F191C /* Heli.swift in Sources */,
 				87754EC81C4424C700C47B30 /* SpawnManager.swift in Sources */,
 				87ABB64E1CAB66A6006782A3 /* HUD.swift in Sources */,
@@ -416,6 +427,7 @@
 				879B99441C398F45001F191C /* Player.swift in Sources */,
 				879B990E1C398C15001F191C /* AppDelegate.swift in Sources */,
 				8764D1E41C47256900EC6F49 /* Background.swift in Sources */,
+				87C352802611764100A8DF4C /* PowerupOpportunity.swift in Sources */,
 				60DE362A2D6F098C621816CF /* PhysicsCategory.swift in Sources */,
 				60DE375F19B8B799D1C481A0 /* Direction.swift in Sources */,
 				60DE3B2C2E27007D9640DF7C /* Enemy.swift in Sources */,

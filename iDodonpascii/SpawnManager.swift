@@ -45,7 +45,16 @@ class SpawnManager {
     
     func spawnNewEnemies(newWave: Dictionary<String, Any>) {
         let newEnemyType = newWave["type"] as? String,
+            newPowerUp = newWave["powerup"] as! Bool,
             newEnemyParameters = newWave["initParams"] as! Array<(Double, Double, Double, Direction)>
+
+        var newParentNode = self.parentNode!
+        if newPowerUp == true {
+            let newPowerupOpportunity = PowerupOpportunity(newEnemyParameters.count)
+            self.parentNode?.addChild(newPowerupOpportunity)
+            newParentNode = newPowerupOpportunity
+        }
+
         for (initialX, initialY, spawnDelay, direction) in newEnemyParameters {
             let initParms = EnemyInitializationParameters(
                 world: self.parentNode!,
@@ -54,36 +63,39 @@ class SpawnManager {
                 spawnDelay: spawnDelay,
                 direction: direction
             )
+
             switch newEnemyType {
             case "heli"?:
                 let newHeli = Heli(initParms: initParms)
-                newHeli.spawn()
+                newHeli.spawn(newParentNode)
             case "biplane"?:
                 let newBiplane = Biplane(initParms: initParms)
-                newBiplane.spawn()
+                newBiplane.spawn(newParentNode)
             case "pinkPlane"?:
                 let newPinkPlane = PinkPlane(initParms: initParms)
-                newPinkPlane.spawn()
+                newPinkPlane.spawn(newParentNode)
             case "bluePlane"?:
                 let newBluePlane = BluePlane(initParms: initParms)
-                newBluePlane.spawn()
+                newBluePlane.spawn(newParentNode)
             default:
                 break
             }
         }
     }
     
-    // TODO: Need to improve method of determining which nodes to scrub;
-    //       we're waaaaaay too dependent on magic numbers and hidden
-    //       dependence on the starting and ending points of enemy paths.
     func clearOffscreenEnemies () {
-        self.parentNode?.enumerateChildNodes(withName: "*", using: { (node, stop) -> Void in
+        self.parentNode?.enumerateChildNodes(withName: "//*", using: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {
                 if node.position.y < -0.20*UIScreen.main.bounds.height ||
                     node.position.y > 1.20*UIScreen.main.bounds.height ||
                     node.position.x < -0.20*UIScreen.main.bounds.width ||
                     node.position.x > 1.20*UIScreen.main.bounds.width {
+                    node.removeAllActions()
                     node.removeFromParent()
+                }
+            } else if let powerupOpportunity = node as? PowerupOpportunity {
+                if powerupOpportunity.children.count == 0 {
+                    powerupOpportunity.removeFromParent()
                 }
             }
         })

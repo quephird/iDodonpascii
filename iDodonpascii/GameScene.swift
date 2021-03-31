@@ -97,6 +97,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.hud.removeLife()
                 self.run(SKAction.playSoundFileNamed("playerShot.wav", waitForCompletion: false))
 
+            case PhysicsCategory.ExtraShot.rawValue | PhysicsCategory.Player.rawValue:
+                if let extraShot = bodyA.node as? ExtraShotPowerup,
+                   let player = bodyB.node as? Player {
+                    print("A is the extra shot")
+                    extraShot.removeFromParent()
+                    player.numberOfShots += 1
+                    player.startFiringBullets(world: self)
+                } else if let extraShot = bodyB.node as? ExtraShotPowerup,
+                          let player = bodyA.node as? Player {
+                    print("B is the extra shot")
+                    extraShot.removeFromParent()
+                    player.numberOfShots += 1
+                    player.startFiringBullets(world: self)
+                }
+                self.run(SKAction.playSoundFileNamed("extraShotPickup.wav", waitForCompletion: false))
+
             case PhysicsCategory.Star.rawValue | PhysicsCategory.Player.rawValue:
                 if let star = bodyA.node as? Star {
                     star.removeFromParent()
@@ -122,6 +138,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func handleEnemyShot(enemy: Enemy, bullet: PlayerBullet) {
         self.run(SKAction.playSoundFileNamed("enemyShot.wav", waitForCompletion: false))
         bullet.removeFromParent()
+
+        // At any one time, we will be only concerned with one enemy
+        // and any enemy will only have a single parent, so this makes
+        // the logic here much simpler. That said, we also rely on a
+        // user-defined count instead of the child node count because
+        // there's weird race condition that happens when the last two
+        // baddies are shot too closely with respect to time.
+
+        if let powerupOpportunity = enemy.parent as? PowerupOpportunity {
+            if powerupOpportunity.baddieCount == 1 {
+                let newExtraShot = ExtraShotPowerup(enemy.position)
+                self.addChild(newExtraShot)
+                newExtraShot.animateAndMove()
+            }
+        }
+
         enemy.handleShot()
     }
 
