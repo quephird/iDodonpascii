@@ -47,41 +47,36 @@ class Bfp5000: Enemy {
         self.run(SKAction.repeatForever(animationAction))
 
         let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
-        let flightPath = self.createPath()
-        let flightPathAction = SKAction.follow(flightPath, duration: 10.0)
-        let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
-        self.run(flightActionSequence)
-    }
 
-    // This creates a path that slowly moves down and then
-    // repeatedly thereafter in an ellipse.
-    //
-    //            |
-    //            v
-    //            |
-    //          __|__
-    //    _<-‾‾‾     ‾‾‾-<_
-    //   /                 \
-    //   \_               _/
-    //     ‾‾->-_____->-‾‾
-    //
+        // These next two blocks of code create a path that slowly
+        // moves down and then repeatedly thereafter in a circle.
+        //
+        //            |
+        //            v
+        //            |
+        //          __|__
+        //    _<-‾‾‾     ‾‾‾-<_
+        //   /                 \
+        //   \_               _/
+        //     ‾‾->-_____->-‾‾
+        //
 
-    func createPath() -> CGPath {
-        let path = CGMutablePath()
-
-//        let startX = 0.5*UIScreen.main.bounds.width
-//        let startY = 1.1*UIScreen.main.bounds.height
-        path.move(to: CGPoint(x: 0, y: 0))
-
+        let comeDownPath = CGMutablePath()
+        comeDownPath.move(to: CGPoint(x: 0, y: 0))
         let dy = 0.6*UIScreen.main.bounds.width
-        path.addLine(to: CGPoint(x: 0, y: -dy))
+        comeDownPath.addLine(to: CGPoint(x: 0, y: -dy))
+        let comeDownAction = SKAction.follow(comeDownPath, duration: 3.0)
 
+        let loopPath = CGMutablePath()
         let radius = CGFloat(50.0)
-        let loopCenter = CGPoint(x: 0, y: -dy-radius)
+        let loopCenter = CGPoint(x: 0, y: -radius)
         let startAngle = CGFloat(0.5*Double.pi)
         let endAngle = CGFloat(2.5*Double.pi)
-        path.addArc(center: loopCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        loopPath.addArc(center: loopCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        let loopAction = SKAction.repeatForever(SKAction.follow(loopPath, duration: 7.0))
 
-        return path
+        let flightPathAction = SKAction.sequence([comeDownAction, loopAction])
+        let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
+        self.run(flightActionSequence)
     }
 }
