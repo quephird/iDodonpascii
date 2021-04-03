@@ -14,6 +14,7 @@ import SpriteKit
 //   * Keep track of the next spawn time
 //   * Be interrogated and know when to spawn new enemies
 
+// TODO: Think about changing this to wave manager
 class SpawnManager {
     var gameState: GameState? = nil,
         parentNode: SKNode? = nil,
@@ -27,15 +28,15 @@ class SpawnManager {
         self.nextWaveTime = waveTimes.min()
     }
 
-    func checkForSpawnableEnemies(elapsedTime: CFTimeInterval) {
+    func checkForSpawnableEnemies(_ elapsedTime: CFTimeInterval) {
         if elapsedTime >= nextWaveTime! {
             let newWave = getNewWave(waveTime: nextWaveTime!)
             spawnNewEnemies(newWave: newWave)
-            self.nextWaveTime = getNextWaveTime(currentWaveTime: elapsedTime)
+            self.nextWaveTime = getNextWaveTime(elapsedTime)
         }
     }
 
-    func getNextWaveTime(currentWaveTime: CFTimeInterval) -> Double? {
+    func getNextWaveTime(_ currentWaveTime: CFTimeInterval) -> Double? {
         return waveTimes.filter { $0 > currentWaveTime }.sorted().first
     }
     
@@ -82,7 +83,19 @@ class SpawnManager {
             }
         }
     }
-    
+
+    func spawnNewBoss() {
+        let initParms = EnemyInitializationParameters(
+            world: self.parentNode!,
+            initialX: Double(UIScreen.main.bounds.width)*0.5,
+            initialY: Double(UIScreen.main.bounds.height)*1.1,
+            spawnDelay: 0.0,
+            direction: Direction.Left
+        )
+        let newBoss = Bfp5000(initParms: initParms)
+        newBoss.spawn(self.parentNode!)
+    }
+
     func clearOffscreenEnemies () {
         self.parentNode?.enumerateChildNodes(withName: "//*", using: { (node, stop) -> Void in
             if let _ = node as? Scrubbable {

@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spawnManager = SpawnManager()
     let hud = HUD()
 
+    var gameMode = GameMode.Main
     var backgroundManager: BackgroundManager? = nil
     var playerBullets = Set<PlayerBullet>()
     
@@ -58,12 +59,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func update(_ currentTime: CFTimeInterval) {
+        // Here are the possible paths at any one point in this game loop:
+        //
+        // if (the player has no more lives)
+        //    go to Game Over screen
+        // else if (there are still waves remaining)
+        //    if (we have arrived at the next wave time)
+        //        generate new baddies
+        //        set new next wave time
+        //    else
+        //        do nothing
+        //    end if
+        // else if (we are still in regular level)
+        //    go to boss screen
+        // else if (boss is not dead)
+        //    do nothing
+        // else
+        //    go to next level
+        // end if
+
         if self.gameState.lives == 0 {
             switchScene()
         }
-        self.hud.update(scene: self)
+
+        // We need to do this still in case there are still some
+        // straggling baddies in the beginning of the boss level
         self.spawnManager.clearOffscreenEnemies()
-        self.spawnManager.checkForSpawnableEnemies(elapsedTime: currentTime - self.gameState.startTime!)
+
+        switch self.gameMode {
+        case .Main:
+            let timeIntoLevel = currentTime - self.gameState.startTime!
+            if let nextWaveTime = spawnManager.getNextWaveTime(timeIntoLevel) {
+                // We always want to do these things
+                self.hud.update(scene: self)
+                self.spawnManager.clearOffscreenEnemies()
+
+                // We only want to spawn new enemies if its time
+                self.spawnManager.checkForSpawnableEnemies(timeIntoLevel)
+            } else {
+                self.gameMode = .Boss
+                self.spawnManager.spawnNewBoss()
+            }
+        case .Boss:
+            ()
+            // TODO: introduce logic to check if boss is still alive
+        }
     }
 
     func updateScore(points: UInt) {
@@ -100,13 +140,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case PhysicsCategory.ExtraShot.rawValue | PhysicsCategory.Player.rawValue:
                 if let extraShot = bodyA.node as? ExtraShotPowerup,
                    let player = bodyB.node as? Player {
-                    print("A is the extra shot")
                     extraShot.removeFromParent()
                     player.numberOfShots += 1
                     player.startFiringBullets(world: self)
                 } else if let extraShot = bodyB.node as? ExtraShotPowerup,
                           let player = bodyA.node as? Player {
-                    print("B is the extra shot")
                     extraShot.removeFromParent()
                     player.numberOfShots += 1
                     player.startFiringBullets(world: self)
