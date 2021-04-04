@@ -11,7 +11,7 @@ import SpriteKit
 class Bfp5000: Enemy {
     override init(initParms: EnemyInitializationParameters) {
         super.init(initParms: initParms)
-        self.name = "BluePlane"
+        self.name = "Bfp5000"
         self.points = 100
         self.animationFrames = [
             textureAtlas.textureNamed("bfp50001.png"),
@@ -76,5 +76,32 @@ class Bfp5000: Enemy {
         let flightPathAction = SKAction.sequence([comeDownAction, loopAction])
         let flightActionSequence = SKAction.sequence([delayAction, flightPathAction])
         self.run(flightActionSequence)
+    }
+
+    override func startFiringBullets() {
+        let delayBetweenBullets = SKAction.wait(forDuration: 0.2)
+        let leftBullet = SKAction.run{
+            let newBullet = Bfp5000Bullet()
+            newBullet.spawn(atPosition: self.position, atAngle: CGFloat(-Double.pi/12.0))
+            self.world?.addChild(newBullet)
+        }
+        let centerBullet = SKAction.run{
+            let newBullet = Bfp5000Bullet()
+            newBullet.spawn(atPosition: self.position, atAngle: CGFloat(0.0))
+            self.world?.addChild(newBullet)
+        }
+        let rightBullet = SKAction.run{
+            let newBullet = Bfp5000Bullet()
+            newBullet.spawn(atPosition: self.position, atAngle: CGFloat(Double.pi/12.0))
+            self.world?.addChild(newBullet)
+        }
+        let bulletWave = SKAction.group([leftBullet, centerBullet, rightBullet])
+
+        let bulletWaveWithDelay = SKAction.sequence([delayBetweenBullets, bulletWave])
+        let bulletBurst = SKAction.repeat(bulletWaveWithDelay, count: 5)
+        let delayBetweenBursts = SKAction.wait(forDuration: 1.0)
+
+        let continuousFiringAction = SKAction.sequence([bulletBurst, delayBetweenBursts])
+        self.run(SKAction.repeatForever(continuousFiringAction))
     }
 }
