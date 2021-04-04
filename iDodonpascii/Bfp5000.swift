@@ -44,6 +44,9 @@ class Bfp5000: Enemy {
         let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
 
+        let engineRunning = SKAction.repeatForever(SKAction.playSoundFileNamed("bfp5000.wav", waitForCompletion: true))
+        self.run(engineRunning)
+
         let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
 
         // These next two blocks of code create a path that slowly
