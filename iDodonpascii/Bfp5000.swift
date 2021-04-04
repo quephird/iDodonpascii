@@ -20,9 +20,7 @@ class Bfp5000: Enemy {
         self.size = CGSize(width: 300, height: 230)
         self.hitPoints = 50
 
-        let bodySize = CGSize(width: 250, height: 100)
-        let bodyCenter = CGPoint(x: 150, y: 100)
-        self.physicsBody = SKPhysicsBody(rectangleOf: bodySize, center: bodyCenter)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 50)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask    = PhysicsCategory.Enemy.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.PlayerBullet.rawValue
@@ -43,7 +41,7 @@ class Bfp5000: Enemy {
     }
 
     func animateAndMove() {
-        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.25)
+        let animationAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1)
         self.run(SKAction.repeatForever(animationAction))
 
         let delayAction = SKAction.wait(forDuration: self.spawnDelay!)
