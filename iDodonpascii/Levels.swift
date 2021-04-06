@@ -108,7 +108,6 @@ var levels: Dictionary<Int, Dictionary<String, Dictionary<Double, Dictionary<Str
                    "powerup": false,
                    "initParams": [(0.10, 0.95, 0.0, Direction.Right),
                                   (0.90, 0.95, 0.0, Direction.Left)]],
-                
              ]
          ]
     ]

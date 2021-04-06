@@ -4,4 +4,5 @@
 enum GameMode {
     case Main
     case Boss
+    case Stats
 }

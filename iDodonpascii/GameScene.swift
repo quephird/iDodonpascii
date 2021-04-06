@@ -13,11 +13,24 @@ import SpriteKit
 //   * Manage the game loop
 //   * Respond to user input
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, Consumer {
     let gameState = GameState()
     let player = Player()
-    let spawnManager = SpawnManager()
     let hud = HUD()
+
+    var messageServer: MessageServer
+    var spawnManager: SpawnManager
+
+    override init(size: CGSize) {
+        self.messageServer = MessageServer()
+        self.spawnManager = SpawnManager(self.messageServer)
+        super.init(size: size)
+        self.messageServer.register(self, forMessageType: .BossDied)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     var gameMode = GameMode.Main
     var backgroundManager: BackgroundManager? = nil
@@ -58,6 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.lastTouchLocation = nil
     }
 
+    // This is the main game update loop right here.
     override func update(_ currentTime: CFTimeInterval) {
         // Here are the possible paths at any one point in this game loop:
         //
@@ -102,7 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case .Boss:
             ()
-            // TODO: introduce logic to check if boss is still alive
+        case .Stats:
+            ()
         }
     }
 
@@ -193,6 +208,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         enemy.handleShot()
+    }
+
+    func notify(_ messageType: MessageType) {
+        if messageType == .BossDied {
+            self.gameMode = .Stats
+        }
     }
 
     func switchScene() {

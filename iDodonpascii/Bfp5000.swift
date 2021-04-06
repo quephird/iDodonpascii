@@ -9,7 +9,10 @@
 import SpriteKit
 
 class Bfp5000: Enemy {
-    override init(initParms: EnemyInitializationParameters) {
+    var messageServer: MessageServer
+
+    init(initParms: EnemyInitializationParameters, messageServer: MessageServer) {
+        self.messageServer = messageServer
         super.init(initParms: initParms)
         self.name = "Bfp5000"
         self.points = 100
@@ -106,5 +109,12 @@ class Bfp5000: Enemy {
 
         let continuousFiringAction = SKAction.sequence([bulletBurst, delayBetweenBursts])
         self.run(SKAction.repeatForever(continuousFiringAction))
+    }
+
+    override func handleShot() {
+        super.handleShot()
+        if self.hitPoints == 0 {
+            self.messageServer.publish(messageType: .BossDied)
+        }
     }
 }
