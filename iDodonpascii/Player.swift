@@ -11,7 +11,17 @@ import SpriteKit
 class Player: SKSpriteNode, GameSprite {
     var lastTouchLocation: CGPoint? = nil
     var numberOfShots = 1
-    
+//    var messageServer: MessageServer
+
+//    init(_ messageServer: MessageServer) {
+//        self.messageServer = messageServer
+//        super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+//    }
+
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+
     func spawn(world: SKScene,
                position: CGPoint,
                size: CGSize = CGSize(width: 50, height: 75)) {
@@ -66,6 +76,10 @@ class Player: SKSpriteNode, GameSprite {
         return grazingNode
     }
 
+    func stopFiringBullets() {
+        self.removeAction(forKey: "playerBullets")
+    }
+
     func startFiringBullets(world: SKNode) {
         self.removeAction(forKey: "playerBullets")
 
@@ -96,6 +110,7 @@ class Player: SKSpriteNode, GameSprite {
             let x = self.position.x + CGFloat(48.0*sin(angle))
             let y = self.position.y + CGFloat(48.0*cos(angle))
             let newBulletPosition = CGPoint(x: x, y: y)
+            messageServer.publish(messageType: .PlayerBulletFired)
             newBullet.spawn(parentNode: world, position: newBulletPosition)
             newBullet.run(SKAction.repeatForever(moveAction))
             newBullet.run(newBulletSound)

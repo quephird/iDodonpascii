@@ -9,10 +9,7 @@
 import SpriteKit
 
 class Bfp5000: Enemy {
-    var messageServer: MessageServer
-
-    init(initParms: EnemyInitializationParameters, messageServer: MessageServer) {
-        self.messageServer = messageServer
+    override init(initParms: EnemyInitializationParameters) {
         super.init(initParms: initParms)
         self.name = "Bfp5000"
         self.points = 100
@@ -114,7 +111,7 @@ class Bfp5000: Enemy {
     override func handleShot() {
         super.handleShot()
         if self.hitPoints == 0 {
-            self.messageServer.publish(messageType: .BossDied)
+            messageServer.publish(messageType: .BossDied)
         }
     }
 }

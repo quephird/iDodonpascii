@@ -15,17 +15,22 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate, Consumer {
     let gameState = GameState()
-    let player = Player()
     let hud = HUD()
 
-    var messageServer: MessageServer
+    var player: Player
+//    var messageServer: MessageServer
     var spawnManager: SpawnManager
 
     override init(size: CGSize) {
-        self.messageServer = MessageServer()
-        self.spawnManager = SpawnManager(self.messageServer)
+        self.player = Player()
+        self.spawnManager = SpawnManager()
         super.init(size: size)
-        self.messageServer.register(self, forMessageType: .BossDied)
+        messageServer.register(self, forMessageType: .BossDied)
+        messageServer.register(self.gameState, forMessageType: .EnemyBulletGrazed)
+        messageServer.register(self.gameState, forMessageType: .EnemyDied)
+        messageServer.register(self.gameState, forMessageType: .PlayerDied)
+        messageServer.register(self.gameState, forMessageType: .PlayerBulletFired)
+        messageServer.register(self.gameState, forMessageType: .StarCollected)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -142,6 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Consumer {
 
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.PlayerGraze.rawValue:
                 self.run(SKAction.playSoundFileNamed("bulletGraze.wav", waitForCompletion: false))
+                messageServer.publish(messageType: .EnemyBulletGrazed)
                 self.updateScore(points: 50)
 
             case PhysicsCategory.EnemyBullet.rawValue | PhysicsCategory.Player.rawValue:
@@ -174,6 +180,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Consumer {
                 }
                 self.updateScore(points: 25)
                 self.run(SKAction.playSoundFileNamed("starPickup.wav", waitForCompletion: false))
+                messageServer.publish(messageType: .StarCollected)
 
             case PhysicsCategory.OneThousand.rawValue | PhysicsCategory.Player.rawValue:
                 if let bonus = bodyA.node as? OneThousand {
@@ -213,6 +220,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Consumer {
     func notify(_ messageType: MessageType) {
         if messageType == .BossDied {
             self.gameMode = .Stats
+            self.player.stopFiringBullets()
+            let nextScene = StatsScene(size: self.size)
+            nextScene.gameState = self.gameState
+            let transition = SKTransition.push(with: .up, duration: 3.0)
+            self.scene!.view?.presentScene(nextScene, transition: transition)
         }
     }
 

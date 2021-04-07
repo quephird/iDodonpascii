@@ -10,4 +10,9 @@ import Foundation
 
 enum MessageType {
     case BossDied
+    case EnemyBulletGrazed
+    case EnemyDied
+    case PlayerBulletFired
+    case PlayerDied
+    case StarCollected
 }

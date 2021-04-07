@@ -60,6 +60,7 @@ class Enemy: SKSpriteNode, GameSprite, Scrubbable {
                 SKAction.removeFromParent()
             ])
             self.run(explodeAndDieAction)
+            messageServer.publish(messageType: .EnemyDied)
         }
     }
 

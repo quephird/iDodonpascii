@@ -8,6 +8,8 @@
 
 import Foundation
 
+let messageServer = MessageServer()
+
 class MessageServer {
     var registrations: Dictionary<MessageType, [Consumer]> = [:]
 
@@ -24,7 +26,6 @@ class MessageServer {
             for consumer in consumers {
                 consumer.notify(messageType)
             }
-            self.registrations[messageType] = []
         }
     }
 }

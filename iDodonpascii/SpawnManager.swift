@@ -20,11 +20,6 @@ class SpawnManager {
         parentNode: SKNode? = nil,
         waveTimes: [Double] = [],
         nextWaveTime: Double? = nil
-    var messageServer: MessageServer
-
-    init(_ messageServer: MessageServer) {
-        self.messageServer = messageServer
-    }
 
     func beginSpawningEnemies(gameState: GameState,  parentNode: SKNode) {
         self.gameState = gameState
@@ -97,7 +92,7 @@ class SpawnManager {
             spawnDelay: 0.0,
             direction: Direction.Left
         )
-        let newBoss = Bfp5000(initParms: initParms, messageServer: messageServer)
+        let newBoss = Bfp5000(initParms: initParms)
         newBoss.spawn(self.parentNode!)
     }
 
